@@ -3,6 +3,7 @@ import "./App.css"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePublic from "./pages/HomePublic";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -20,6 +21,13 @@ function App() {
           exact
           render={() => (      
             <HomePublic/>     
+          )}
+        />
+          <Route
+          path="/register"
+          exact
+          render={() => (      
+            <Register/>     
           )}
         />
         </Switch>  

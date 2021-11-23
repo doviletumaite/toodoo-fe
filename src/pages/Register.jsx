@@ -3,12 +3,12 @@ import "../style/Login.css";
 import google from "../style/images/google.png";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   return (
     <div>
       <NavBar />
       <div className="loginBox">
-        <div className="loginTitle">login on your profile</div>
+        <div className="loginTitle">create a new profile</div>
         <div className="input-container">
           <div className="input-controler">
             <label>your name</label>
@@ -34,9 +34,8 @@ const Login = () => {
           </button>
         </a>
 
-        <div className="registerString">not registered yet?</div>
-        <Link to="/register" className="registerLink">
-          <button className="registerButton">create a new account!</button>
+        <Link to="/login" className="registerLink">
+          <button className="backToLoginButton">back to login</button>
         </Link>
 </div>
       </div>
@@ -44,4 +43,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
