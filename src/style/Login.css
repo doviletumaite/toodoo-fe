@@ -1,6 +1,47 @@
 .loginBox{
-    height: 50vh;
-    margin: 40px;
-    background-color: white;
-    border-radius: 3px;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    height: 60vh;
+    margin: auto;
+    margin-top: 50px;
+    width: 500px;
+    border-radius: 4px;
+    background-color: #1aa35f7a;
+    box-shadow: 0 4px 8px 0 rgba(6, 128, 63, 0.541), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.loginBox:hover{
+    box-shadow: 0 6px 10px 0 rgba(6, 128, 63, 0.541), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+.loginTitle{
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.589);
+    font-size: 22px;
+}
+.input-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: self-end;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.input-container input{
+    margin: 12px;
+    border: transparent;
+     border-radius: 2px;
+}
+.input-container input:focus{
+    outline: none;
+}
+.input-controler label{
+    color: rgba(0, 0, 0, 0.589);
+    font-size: 15px;
+    margin-top: 5px;
+}
+.input-controler{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
 }

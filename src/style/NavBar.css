@@ -1,15 +1,18 @@
 .navbar{
-    background-color: rgb(165, 165, 228);
+    background-color: rgba(154, 102, 189, 0.712);
     height: 8vh;
     position: sticky;
     margin-top: 0px;
     margin:0px;
+    box-shadow: 0 4px 8px 0 rgba(44, 159, 226, 0.513), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .navbar-title{
     color:rgb(190, 228, 238);
     font-size: 20px;
     font-weight: 700;
+    position: relative;
 }
 
 .navbar-title:hover{
