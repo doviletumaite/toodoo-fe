@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePublic from "./pages/HomePublic";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Showcase from "./pages/Showcase";
 
 function App() {
   return (
@@ -28,6 +29,13 @@ function App() {
           exact
           render={() => (      
             <Register/>     
+          )}
+        />
+           <Route
+          path="/showcase"
+          exact
+          render={() => (      
+            <Showcase/>     
           )}
         />
         </Switch>  
