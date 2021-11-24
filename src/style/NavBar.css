@@ -19,6 +19,9 @@
     color:rgb(255, 255, 255);
     font-size: 21px;
 }
+.navbar-title:focus{
+    color:rgb(236, 160, 39);
+}
 
 .navbar-title-link:hover{
  text-decoration: none;

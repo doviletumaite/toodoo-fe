@@ -92,6 +92,9 @@
 .loginButton:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
 }
+.loginButton:focus{
+  background-color:rgb(245, 173, 57);
+}
 .registerString {
   text-align: center;
   font-weight: 700;
@@ -112,6 +115,9 @@
 .registerButton:hover {
     box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
   }
+.registerButton:focus{
+    background-color:rgb(245, 173, 57);
+  }
   .backToLoginButton{
     background-color: rgb(107, 202, 226);
     display: inline-flex;
@@ -125,4 +131,7 @@
   }
   .backToLoginButton:hover {
     box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+  }
+  .backToLoginButton:focus{
+    background-color:rgb(245, 173, 57);
   }

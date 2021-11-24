@@ -34,7 +34,7 @@ const Register = () => {
           </button>
         </a>
 
-        <Link to="/login" className="registerLink">
+        <Link to="/" className="registerLink">
           <button className="backToLoginButton">back to login</button>
         </Link>
 </div>
