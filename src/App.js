@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Switch>
         <Route exact
-          path="/login"
+          path="/"
           render={() => (
               <Login />
            )}/>
