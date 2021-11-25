@@ -21,7 +21,7 @@ const Post = () => {
           ad minus, provident excepturi eius porro quas, nostrum doloremque, eum
           facilis delectus officia nam placeat ipsam libero dolorem pariatur.
           Reprehenderit, alias? fgwdsfhnijwfehd
-          fkjsdfopawsjmfposdjkfpòosdjvfgòxdkjvflxfdkzjgvlisdzxgsdkjfhasdfhslkdhfsodlhfsdlohfsldj
+          fkjsdfopawsjmfposdjkfpòosdjvfgòxdkjvfl
         </div>
 
         <div className="post-content-img-container">
