@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar"
 
-const HomePublic = () => {
+const HomePrivat = () => {
     return ( 
         <div>
        <NavBar/>
@@ -8,4 +8,4 @@ const HomePublic = () => {
     )
 }
 
-export default HomePublic
+export default HomePrivat

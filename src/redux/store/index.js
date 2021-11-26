@@ -30,7 +30,7 @@ const persistConfig = {
   ],
 };
 const bigReducer = combineReducers({
-    user: userReducer,
+    userInfo: userReducer,
   })
 const persistedReducer = persistReducer(persistConfig, bigReducer);
 

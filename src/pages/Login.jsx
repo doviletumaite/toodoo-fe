@@ -66,15 +66,15 @@ const Login = () => {
         </div>
         <div className="buttonsGroup">
           <Link to={query}>
-          <a href="">
             <button 
             className="loginButton"
             onClick={(e)=>login()}
             >login</button>
-          </a>
           </Link>
           <a href="http://localhost:3003/user/googleLogin">
-            <button className="googleButton">
+            <button className="googleButton"
+            onClick={() => dispatch(setUsernameAction(data))}
+            >
               <img src={google} />
               Sign in with Google
             </button>

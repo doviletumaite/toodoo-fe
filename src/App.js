@@ -1,10 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HomePublic from "./pages/HomePublic";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Showcase from "./pages/Showcase";
+import HomePrivat from "./pages/HomePrivat";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           path="/home"
           exact
           render={() => (      
-            <HomePublic/>     
+            <HomePrivat/>     
           )}
         />
           <Route
