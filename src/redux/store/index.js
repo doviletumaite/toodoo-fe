@@ -4,6 +4,8 @@ import { persistStore, persistReducer } from "redux-persist";
 import localStorage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import userReducer from "../reducers/user.js"
+import postReducer from "../reducers/post.js";
+import commentReducer from "../reducers/comments.js";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -15,6 +17,18 @@ export const initialState = {
         profilePicture: "",
         bio: ""
       },
+      post: {
+        _id:"",
+        text:"",
+        picture: "",
+        user: {},
+        comments: []
+      },
+      comments: {
+        comment: "",
+        user: {},
+        id: ""
+      }
 };
 
 const persistConfig = {
@@ -31,6 +45,8 @@ const persistConfig = {
 };
 const bigReducer = combineReducers({
     userInfo: userReducer,
+    post: postReducer,
+    comments: commentReducer
   })
 const persistedReducer = persistReducer(persistConfig, bigReducer);
 

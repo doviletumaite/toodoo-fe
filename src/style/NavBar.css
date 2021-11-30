@@ -26,3 +26,21 @@
 .navbar-title-link:hover{
  text-decoration: none;
 }
+
+.navbar-user-link{
+    color:rgb(190, 228, 238);
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+}
+.navbar-user:hover{
+    color:rgb(255, 255, 255);
+    font-size: 19px;
+}
+.navbar-user:focus{
+    color:rgb(236, 160, 39);
+}
+
+.navbar-user-link:hover{
+ text-decoration: none;
+}

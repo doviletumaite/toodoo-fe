@@ -1,7 +1,7 @@
 .showcase-main{
     margin: auto;
     display: flex;
-    width: 50%;
+    width: 70%;
     flex-direction: column;
 }
 .shareBox{
@@ -31,7 +31,7 @@
 }
 .input-share{
     height: 20px;
-    width: 90%;
+    width: 70%;
     border-radius: 2px;
     border: transparent;
     font-size: 13px;
@@ -42,7 +42,7 @@
   .shareBox-input-img{
       display: flex;
       flex-direction: row-reverse;
-      justify-content: space-around;
+      justify-content:space-evenly;
       align-items: center;
       width: 100%;
       margin-top: -27px;
@@ -52,6 +52,15 @@
       border-radius: 50%;
   }
 
+  .shareBoxForBtn{
+    padding:2px;
+    height: 37px;
+    width: 37px;
+  }
+.share-btn:hover{
+height: 33px;
+cursor: pointer;
+}
   .post-body{
       height:fit-content;
       display: flex;

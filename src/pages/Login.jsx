@@ -35,7 +35,7 @@ const Login = () => {
     const {data} = await API.get("/user/me")
     if(data){
       dispatch(setUsernameAction(data))
-      history.push("/showcase")
+      history.push("/showcase/" + data._id)
     }
   }
 
