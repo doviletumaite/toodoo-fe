@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import "../style/NavBar.css"
 
 const NavBar = () => {
-    const state = useSelector(s=> s.userInfo.userInfo)
+    const state = useSelector(s=> s.userInfo)
     
     return ( 
         <div className="navbar">

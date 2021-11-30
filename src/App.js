@@ -8,8 +8,7 @@ import HomePrivat from "./pages/HomePrivat";
 import { useSelector } from "react-redux";
 
 function App() {
-  const state = useSelector(s=>s.userInfo)
-  console.log(state)
+
   return (
     <div className="body">    
       <Router>

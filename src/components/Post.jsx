@@ -8,22 +8,16 @@ import { useEffect } from "react";
 import Comment from "../components/Comment.jsx";
 
 const Post = () => {
-  const state = useSelector((s) => s.post.post);
-  const commentState = useSelector((s) => s.comments);
-  console.log("comments", commentState);
+  const state = useSelector((s) => s.post);
+  console.log("state",state)
+
   const dispatch = useDispatch();
-  console.log("posts", state);
-  // const postId = state.post[0]._id
-  const allId = state.map((p) => p._id);
-  console.log("allId", allId);
-  // console.log("posts id",postId)
+ 
   useEffect(() => {
     dispatch(getPosts());
-    // state.map(p=>dispatch(getComments(p._id)))
-    state.forEach(p => {
-      dispatch(getComments(p._id))
-      console.log("comment fro each",commentState )
-    })
+  //  state.posts.map(p=>dispatch(getComments(p._id)))
+  
+    // console.log("state in comments",state.posts[1].comments)
   }, []);
   return (
     <div>
@@ -44,21 +38,13 @@ const Post = () => {
             <img className="post-content-img" src={p.picture} />
           </div>
           <div className="line-comment"></div>
+        {
+          p.comments ? ( 
+         <Comment/>
         
-        {p.comments.forEach(c=> ( <div className="comment-session">
-          <div className="comment">
-         <img className="profile-img-comment"  />
-          <div className="comment-detail">
-           <p className="comment-name">name</p>
-            <p className="comment-itself">
-              {c.comment}
-              </p>
-           </div>
-         </div>
-       </div>))}
-         
-        
-         
+           ) : (<div></div>)
+        }
+  
         </div>
       ))}
     </div>

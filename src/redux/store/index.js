@@ -18,17 +18,17 @@ export const initialState = {
         bio: ""
       },
       post: {
-        _id:"",
-        text:"",
-        picture: "",
-        user: {},
+        posts: [],
         comments: []
-      },
-      comments: {
-        comment: "",
-        user: {},
-        id: ""
       }
+      // post: {
+      //   _id:"",
+      //   text:"",
+      //   picture: "",
+      //   user: {},
+      //   comments: []
+      // },
+    
 };
 
 const persistConfig = {
@@ -46,7 +46,7 @@ const persistConfig = {
 const bigReducer = combineReducers({
     userInfo: userReducer,
     post: postReducer,
-    comments: commentReducer
+    // comments: commentReducer
   })
 const persistedReducer = persistReducer(persistConfig, bigReducer);
 

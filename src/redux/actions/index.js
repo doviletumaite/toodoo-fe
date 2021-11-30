@@ -20,11 +20,12 @@ export const setUsernameAction = (info) => ({
         let response = await fetch("http://localhost:3003/posts")
         if(response.ok){
            let posts = await response.json()
+           console.log("post in fetch",posts)
            dispatch({
              type: GET_POSTS,
              payload: posts
            })
-           console.log("posts in fetch",posts )
+           
         }
         
       } catch (error) {
@@ -46,6 +47,7 @@ export const setUsernameAction = (info) => ({
              type: GET_COMMENTS,
              payload: comment
            })
+           console.log("comment in fetch",comment )
         }
       } catch (error) {
         console.log(error)

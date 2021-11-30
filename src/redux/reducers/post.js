@@ -5,14 +5,18 @@ const postReducer = (state = initialState.post, action) => {
     switch (action.type) {
         case GET_POSTS: {
             return {
-                ...state,
-                post: action.payload
+              
+                    ...state,
+                    posts: action.payload
+            
             }
         }
         case GET_COMMENTS: {
             return {
-                ...state,
-                comments: action.payload
+               
+                    ...state,
+                    comments: action.payload
+                
             }
         }
         default:
