@@ -4,29 +4,26 @@ import { useSelector } from "react-redux"
 import { getComments } from "../redux/actions"
 import "../style/Showcase.css"
 
-const Comment = ()=> {
-    const posts = useSelector(s=> s.post)
-    const dispatch = useDispatch()
-    console.log("posts in comment component",posts)
+const Comment = ({c})=> {
+  console.log("C",c)
+   
  
-  
  return (
  <div>
-     {
-              posts.map(c=> (
-                  
+ 
+{/*                   
           <div className="comment-session">
           <div className="comment">
-         <img className="profile-img-comment"  />
+         <img className="profile-img-comment" src={comments.comment.user.profilePicture} />
           <div className="comment-detail">
-           <p className="comment-name">name</p>
+           <p className="comment-name">{comments.comment.user.username}</p>
             <p className="comment-itself">
-              {c.comments.comment}
+              {comments.comment}
               </p>
            </div>
          </div>
-       </div>
-              ))}
+       </div> */}
+            
  </div>
  )
 }

@@ -20,12 +20,10 @@ export const setUsernameAction = (info) => ({
         let response = await fetch("http://localhost:3003/posts")
         if(response.ok){
            let posts = await response.json()
-           console.log("post in fetch",posts)
            dispatch({
              type: GET_POSTS,
              payload: posts
            })
-           
         }
         
       } catch (error) {
@@ -41,6 +39,7 @@ export const setUsernameAction = (info) => ({
     return async (dispatch, getState) => {
       try {
         let response = await fetch("http://localhost:3003/posts/" + id + "/comment")
+        console.log("id for comment fetch", id)
         if(response.ok){
            let comment = await response.json()
            dispatch({

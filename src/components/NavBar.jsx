@@ -13,9 +13,13 @@ const NavBar = () => {
             </div>
            </Link>
            <Link to="/home" className="navbar-user-link" >
-            <div className="navbar-user">
+           {state.username  ? 
+           
+           <div className="navbar-user">
                 {state.username}
             </div>
+            : <div></div>
+            }
            </Link>
         </div>
     )

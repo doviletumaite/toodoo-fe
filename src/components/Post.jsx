@@ -4,23 +4,30 @@ import post from "../style/images/post.jpeg";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getComments, getPosts } from "../redux/actions";
-import { useEffect } from "react";
-import Comment from "../components/Comment.jsx";
+import { useEffect, useState } from "react";
+import CommentList from "./CommentList";
 
 const Post = () => {
-  const state = useSelector((s) => s.post);
-  console.log("state",state)
+  const [showComments, setShowComments] = useState(null)
+  const [comment, setComment] = useState([])
+  const state = useSelector((s) => s.post.posts)
+ 
+  const commentsState = useSelector((s) => s.post.comments)
+  console.log("commentsState in post",state)
 
   const dispatch = useDispatch();
  
   useEffect(() => {
     dispatch(getPosts());
-  //  state.posts.map(p=>dispatch(getComments(p._id)))
-  
-    // console.log("state in comments",state.posts[1].comments)
   }, []);
+
+  const handleShowComments = (e) => {
+   e.preventDefault(e)
+   setComment(commentsState)
+  }
   return (
     <div>
+
       {state.map((p) => (
         <div className="post-body">
           <div className="post-user">
@@ -38,15 +45,19 @@ const Post = () => {
             <img className="post-content-img" src={p.picture} />
           </div>
           <div className="line-comment"></div>
-        {
-          p.comments ? ( 
-         <Comment/>
-        
-           ) : (<div></div>)
-        }
-  
+          <button 
+            className="showComments"
+            onClick={(e)=>dispatch(getComments(p._id))}
+            >show comments</button>
+            
+          <CommentList
+          comment={commentsState}
+          />
+          
         </div>
+     
       ))}
+    
     </div>
   );
 };

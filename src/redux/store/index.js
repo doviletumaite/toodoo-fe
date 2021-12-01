@@ -18,7 +18,7 @@ export const initialState = {
         bio: ""
       },
       post: {
-        posts: [],
+        posts: [] ,
         comments: []
       }
       // post: {
