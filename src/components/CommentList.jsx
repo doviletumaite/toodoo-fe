@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import  Comment  from "./Comment.jsx"
+
 
 const CommentList = () => {
  
     const comments = useSelector((s) => s.post.comments.comments)
     console.log("comments in comm list ",comments )
-    
+
  return(
      <div>
         {

@@ -39,14 +39,12 @@ export const setUsernameAction = (info) => ({
     return async (dispatch, getState) => {
       try {
         let response = await fetch("http://localhost:3003/posts/" + id + "/comment")
-        console.log("id for comment fetch", id)
         if(response.ok){
            let comment = await response.json()
            dispatch({
              type: GET_COMMENTS,
              payload: comment
            })
-           console.log("comment in fetch",comment )
         }
       } catch (error) {
         console.log(error)

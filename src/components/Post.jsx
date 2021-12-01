@@ -8,12 +8,13 @@ import { useEffect, useState } from "react";
 import CommentList from "./CommentList";
 
 const Post = () => {
-  const [showComments, setShowComments] = useState(null)
+  const [showComments, setShowComments] = useState(false)
   const [comment, setComment] = useState([])
+
   const state = useSelector((s) => s.post.posts)
- 
+  console.log("state of post",state)
   const commentsState = useSelector((s) => s.post.comments)
-  console.log("commentsState in post",state)
+  console.log("commentsState in post",commentsState)
 
   const dispatch = useDispatch();
  
@@ -21,9 +22,8 @@ const Post = () => {
     dispatch(getPosts());
   }, []);
 
-  const handleShowComments = (e) => {
-   e.preventDefault(e)
-   setComment(commentsState)
+  const handleShowComments = () => {
+   setShowComments(true)
   }
   return (
     <div>
@@ -45,14 +45,25 @@ const Post = () => {
             <img className="post-content-img" src={p.picture} />
           </div>
           <div className="line-comment"></div>
+
+          <div onClick={(e)=>dispatch(getComments(p._id)) } >
           <button 
             className="showComments"
-            onClick={(e)=>dispatch(getComments(p._id))}
-            >show comments</button>
+            onClick={handleShowComments}
             
-          <CommentList
-          comment={commentsState}
-          />
+            >show comments</button>
+            </div>
+
+            {
+            p._id===commentsState._id && showComments ?  (
+
+               <CommentList
+              
+          showComments={showComments}
+          
+          /> ) : (<div></div>)
+            }
+         
           
         </div>
      
