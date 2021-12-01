@@ -27,11 +27,12 @@
  text-decoration: none;
 }
 
-.navbar-user-link{
+.navbar-user{
     color:rgb(190, 228, 238);
     font-size: 18px;
     font-weight: 700;
     position: relative;
+    cursor: pointer;
 }
 .navbar-user:hover{
     color:rgb(255, 255, 255);

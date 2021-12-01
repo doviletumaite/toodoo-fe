@@ -1,7 +1,7 @@
 .showcase-main{
     margin: auto;
     display: flex;
-    width: 70%;
+    width: 60%;
     flex-direction: column;
 }
 .shareBox{
@@ -97,6 +97,7 @@ cursor: pointer;
 }
  .profile-img-post{
      height: 40px;
+     width: 40px;
      border-radius: 50%;
      margin-left: 10px;
  }
@@ -115,14 +116,17 @@ cursor: pointer;
       /* text-overflow: ellipsis;  */
   }
   .post-content-img-container{
-    width: 85%;
+    width: 100%;
     height: 68%;
-    margin-left: 40px;
+    margin-left: 0px;
     margin-top: 5px;
     margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .post-content-img{ 
-    max-width: 100%;
+    width: 90%;
   }
 .line-comment{
     width: 100%;
@@ -156,8 +160,9 @@ cursor: pointer;
   }
   .profile-img-comment{
     height: 30px;
+    width: 30px;
     border-radius: 50%;
-    margin: 5px
+    margin: 10px
   }
   .comment{
     width: 90%;
