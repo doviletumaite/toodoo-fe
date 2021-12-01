@@ -5,7 +5,7 @@ import { getComments } from "../redux/actions"
 import "../style/Showcase.css"
 
 const Comment = ()=> {
-    const posts = useSelector(s=> s.post.posts)
+    const posts = useSelector(s=> s.post)
     const dispatch = useDispatch()
     console.log("posts in comment component",posts)
  
