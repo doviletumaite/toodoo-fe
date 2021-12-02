@@ -5,6 +5,7 @@
     flex-direction: column;
 }
 .shareBox{
+  /* margin-top: 80px; */
     height: 60px;
     width: 100%;
     display: flex;
@@ -101,6 +102,9 @@ cursor: pointer;
   .post-user-pGroup{
     margin-top: -7px;
   }
+  .post-user-pGroup a:hover{
+    text-decoration: none;
+   }
   .post-user p:first-child{
     font-weight: 500;
     font-size: 15px;

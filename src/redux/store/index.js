@@ -5,7 +5,8 @@ import localStorage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import userReducer from "../reducers/user.js"
 import postReducer from "../reducers/post.js";
-import commentReducer from "../reducers/comments.js";
+import commentReducer from "../reducers/genericUserReducer.js";
+import genericUserReducer from "../reducers/genericUserReducer.js";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,7 +21,12 @@ export const initialState = {
       post: {
         posts: [] ,
         comments: []
-      }
+      },
+      genericUserInfo: {
+        username: "",
+        profilePicture: "",
+        bio: ""
+      },
       // post: {
       //   _id:"",
       //   text:"",
@@ -46,7 +52,7 @@ const persistConfig = {
 const bigReducer = combineReducers({
     userInfo: userReducer,
     post: postReducer,
-    // comments: commentReducer
+    genericUserInfo: genericUserReducer
   })
 const persistedReducer = persistReducer(persistConfig, bigReducer);
 

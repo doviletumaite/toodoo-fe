@@ -1,10 +1,13 @@
+.wrapper{
+  width: 100%;
+  margin-top: 50px;
+}
 .loginBox {
   display: flex;
   flex-flow: column wrap;
   align-content: space-evenly;
   height: 60vh;
   margin: auto;
-  margin-top: 50px;
   width: 500px;
   border-radius: 4px;
   background-color: #1aa35f7a;

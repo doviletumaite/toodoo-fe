@@ -3,10 +3,15 @@ export const SET_POST_INFO = 'SET_POST_INFO'
 export const GET_POSTS = 'GET_POSTS'
 export const GET_POST_ERROR = 'GET_POST_ERROR'
 export const GET_COMMENTS = 'GET_COMMENTS'
+export const SET_GENERIC_USER_INFO = 'SET_GENERIC_USER_INFO'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
     payload: userInfo,
+  })
+  export const setGenericUserInfoAction = (genericUserInfo) => ({
+    type: SET_GENERIC_USER_INFO,
+    payload: genericUserInfo,
   })
 
   export const setPostAction = (info) => ({

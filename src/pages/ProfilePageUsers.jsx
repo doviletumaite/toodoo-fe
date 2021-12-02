@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux"
-import NavBar from "../components/NavBar"
+import NavBar from "../components/NavBar.jsx"
 import "../style/ProfilePage.css"
 
-const ProfilePage = () => {
-    const state = useSelector(s=>s.userInfo)
-    console.log("state in profile page", state)
+const ProfilePageUsers =  () => {
+    const state = useSelector(s=>s.genericUserInfo)
+    console.log("state in profile GENERIC page", state)
     return (
         <div>
             <NavBar/>
@@ -13,13 +13,13 @@ const ProfilePage = () => {
                 <div className="profileSetting">
                    <div className="profileCard">
                        <div className="img-btn-wrapper">
-                       <img src={state.profilePicture}  /> 
-                        <button className="button">edit profile picture</button>
+                       <img src={state.profilePicture} /> 
+                       
                        </div>
                        <div className="userInfoBox">
-                        <p className="userInfoBox_profileName" >{state.username}</p>
+                        <p className="userInfoBox_profileName">{state.username}</p>
                         <p className="userInfoBox_bio" >{state.bio}ciao</p>
-                        <button className="editInfoButton">edit personal info</button>
+                      
 
                         </div>
                    </div>
@@ -34,4 +34,4 @@ const ProfilePage = () => {
         </div>
     )
 }
-export default ProfilePage
+export default ProfilePageUsers

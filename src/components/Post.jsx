@@ -3,9 +3,10 @@ import user from "../style/images/user-pl.png";
 import post from "../style/images/post.jpeg";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getComments, getPosts } from "../redux/actions";
+import { getComments, getPosts, setGenericUserInfoAction } from "../redux/actions";
 import { useEffect, useState } from "react";
 import CommentList from "./CommentList";
+import { Link } from "react-router-dom";
 
 const Post = () => {
   const [showComments, setShowComments] = useState(false)
@@ -16,6 +17,9 @@ const Post = () => {
   const commentsState = useSelector((s) => s.post.comments)
   console.log("commentsState in post",commentsState)
 
+  const usergeneric = useSelector((s) => s.post.genericUserInfo)
+  console.log("Generic",usergeneric)
+
   const dispatch = useDispatch();
  
   useEffect(() => {
@@ -23,7 +27,7 @@ const Post = () => {
   }, []);
 
   const handleShowComments = () => {
-   setShowComments(true)
+   setShowComments(!showComments)
   }
   return (
     <div>
@@ -33,7 +37,11 @@ const Post = () => {
           <div className="post-user">
             <img className="profile-img-post" src={p.user.profilePicture} />
             <div className="post-user-pGroup">
-              <p>{p.user.username}</p>
+              <Link to={"/profilePageUsers/"+p.user.username}
+             
+              >
+              <p  onClick={dispatch(setGenericUserInfoAction(p[0]))} >{p.user.username}</p>
+              </Link>
               <p>bio</p>
               <p>time</p>
             </div>
@@ -44,7 +52,7 @@ const Post = () => {
           <div className="post-content-img-container">
             <img className="post-content-img" src={p.picture} />
           </div>
-          <div className="line-comment"></div>
+         
 
           <div onClick={(e)=>dispatch(getComments(p._id)) } >
           <button 
@@ -52,8 +60,9 @@ const Post = () => {
             onClick={handleShowComments}
             
             >show comments</button>
+             
             </div>
-
+            {/* <div className="line-comment"></div> */}
             {
             p._id===commentsState._id && showComments ?  (
 

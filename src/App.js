@@ -7,6 +7,7 @@ import Showcase from "./pages/Showcase";
 import HomePrivat from "./pages/HomePrivat";
 import { useSelector } from "react-redux";
 import ProfilePage from "./pages/ProfilePage";
+import ProfilePageUsers from "./pages/ProfilePageUsers";
 
 function App() {
 
@@ -46,6 +47,13 @@ function App() {
           exact
           render={() => (      
             <ProfilePage/>     
+          )}
+        />
+          <Route
+          path="/profilePageUsers/:username"
+          exact
+          render={() => (      
+            <ProfilePageUsers/>     
           )}
         />
         </Switch>  

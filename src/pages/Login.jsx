@@ -42,6 +42,7 @@ const Login = () => {
   return (
     <div>
       <NavBar />
+      <div className="wrapper">
       <div className="loginBox">
         <div className="loginTitle">login on your profile</div>
         <div className="input-container">
@@ -85,6 +86,7 @@ const Login = () => {
             <button className="registerButton">create a new account!</button>
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );
