@@ -16,6 +16,10 @@ const ProfilePage = () => {
                        <img src={state.profilePicture}  /> 
                         <button className="button">edit profile picture</button>
                        </div>
+                       <div className="userInfoBox">
+                        <p className="userInfoBox_profileName" >{state.username}</p>
+                        <p className="userInfoBox_bio" >{state.bio}</p>
+                        </div>
                    </div>
                 </div>
 

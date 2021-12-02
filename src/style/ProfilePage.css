@@ -30,8 +30,8 @@
 }
 .img-btn-wrapper{
     width: 100%;
-    height: 40%;
-    margin-top:64px;
+    height: 58%;
+    margin-bottom: 8px;
     display: flex;
     flex-direction:column;
     justify-content: center;
@@ -61,4 +61,27 @@
     height: 250px;
     margin:5px;
     border-radius: 50%;
+}
+.userInfoBox{
+  width: 100%;
+  height: 42%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin-top: 10px;
+}
+.userInfoBox p{
+line-height: 5px;
+}
+.userInfoBox_profileName{
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.692);
+}
+.userInfoBox_bio{
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.603);
 }
