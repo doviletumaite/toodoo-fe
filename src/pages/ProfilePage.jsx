@@ -13,9 +13,8 @@ const ProfilePage = () => {
                 <div className="profileSetting">
                    <div className="profileCard">
                        <div className="img-btn-wrapper">
-                       <img src={state.profilePicture}  
-                       />
-                        <button className="button">edit</button>
+                       <img src={state.profilePicture}  /> 
+                        <button className="button">edit profile picture</button>
                        </div>
                    </div>
                 </div>

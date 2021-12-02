@@ -4,9 +4,9 @@ export const GET_POSTS = 'GET_POSTS'
 export const GET_POST_ERROR = 'GET_POST_ERROR'
 export const GET_COMMENTS = 'GET_COMMENTS'
 
-export const setUsernameAction = (info) => ({
+export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
-    payload: info,
+    payload: userInfo,
   })
 
   export const setPostAction = (info) => ({
