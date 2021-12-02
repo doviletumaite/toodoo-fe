@@ -29,6 +29,10 @@ const Post = () => {
   const handleShowComments = () => {
    setShowComments(!showComments)
   }
+
+  const setUserGenericInfo = (info) => {
+    console.log("state generic onclick",info)
+  }
   return (
     <div>
 
@@ -37,11 +41,11 @@ const Post = () => {
           <div className="post-user">
             <img className="profile-img-post" src={p.user.profilePicture} />
             <div className="post-user-pGroup">
-              <Link to={"/profilePageUsers/"+p.user.username}
-             
-              >
-              <p  onClick={dispatch(setGenericUserInfoAction(p[0]))} >{p.user.username}</p>
+
+              <Link to={"/profilePageUsers/"+p.user.username} >
+              <p onClick={setUserGenericInfo(p.user.username)}>{p.user.username}</p>
               </Link>
+
               <p>bio</p>
               <p>time</p>
             </div>
@@ -57,12 +61,11 @@ const Post = () => {
           <div onClick={(e)=>dispatch(getComments(p._id)) } >
           <button 
             className="showComments"
-            onClick={handleShowComments}
-            
+            onClick={(e)=>handleShowComments()} 
             >show comments</button>
-             
-            </div>
-            {/* <div className="line-comment"></div> */}
+             </div> 
+           
+        
             {
             p._id===commentsState._id && showComments ?  (
 

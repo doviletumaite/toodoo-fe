@@ -5,7 +5,6 @@ import "../style/Showcase.css";
 const CommentList = () => {
  
     const comments = useSelector((s) => s.post.comments.comments)
-    console.log("comments in comm list ",comments )
 
  return(
      <div>
