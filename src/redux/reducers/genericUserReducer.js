@@ -1,17 +1,18 @@
-import { SET_GENERIC_USER_INFO } from "../actions";
+import { GET_USER } from "../actions";
 import { initialState } from "../store";
 
 const genericUserReducer = (state = initialState.genericUserInfo, action) => {
     switch (action.type) {
-        case SET_GENERIC_USER_INFO: {
+        case GET_USER: {
             return {
-                ...state,
-                user:action.payload
-            }
+                user: action.payload
+              
+               
+            } 
         }
         default:
             return state
-    }
+    } 
 }
 
 export default genericUserReducer

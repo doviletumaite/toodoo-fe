@@ -3,7 +3,7 @@ import user from "../style/images/user-pl.png";
 import post from "../style/images/post.jpeg";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getComments, getPosts, setGenericUserInfoAction } from "../redux/actions";
+import { getComments, getPosts, getUser } from "../redux/actions";
 import { useEffect, useState } from "react";
 import CommentList from "./CommentList";
 import { Link } from "react-router-dom";
@@ -16,8 +16,8 @@ const Post = () => {
   const commentsState = useSelector((s) => s.post.comments)
  
 
-  const usergeneric = useSelector((s) => s.post.genericUserInfo)
-  console.log("Generic",usergeneric)
+  const userGeneric = useSelector((s) => s.genericUserInfo)
+  console.log("Generic",userGeneric)
 
   const dispatch = useDispatch();
  
@@ -27,7 +27,11 @@ const Post = () => {
 
   const handleShowComments = () => {
    setShowComments(!showComments)
-  console.log("commentsState in post",commentsState)
+  }
+
+  const handleUser = (id) => {
+    dispatch(getUser(id))
+    console.log("Id user that i'm looking for", id)
   }
 
  
@@ -40,8 +44,8 @@ const Post = () => {
             <img className="profile-img-post" src={p.user.profilePicture} />
             <div className="post-user-pGroup">
 
-              <Link to={"/profilePageUsers/"+p.user.username} >
-              <p onClick={dispatch(setGenericUserInfoAction(p.user))}>{p.user.username}</p>
+              <Link to={"/profilePageUsers/"+p.user._id} >
+              <p onClick={()=>handleUser(p.user._id)}>{p.user.username}</p>
               </Link>
 
               <p>bio</p>
@@ -56,7 +60,7 @@ const Post = () => {
           </div>
          
 
-          <div onClick={(e)=>dispatch(getComments(p._id)) } className="showCommentDiv" >
+          <div onClick={()=>dispatch(getComments(p._id)) } className="showCommentDiv" >
             <button 
             className="showComments"
             onClick={handleShowComments} 

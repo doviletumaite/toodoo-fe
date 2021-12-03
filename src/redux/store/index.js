@@ -23,7 +23,7 @@ export const initialState = {
         comments: []
       },
       genericUserInfo: {
-        user: {}
+        userGeneric: {}
       },
       // post: {
       //   _id:"",
