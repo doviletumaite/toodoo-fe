@@ -5,7 +5,8 @@ const genericUserReducer = (state = initialState.genericUserInfo, action) => {
     switch (action.type) {
         case SET_GENERIC_USER_INFO: {
             return {
-                ...action.payload
+                ...state,
+                user:action.payload
             }
         }
         default:

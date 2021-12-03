@@ -30,9 +30,7 @@ const Post = () => {
    setShowComments(!showComments)
   }
 
-  const setUserGenericInfo = (info) => {
-    console.log("state generic onclick",info)
-  }
+ 
   return (
     <div>
 
@@ -43,7 +41,7 @@ const Post = () => {
             <div className="post-user-pGroup">
 
               <Link to={"/profilePageUsers/"+p.user.username} >
-              <p onClick={setUserGenericInfo(p.user.username)}>{p.user.username}</p>
+              <p onClick={dispatch(setGenericUserInfoAction(p.user))}>{p.user.username}</p>
               </Link>
 
               <p>bio</p>
