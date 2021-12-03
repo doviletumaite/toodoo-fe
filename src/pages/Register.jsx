@@ -57,6 +57,7 @@ const Register = () => {
   return (
     <div>
       <NavBar />
+      <div className="wrapper">
       <div className="loginBox">
         <div className="loginTitle">create a new profile</div>
         <div className="input-container">
@@ -92,7 +93,7 @@ const Register = () => {
             <button 
             className="loginButton"
             onClick={register}
-            >submit!</button>
+            >submit</button>
           </a>
           <a>
             <button 
@@ -108,9 +109,10 @@ const Register = () => {
           </a>
 
           <Link to="/" className="registerLink">
-            <button className="backToLoginButton">back to login</button>
+            <button className="backToLoginButton">back to login page</button>
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 .showcase-main{
     margin: auto;
     display: flex;
-    width: 60%;
+    width: 50%;
     flex-direction: column;
 }
 .shareBox{
@@ -12,10 +12,10 @@
     background-color: rgb(166, 229, 231);
     border-radius: 2px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
     padding: 2px;
-    flex-direction: column-reverse;
+    flex-direction: row-reverse;
     box-shadow: 0 4px 8px 0 rgba(16, 164, 200, 0.541),
     0 4px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -23,44 +23,47 @@
     box-shadow: 0 4px 8px 0 rgba(16, 164, 200, 0.541),
     0 8px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.shareBox-title{
-    color: rgba(0, 0, 0, 0.692);
-    font-weight: 400;
-    font-size: 13px;
-    margin-top: -3px;
-    margin-bottom: 23px;
-}
+/* button share smth */
 .input-share{
-    height: 20px;
+    height: 23px;
     width: 70%;
     border-radius: 2px;
     border: transparent;
-    font-size: 13px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.705);
+    font-size: 14px;
+    text-align: center;
 }
-.input-share:focus {
-    outline: none;
+.input-share:hover {
+  box-shadow: 0 4px 8px 0 rgba(16, 164, 200, 0.541),
+  0 8px 20px 0 rgba(0, 0, 0, 0.19);
   }
-  .shareBox-input-img{
+
+  /* .shareBox-input-img{
       display: flex;
       flex-direction: row-reverse;
       justify-content:space-evenly;
       align-items: center;
       width: 100%;
       margin-top: -27px;
-  }
+  } */
+
   .profile-img{
-      height: 30px;
+      height: 40px;
+      width: 40px;
       border-radius: 50%;
   }
 
-  .shareBoxForBtn{
+  /* .shareBoxForBtn{
     padding:2px;
     height: 37px;
     width: 37px;
-  }
+    margin-top: 6px;
+  } */
+  
 .share-btn:hover{
-height: 33px;
-cursor: pointer;
+  cursor: pointer;
 }
 
 .postButton{
@@ -68,10 +71,12 @@ cursor: pointer;
   display: inline-flex;
   border-color: transparent;
   border-radius: 2px;
-  box-shadow: 0 4px 5px 0 rgba(66, 109, 228, 0.2),
+  box-shadow: 0 4px 5px 0 rgba(240, 115, 57, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: 12px;
   color: rgb(255, 250, 250);
+  height: 25px;
+  margin-right: 8px;
 }
 .postButton:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
@@ -79,7 +84,47 @@ cursor: pointer;
 .postButton:focus{
   background-color:rgb(245, 173, 57);
 }
+.modal-Input{
+  height: 23px;
+  width: 70%;
+  border-radius: 2px;
+  border: transparent;
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.705);
+  font-size: 14px;
+}
+.modal-Input:focus {
+  outline: none;
+}
 
+.shareBox-modal{
+  height: 90px;
+  width: 100%;
+  z-index: 2;
+  margin-top: 10px;
+  display: flex;
+  background-color: rgb(241, 202, 138);
+  border-radius: 2px;
+  align-items: center;
+  justify-content: space-evenly;
+  align-content: center;
+  padding: 2px;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(200, 129, 16, 0.541),
+  0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.shareBox-modal:hover{
+  box-shadow: 0 4px 8px 0 rgba(236, 122, 46, 0.541),
+  0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.buttonWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  width: 80%;
+}
+
+/* ++++++ POST SESSION  ++++++++*/
   .post-body{
       height:fit-content;
       display: flex;

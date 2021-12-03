@@ -26,6 +26,12 @@
  text-decoration: none;
 }
 
+.user_pic{
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+}
+
 .navbar-user{
     color:rgb(190, 228, 238);
     font-size: 18px;

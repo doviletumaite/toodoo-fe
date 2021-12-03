@@ -1,11 +1,24 @@
-import NavBar from "../components/NavBar"
+import { useState } from "react";
+import { Button } from "react-bootstrap";
+import NavBar from "../components/NavBar";
+import "../style/HomePrivat.css"
 
-const HomePrivat = () => {
-    return ( 
-        <div>
-       <NavBar/>
-        </div>
-    )
-}
+  const HomePrivat = () => {
+    const [isActive, setActive] = useState(false);
 
-export default HomePrivat
+    const handleToggle = () => {
+      setActive(!isActive);}
+  return (
+    <div>
+        <NavBar/>
+     ciao
+      <div className={isActive ? "show" : null}>  </div>
+      <h1>Hello react</h1>
+      <button onClick={handleToggle}>Toggle class</button>
+  
+   </div>
+  );
+};
+  
+
+    export default HomePrivat

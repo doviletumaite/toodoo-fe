@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Showcase from "./pages/Showcase";
 import HomePrivat from "./pages/HomePrivat";
-import { useSelector } from "react-redux";
 import ProfilePage from "./pages/ProfilePage";
 import ProfilePageUsers from "./pages/ProfilePageUsers";
 

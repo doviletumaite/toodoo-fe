@@ -10,51 +10,57 @@ const NavBar = () => {
   const state = useSelector((s) => s.userInfo);
   const history = useHistory();
   const pathname = history.location.pathname;
-  console.log("history.location", history.location.pathname);
 
-  const renderTooltipChat = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-      join the chat!
-    </Tooltip>
-  );
+  // const renderTooltipChat = (props) => (
+  //   <Tooltip id="button-tooltip" {...props}>
+  //     join the chat!
+  //   </Tooltip>
+  // );
 
-  const renderTooltipProfile = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-      check out your profile!
-    </Tooltip>
-  );
+  // const renderTooltipProfile = (props) => (
+  //   <Tooltip id="button-tooltip" {...props}>
+  //     check out your profile!
+  //   </Tooltip>
+  // );
 
   return (
     <div className="navbar">
+
+    {
+      pathname !== "/" && pathname !==  "/register" ? (
       <Link to={"/showcase/" + state._id} className="navbar-title-link">
         <div className="navbar-title">toodoo</div>
-      </Link>
+      </Link>) : (<div className="navbar-title">toodoo</div> )
+      
+      }
 
       <div className="logos-group">
-        {pathname !== "/" ? (
+        {pathname !== "/" && pathname !==  "/register" ? (
           <>
-            <OverlayTrigger
+            {/* <OverlayTrigger
               placement="bottom"
               delay={{ show: 250, hide: 400 }}
               overlay={renderTooltipChat}
-            >
+            > */}
               <Link to={"/chat/" + state._id} className="navbar-title-link">
                 <img className="chat-logo" src={chat} />
               </Link>
-            </OverlayTrigger>
+            {/* </OverlayTrigger> */}
 
-            <OverlayTrigger
+            <img className="user_pic" src={state.profilePicture} />
+
+            {/* <OverlayTrigger
               placement="bottom"
               delay={{ show: 250, hide: 400 }}
               overlay={renderTooltipProfile}
-            >
+            > */}
               <div
                 className="navbar-user"
                 onClick={() => history.push("/profilePage/" + state._id)}
               >
                 {state.username}
               </div>
-            </OverlayTrigger>
+            {/* </OverlayTrigger> */}
           </>
         ) : (
           <div></div>
