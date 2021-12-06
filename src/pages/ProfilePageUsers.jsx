@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar.jsx"
 import "../style/ProfilePage.css"
 
 const ProfilePageUsers =  () => {
-    const state = useSelector(s=>s.genericUserInfo)
+    const state = useSelector(s=>s.genericUserInfo.user)
     console.log("state in profile GENERIC page", state)
     return (
         <div>
