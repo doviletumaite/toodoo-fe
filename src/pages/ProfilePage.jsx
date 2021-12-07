@@ -4,7 +4,7 @@ import "../style/ProfilePage.css"
 
 const ProfilePage = () => {
     const state = useSelector(s=>s.userInfo)
-    console.log("state in profile page", state)
+  
     return (
         <div>
             <NavBar/>

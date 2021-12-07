@@ -8,6 +8,9 @@ export const GET_POST_ERROR = 'GET_POST_ERROR'
 export const GET_COMMENTS = 'GET_COMMENTS'
 export const ADD_POST = 'ADD_POST'
 export const GET_USER = 'GET_USER'
+export const EDID_POST = 'EDID_POST'
+export const POST_NEW_COMMENT = 'POST_NEW_COMMENT'
+
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -32,6 +35,7 @@ export const setUsernameAction = (userInfo) => ({
              type: GET_POSTS,
              payload: posts
            })
+           console.log("posts",posts)
         }
         
       } catch (error) {
@@ -60,25 +64,87 @@ export const setUsernameAction = (userInfo) => ({
     }
   }
 
-  // export const postNewPost = () => {
-  //   return async (dispatch, getState) => {
-  //     try {
-  //       let response = await fetch("http://localhost:3003/posts",
-  //       {
-  //         method: "POST"
-  //       })
-  //       if(response.ok){
-  //          let newPost = await response.json()
-  //          dispatch({
-  //            type: ADD_POST,
-  //            payload: newPost
-  //          })
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  // }
+  export const postNewComment = (id, {bodyComment}) => {
+    return async (dispatch, getState) => {
+      try {
+        console.log("hi",id )
+        console.log("hi bodyyy POST", bodyComment )
+        let response = await fetch("http://localhost:3003/posts/" + id + "/comment",
+        {
+          method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          body: JSON.stringify({ user: bodyComment.user , comment: bodyComment.comment})
+        })
+        console.log("id in the fetch post", id)
+        console.log("id and text",bodyComment)
+        if(response.ok){
+           let newPost = await response.json()
+           dispatch({
+             type: POST_NEW_COMMENT,
+             payload: newPost
+           })
+           console.log("new post",newPost )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
+  export const postNewPost = ({body}) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/posts",
+        {
+          method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          body: JSON.stringify({ user: body.user , text: body.text})
+        })
+        console.log("id and text",body)
+        if(response.ok){
+           let newPost = await response.json()
+           dispatch({
+             type: ADD_POST,
+             payload: newPost
+           })
+           console.log("new post",newPost )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
+  export const edidPost = ({body}) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/posts",
+        {
+          method: "PUT", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          body: JSON.stringify({body})
+        })
+        console.log("body",{body})
+        if(response.ok){
+           let newPost = await response.json()
+           dispatch({
+             type: EDID_POST,
+             payload: newPost
+           })
+           console.log("new post",newPost )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
 
   export const getUser = (id) => {
     return async (dispatch, getState) => {

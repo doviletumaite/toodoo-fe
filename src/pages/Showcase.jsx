@@ -5,14 +5,29 @@ import share from "../style/images/add-image.png";
 import Post from "../components/Post";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postNewPost } from "../redux/actions";
 
 const Showcase = () => {
   const stateUser = useSelector((s) => s.userInfo);
-
+  const dispatch = useDispatch()
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => {
     setShowModal(!showModal);
   };
+
+  const userId = stateUser._id
+  const [text, setText] = useState("")
+ 
+  const handleText = (e) => {
+    setText(e.target.value)
+    console.log(text)
+  }
+  const body = { user: userId, text: text}
+  const handlePost = () => {
+  dispatch(postNewPost({body}))
+  console.log("post",body )
+  }
 
   return (
     <div>
@@ -29,9 +44,16 @@ const Showcase = () => {
 
         {showModal ? (
           <div className="shareBox-modal" showModal={showModal}>
-            <input className="modal-Input" />
+            <input className="modal-Input"
+            value={text}
+            onChange={handleText}
+            />
             <div className="buttonWrapper">
-              <button className="postButton">post it!</button>
+              <button 
+              className="postButton"
+              type="submit"
+              onClick={handlePost}
+              >post it!</button>
               <img className="share-btn" src={share} />
             </div>
           </div>

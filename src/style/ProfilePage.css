@@ -59,11 +59,12 @@
     box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
 }
 .img-btn-wrapper img{
-    width: 250px;
-    height: 250px;
+    width: 140px;
+    height: 140px;
     margin:5px;
     border-radius: 50%;
 }
+
 .userInfoBox{
   width: 100%;
   height: 42%;

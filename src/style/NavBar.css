@@ -1,10 +1,12 @@
 .navbar{
-    background-color: rgb(191, 140, 224);
+    background-color: rgb(176, 140, 224);
     height: 8vh;
     position:sticky;
     width: 100%;
-    box-shadow: 0 4px 8px 0 rgba(44, 159, 226, 0.513), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(123, 84, 231, 0.513), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 10px;
+    position: -webkit-sticky;
+    top: 0;
 }
 
 .navbar-title{

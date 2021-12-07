@@ -4,7 +4,6 @@ import "../style/ProfilePage.css"
 
 const ProfilePageUsers =  () => {
     const state = useSelector(s=>s.genericUserInfo.user)
-    console.log("state in profile GENERIC page", state)
     return (
         <div>
             <NavBar/>
