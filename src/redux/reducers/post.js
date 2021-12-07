@@ -1,4 +1,4 @@
-import { GET_COMMENTS, GET_POSTS, ADD_POST, POST_NEW_COMMENT } from "../actions";
+import { GET_COMMENTS, GET_POSTS, ADD_POST, POST_NEW_COMMENT, EDID_POST, DELETE_POST, POST_PICTURE } from "../actions";
 import { initialState } from "../store";
 
 const postReducer = (state = initialState.post, action) => {
@@ -13,6 +13,24 @@ const postReducer = (state = initialState.post, action) => {
             return {
               
      
+                posts: [...state, action.payload]
+            }
+        }
+        case EDID_POST: {
+            return {
+              
+                 ...action.payload
+            }
+        }
+        case DELETE_POST: {
+            return {
+              
+                 ...action.payload
+            }
+        }
+        case POST_PICTURE: {
+            return {
+              
                 posts: [...state, action.payload]
             }
         }

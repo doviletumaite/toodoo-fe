@@ -10,7 +10,8 @@ export const ADD_POST = 'ADD_POST'
 export const GET_USER = 'GET_USER'
 export const EDID_POST = 'EDID_POST'
 export const POST_NEW_COMMENT = 'POST_NEW_COMMENT'
-
+export const DELETE_POST = 'DELETE_POST'
+export const POST_PICTURE = 'POST_PICTURE'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -119,10 +120,10 @@ export const setUsernameAction = (userInfo) => ({
     }
   }
 
-  export const edidPost = ({body}) => {
+  export const edidPost = (id, {body}) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/posts",
+        let response = await fetch("http://localhost:3003/posts/" + id,
         {
           method: "PUT", 
             headers: {
@@ -145,7 +146,54 @@ export const setUsernameAction = (userInfo) => ({
     }
   }
 
-
+  export const deletePost = (id) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/posts/" + id,
+        {
+          method: "DELETE", 
+            headers: {
+              "Content-Type": "application/json",
+            }
+        })
+        if(response.ok){
+           dispatch({
+             type: DELETE_POST,
+             payload: response
+           })
+           console.log("deleted",id)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+  export const postPicture = (id, picture) => {
+    return async (dispatch, getState) => {
+      try {
+        console.log("picture before fetch", picture)
+        let response = await fetch("http://localhost:3003/posts/" + id + "/picture",
+        {
+          method: "POST", 
+            // headers: {
+            //   "Content-Type": "multipart/form-data",
+            // },
+            body: {user: id, picture: picture}
+        })
+        console.log(picture)
+        if(response.ok){
+          let newPostWithPicture = await response.json()
+           dispatch({
+             type: POST_PICTURE,
+             payload: newPostWithPicture
+           })
+           console.log("deleted",id)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
   export const getUser = (id) => {
     return async (dispatch, getState) => {
       try {

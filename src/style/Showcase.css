@@ -75,8 +75,10 @@
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: 12px;
   color: rgb(255, 250, 250);
-  height: 25px;
+  width: fit-content;
   margin-right: 8px;
+  display: flex;
+  align-items: center;
 }
 .postButton:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
@@ -100,7 +102,6 @@
 .shareBox-modal{
   height: 90px;
   width: 100%;
-  z-index: 2;
   margin-top: 10px;
   display: flex;
   background-color: rgb(241, 202, 138);
@@ -120,8 +121,19 @@
 .buttonWrapper{
   display: flex;
   flex-direction: row;
-  justify-content:flex-end;
-  width: 80%;
+  justify-content:center;
+  width: fit-content;
+}
+.buttonsAndFileWrapper{
+  display: flex;
+  flex-direction: column;
+}
+.labelInputPicture{
+  color: rgba(0, 0, 0, 0.705);
+  font-size: 14px;
+}
+.labelInputPicture input{
+  margin-left: 2px;
 }
 
 /* ++++++ POST SESSION  ++++++++*/
@@ -239,13 +251,13 @@
   width: 100%;
 }
 .showCommentDiv{
-  width: 70%;
+  width: 100%;
 }
 .showComments{
   background-color: rgba(124, 211, 233, 0.835);
   border-color: transparent;
   border-radius: 2px;
-  width: 100%;
+  width: 70%;
   margin: auto;
   box-shadow: 0 4px 5px 0 rgba(66, 109, 228, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
