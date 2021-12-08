@@ -1,5 +1,5 @@
 .profilePage {
-  width: 100%;
+  width: 90%;
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -13,13 +13,15 @@
 }
 .listSession {
   width: 45%;
-  margin:auto;
   height:fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
 }
 
 .profileCard{
  width: 90%;
- height: 600px;
+ height: fit-content;
  background-color:  rgb(208, 235, 236);
  border-radius: 2px;
  border: 1px solid;
@@ -27,13 +29,12 @@
  display: flex;
  flex-direction: column;
  align-items: center;
- /* margin-top: 80px; */
  margin-bottom: 20px;
 }
 .img-btn-wrapper{
     width: 100%;
-    height: 58%;
-    margin-bottom: 8px;
+    height: 35%;
+    margin-bottom: 5px;
     display: flex;
     flex-direction:column;
     justify-content: center;
@@ -52,7 +53,7 @@
     z-index: 2;
     margin-top: 10px;
     margin-left: 5px;
-    margin-bottom: -4px;
+    margin-bottom: 8px;
 }
 .img-btn-wrapper .button:hover{
     cursor: pointer;
@@ -68,12 +69,12 @@
 .userInfoBox{
   width: 100%;
   height: 70%;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   align-content: flex-start;
-  margin-top: -5px;
 }
 .userInfoBox p{
 line-height: 5px;
@@ -96,13 +97,118 @@ line-height: 5px;
   font-size: 12px;
   color: rgb(255, 250, 250);
   width: 130px;
-  height: 25px;
+  height:fit-content;
   z-index: 2;
-  margin-top: 10px;
+  margin-top: 8px;
   margin-left: 5px;
-  margin-bottom: -4px;
+  margin-bottom: 6px;
 }
 .editInfoButton:hover{
   cursor: pointer;
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
 }
+
+.calendarsTitle{
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.692);
+}
+.calendarLabel{
+  height: 10%;
+  background-color: rgb(236, 182, 81);
+  width: 70%;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color:white;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.calendarLabel:hover{
+  cursor: pointer;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+.addCalendar{
+margin-top: 20px;
+}
+.addCalendarInput{
+  height: 22px;
+  margin: auto;
+   border: transparent;
+   border-radius: 2px;
+}
+.addCalendarInput:focus {
+  outline: none;
+}
+/* DAYLY LIST */
+.dailyList{
+  height: fit-content;
+  width: 90%;
+  background-color: rgba(236, 182, 81, 0.911);
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.055);
+  align-items: center;
+}
+.list-Title{
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.623);
+}
+.list{
+  height: fit-content;
+  border-radius: 2px;
+  width: 95%;
+  background-color: wheat;
+  margin-bottom: 2px;
+}
+.date{
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.692);
+}
+.dailyGoals{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.692);
+  margin-top: -18px;
+}
+.inputs-list{
+display: flex;
+flex-direction: column;
+}
+.inputs-list input:first-child{
+ width: 80%;
+ height: 22px;
+ margin: auto;
+  border: transparent;
+  border-radius: 2px;
+  }
+  .inputs-list input:first-child:focus {
+    outline: none;
+  }
+  .checkbox{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .label{
+    margin-top: 2px;
+    font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.692);
+  }
+  .checks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
