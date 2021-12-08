@@ -6,7 +6,6 @@ const genericUserReducer = (state = initialState.genericUserInfo, action) => {
         case GET_USER: {
             return {
                 user: action.payload
-              
                
             } 
         }

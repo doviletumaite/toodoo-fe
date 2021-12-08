@@ -91,6 +91,7 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
+      dispatch(getComments(id))
     }
   }
 

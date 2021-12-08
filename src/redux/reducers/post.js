@@ -12,8 +12,8 @@ const postReducer = (state = initialState.post, action) => {
         case ADD_POST: {
             return {
               
-     
-                posts: [...state, action.payload]
+                ...state,
+                posts:[...action.payload]
             }
         }
         case EDID_POST: {
@@ -24,16 +24,16 @@ const postReducer = (state = initialState.post, action) => {
         }
         case DELETE_POST: {
             return {
-              
-                 ...action.payload
+                ...state,
+                posts:  action.payload
             }
         }
         case POST_PICTURE: {
             return {
-              
-                posts: [...state, action.payload]
-            }
+              ...state,
+                posts: action.payload
         }
+    }
         case GET_COMMENTS: {
             return {
                 ...state,
@@ -42,8 +42,8 @@ const postReducer = (state = initialState.post, action) => {
         }
         case POST_NEW_COMMENT: {
             return {
-            
-                comments: [...state, action.payload]
+            ...state,
+                comments: action.payload
             }
         }
         default:
