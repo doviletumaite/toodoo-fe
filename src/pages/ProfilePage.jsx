@@ -14,6 +14,7 @@ const ProfilePage = () => {
         <div>
             <NavBar/>
             <div className="profilePage">
+                <div className="profileAndListContainer">
                 {/* profile settings side  */}
                 <div className="profileSetting">
                    <div className="profileCard">
@@ -54,6 +55,46 @@ const ProfilePage = () => {
                   </div>
                 </div>
                 <div className="calendar"></div>
+                </div>
+     </div>
+    
+                {/* calendar */}
+                <div className="calendarContainer">
+                    <table>
+                    <tr>
+    <td>This</td>
+    <td>Little</td>
+    <td>Piggy</td>
+    <td>Went</td>
+    <td>To</td>
+    <td>Market</td>
+  </tr>
+  <tr>
+    <td colspan="2">This</td>
+    <td>Little</td>
+    <td>Piggy</td>
+    <td>Went</td>
+    <td>To</td>
+  </tr>
+    <tr>
+    <td colspan="4">This</td>
+    <td rowspan="3">Little</td>
+    <td>Piggy</td>
+  </tr>
+  <tr>
+    <td rowspan="2">This</td>
+    <td>Little</td>
+    <td>Piggy</td>
+    <td>Went</td>
+    <td>To</td>
+  </tr>
+  <tr>
+    <td>Little</td>
+    <td>Piggy</td>
+    <td>Went</td>
+    <td>To</td>
+  </tr>
+                    </table>
                 </div>
             </div>
         </div>
