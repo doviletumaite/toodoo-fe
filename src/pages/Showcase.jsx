@@ -27,15 +27,19 @@ const Showcase = () => {
   const body = { user: userId, text: text}
   const handlePost = () => {
   dispatch(postNewPost({body}))
+  uploadPicuture()
   }
 
+  const [image, setImage] = useState(null)
  
 const uploadPicuture = (e) => {
     const picture = e.target.files[0].name
-    // const formData  = new FormData()
-    // formData.append('picture', picture)
-    console.log(picture)
-    dispatch(postPicture(userId, picture))
+    setImage(picture)
+    console.log("image",image)
+    const formData  = new FormData()
+    formData.append('picture', image)
+    
+    dispatch(postPicture(userId, formData))
   }
 
   return (
