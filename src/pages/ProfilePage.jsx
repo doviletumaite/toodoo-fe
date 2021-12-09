@@ -62,37 +62,76 @@ const ProfilePage = () => {
                 <div className="calendarContainer">
                     <table>
                     <tr>
-    <td>This</td>
-    <td>Little</td>
-    <td>Piggy</td>
-    <td>Went</td>
-    <td>To</td>
-    <td>Market</td>
-  </tr>
+           <td colspan="14" className="month">MONTH</td>
+                    </tr>
   <tr>
-    <td colspan="2">This</td>
-    <td>Little</td>
-    <td>Piggy</td>
-    <td>Went</td>
-    <td>To</td>
+    <td>Monday</td>
+    <td>Tuesday</td>
+    <td>Wednesday</td>
+    <td>Thursday</td>
+    <td>Friday</td>
+    <td>Saturday</td>
+    <td>Sunday</td>
   </tr>
+
     <tr>
-    <td colspan="4">This</td>
-    <td rowspan="3">Little</td>
-    <td>Piggy</td>
+    <td>29</td>
+    <td>30</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
   </tr>
-  <tr>
-    <td rowspan="2">This</td>
-    <td>Little</td>
-    <td>Piggy</td>
-    <td>Went</td>
-    <td>To</td>
+
+    <tr>
+    <td>29</td>
+    <td>30</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
   </tr>
+
+    <tr>
+    <td>29</td>
+    <td>30</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+
+   <tr>
+    <td>29</td>
+    <td>30</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+
+    <tr>
+    <td>29</td>
+    <td>30</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+  
   <tr>
-    <td>Little</td>
-    <td>Piggy</td>
-    <td>Went</td>
-    <td>To</td>
+    <td>29</td>
+    <td>30</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
   </tr>
                     </table>
                 </div>
