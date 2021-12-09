@@ -62,7 +62,7 @@ export default function SinglePost ({post: p}) {
         <p>time</p>
       </div>
 
-      <img src={dots} className="dots" onClick={()=>handleShowDropdown(p._id)}/>
+    {p.user._id===userID ?   <img src={dots} className="dots" onClick={()=>handleShowDropdown(p._id)}/> : <> </>}
     </div>
   { showDropDown &&  p.user._id===userID ? 
   <div className="dropdown-container">

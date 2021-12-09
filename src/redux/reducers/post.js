@@ -31,7 +31,7 @@ const postReducer = (state = initialState.post, action) => {
         case POST_PICTURE: {
             return {
               ...state,
-                posts: action.payload
+                posts: [...action.payload]
         }
     }
         case GET_COMMENTS: {

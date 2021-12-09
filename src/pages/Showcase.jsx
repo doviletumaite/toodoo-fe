@@ -32,6 +32,8 @@ const Showcase = () => {
  
 const uploadPicuture = (e) => {
     const picture = e.target.files[0].name
+    // const formData  = new FormData()
+    // formData.append('picture', picture)
     console.log(picture)
     dispatch(postPicture(userId, picture))
   }
@@ -66,6 +68,7 @@ const uploadPicuture = (e) => {
               {
                 showFileInput ? (
                 <div className="labelInputPicture">add a picture!
+               
                   <input type="file" name="picture" id="picture"  onChange={(e)=>uploadPicuture(e)} />
                   {/* <button type="submit" onClick={(e)=>uploadPicuture(e)}>send</button> */}
                 </div>) : (<div></div>)

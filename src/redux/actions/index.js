@@ -118,6 +118,7 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
+      dispatch(getPosts())
     }
   }
 
@@ -167,6 +168,7 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
+      dispatch(getPosts())
     }
   }
   export const postPicture = (id, picture) => {
