@@ -234,6 +234,7 @@ flex-direction: row;
 background-color: #1aa35f7a;
 box-shadow: 0 4px 8px 0 rgba(6, 128, 63, 0.541),
   0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2px;
   }
   .calendarContainer:hover {
     box-shadow: 0 6px 10px 0 rgba(6, 128, 63, 0.541),
@@ -252,6 +253,8 @@ box-shadow: 0 4px 8px 0 rgba(6, 128, 63, 0.541),
   }
   .month{
     text-align: center;
+    background-color: #1aa35f50;
+    border-radius: 2px;
   }
   .extra_space{
     width: 100%;

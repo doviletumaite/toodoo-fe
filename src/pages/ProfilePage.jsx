@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useSelector } from "react-redux"
 import NavBar from "../components/NavBar"
 import "../style/ProfilePage.css"
@@ -9,6 +10,8 @@ const ProfilePage = () => {
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const yyyy = date.getFullYear();
 
+    const [modal, setModal] = useState(false)
+    const handleShowModalPersonalInfo = () => {setModal(!modal)}
     const today = dd + '/' + mm + '/' + yyyy;
     return (
         <div>
@@ -25,7 +28,15 @@ const ProfilePage = () => {
                        <div className="userInfoBox">
                         <p className="userInfoBox_profileName" >{state.username}</p>
                         <p className="userInfoBox_bio" >{state.bio}ciao</p>
-                        <button className="editInfoButton">edit personal info</button>
+                        <button className="editInfoButton" onClick={handleShowModalPersonalInfo}>edit personal info</button>
+                        {modal ? 
+                        (<div className="modalContainer">
+                          <label>Name</label>
+                         <input type="text"/>
+                         <label>Bio</label>
+                         <input type="text"/>
+                        
+                        </div>) : (<div></div>)}
                         <p className="calendarsTitle">my calendars:</p>
                         <div className="calendarLabel"> GIM </div>
                         <div className="calendarLabel"> SCHOOL </div>
@@ -62,7 +73,7 @@ const ProfilePage = () => {
                 <div className="calendarContainer">
                     <table>
                     <tr>
-           <td colspan="14" className="month">MONTH</td>
+           <td colSpan="14" className="month">MONTH</td>
                     </tr>
   <tr>
     <td>Monday</td>
