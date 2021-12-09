@@ -6,7 +6,7 @@ const postReducer = (state = initialState.post, action) => {
         case GET_POSTS: {
             return {
                 ...state,
-                posts: action.payload
+                posts: [...action.payload]
             }
         }
         case ADD_POST: {
@@ -18,8 +18,8 @@ const postReducer = (state = initialState.post, action) => {
         }
         case EDID_POST: {
             return {
-              
-                 ...action.payload
+                ...state,
+                posts: [...action.payload]
             }
         }
         case DELETE_POST: {

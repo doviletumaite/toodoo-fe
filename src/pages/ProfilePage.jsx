@@ -123,7 +123,7 @@ const ProfilePage = () => {
     <td>1</td>
     <td>1</td>
   </tr>
-  
+
   <tr>
     <td>29</td>
     <td>30</td>
@@ -135,6 +135,7 @@ const ProfilePage = () => {
   </tr>
                     </table>
                 </div>
+                <div className="extra_space"></div>
             </div>
         </div>
     )

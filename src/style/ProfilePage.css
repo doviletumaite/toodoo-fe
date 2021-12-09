@@ -231,13 +231,17 @@ width: 80%;
 margin: auto;
 display: flex;
 flex-direction: row;
-background-color: turquoise;
+background-color: #1aa35f7a;
+box-shadow: 0 4px 8px 0 rgba(6, 128, 63, 0.541),
+  0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-
+  .calendarContainer:hover {
+    box-shadow: 0 6px 10px 0 rgba(6, 128, 63, 0.541),
+      0 8px 22px 0 rgba(0, 0, 0, 0.19);
+  }
   table {
     border-spacing: 0.5rem;
     width: 100%;
-    margin-bottom: 10px;
   }
   tr{
     width: 100%;
@@ -249,7 +253,10 @@ background-color: turquoise;
   .month{
     text-align: center;
   }
-  
+  .extra_space{
+    width: 100%;
+    height: 30px;
+  }
   /* td:nth-child(1) { 
     background: hsl(150, 50%, 50%); 
   }

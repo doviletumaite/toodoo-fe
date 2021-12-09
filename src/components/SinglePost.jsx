@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { deletePost, getComments, getUser, postNewComment } from "../redux/actions"
+import { deletePost, edidPost, getComments, getUser, postNewComment } from "../redux/actions"
 import dots from "../style/images/dots.png"
 import CommentList from "./CommentList"
 
@@ -10,7 +10,9 @@ export default function SinglePost ({post: p}) {
     const [showComments, setShowComments] = useState(false)
     const [showDropDown, setShowDropDown] = useState(false)
     const [showAddComment, setShowAddComment] = useState(false)
+    const [showModal, setShowModal] = useState(false)
     const [comment, setComment] = useState("")
+    const [editedPost, setEditedPost] = useState("")
   
     const state = useSelector((s) => s.post.posts)
     console.log("poooost",state)
@@ -25,20 +27,27 @@ export default function SinglePost ({post: p}) {
     const handleShowDropdown = () => { setShowDropDown(!showDropDown) }
     
     const handleShowAddComments = () => {setShowAddComment(!showAddComment)}
+
+    const handleShowModal = () => {setShowModal(!showModal)}
   
     const handleUser = (id) => { dispatch(getUser(id)) }
   
-    const handleComment = (e) => { setComment(e.target.value) }
-  
     const userID = stateUser._id
-    
-    const handlePostComment = (id) => {
+
+     const handleComment = (e) => {setComment(e.target.value)}
+     const handlePostComment = (id) => {
      const bodyComment = {user: userID, comment: comment }
      dispatch(postNewComment(id,{bodyComment}))
     }
   
-    const handleEdit = (id) => {
+     const handleEditedPost = (e) => { 
+      setEditedPost(e.target.value) 
+      console.log(editedPost)
+    }
      
+    const handleEdit = (id) => {
+     dispatch(edidPost(id, editedPost))
+     console.log(editedPost)
     }
   
     const handleDelete = (id, userId) => {
@@ -64,13 +73,20 @@ export default function SinglePost ({post: p}) {
 
     {p.user._id===userID ?   <img src={dots} className="dots" onClick={()=>handleShowDropdown(p._id)}/> : <> </>}
     </div>
+
   { showDropDown &&  p.user._id===userID ? 
   <div className="dropdown-container">
      <div className="dropdown-content">
-    <p onClick={()=>handleEdit(p._id)}>edit</p>
+    <p onClick={handleShowModal}>edit</p>
     <p onClick={()=>handleDelete(p._id, p.user._id)}>delete</p>
     </div>
     </div> : <div></div>}
+
+    { showModal ? (<div className="modalEdit">
+      <input type="text" value={editedPost} onChange={handleEditedPost}/>
+      <button onClick={()=>handleEdit(p._id)}>edit</button>
+    </div>) : (<div></div>) }
+
     <div className="post-content-paragraph">{p.text}</div>
 
     <div className="post-content-img-container">
