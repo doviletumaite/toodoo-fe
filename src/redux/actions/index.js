@@ -122,7 +122,7 @@ export const setUsernameAction = (userInfo) => ({
     }
   }
 
-  export const edidPost = (id, {body}) => {
+  export const edidPost = (id, {editedPost}) => {
     return async (dispatch, getState) => {
       try {
         let response = await fetch("http://localhost:3003/posts/" + id,
@@ -131,9 +131,9 @@ export const setUsernameAction = (userInfo) => ({
             headers: {
               "Content-Type": "application/json",
             },
-          body: JSON.stringify({body})
+          body: JSON.stringify({text:editedPost})
         })
-        console.log("body",{body})
+        console.log("body",{editedPost})
         if(response.ok){
            let newPost = await response.json()
            dispatch({
@@ -145,6 +145,7 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
+      dispatch(getPosts())
     }
   }
 

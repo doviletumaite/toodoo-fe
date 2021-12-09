@@ -46,8 +46,9 @@ export default function SinglePost ({post: p}) {
     }
      
     const handleEdit = (id) => {
-     dispatch(edidPost(id, editedPost))
-     console.log(editedPost)
+     dispatch(edidPost(id, {editedPost}))
+     console.log( "editedPost",editedPost)
+     handleShowModal()
     }
   
     const handleDelete = (id, userId) => {

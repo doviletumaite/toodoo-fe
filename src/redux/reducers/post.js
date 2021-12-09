@@ -19,7 +19,7 @@ const postReducer = (state = initialState.post, action) => {
         case EDID_POST: {
             return {
                 ...state,
-                posts: [...action.payload]
+                posts: [...state.posts, action.payload]
             }
         }
         case DELETE_POST: {
