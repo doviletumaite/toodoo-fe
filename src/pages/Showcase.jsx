@@ -30,14 +30,12 @@ const Showcase = () => {
   uploadPicuture()
   }
 
-  const [image, setImage] = useState(null)
  
 const uploadPicuture = (e) => {
     const picture = e.target.files[0].name
-    setImage(picture)
-    console.log("image",image)
+    console.log("picture",picture)
     const formData  = new FormData()
-    formData.append('picture', image)
+    formData.append('picture', formData)
     
     dispatch(postPicture(userId, formData))
   }
