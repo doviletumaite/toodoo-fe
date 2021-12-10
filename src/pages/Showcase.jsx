@@ -19,24 +19,27 @@ const Showcase = () => {
 
   const userId = stateUser._id
   const [text, setText] = useState("")
- 
+  const [picture, setPicture] = useState("")
   const handleText = (e) => {
     setText(e.target.value)
     console.log(text)
   }
   const body = { user: userId, text: text}
-  const handlePost = () => {
+
+  const handlePost = (e) => {
   dispatch(postNewPost({body}))
+  dispatch(postPicture(userId, picture))
   }
 
+  const data  = new Date('2021-11-29T19:23:15.836+00:00')
+  const goodDate = data.toLocaleString('pt-BR')
+  console.log(goodDate)
  
 const uploadPicuture = (e) => {
-    const picture = e.target.files[0].name
+    const img = e.target.files[0]
+    setPicture(img)
     console.log("picture",picture)
-    const formData  = new FormData()
-    formData.append('picture', formData)
-    
-    dispatch(postPicture(userId, formData))
+    // dispatch(postPicture(userId, picture))
   }
 
   return (

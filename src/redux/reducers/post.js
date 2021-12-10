@@ -1,4 +1,4 @@
-import { GET_COMMENTS, GET_POSTS, ADD_POST, POST_NEW_COMMENT, EDID_POST, DELETE_POST, POST_PICTURE } from "../actions";
+import { GET_COMMENTS, GET_POSTS, ADD_POST, POST_NEW_COMMENT, EDID_POST, DELETE_POST, POST_PICTURE, EDID_COMMENT, DELETE_COMMENT } from "../actions";
 import { initialState } from "../store";
 
 const postReducer = (state = initialState.post, action) => {
@@ -30,8 +30,8 @@ const postReducer = (state = initialState.post, action) => {
         }
         case POST_PICTURE: {
             return {
-              ...state,
-                posts: [...action.payload]
+                ...state,
+                posts: [...state.posts, action.payload]
         }
     }
         case GET_COMMENTS: {
@@ -44,6 +44,18 @@ const postReducer = (state = initialState.post, action) => {
             return {
             ...state,
                 comments: action.payload
+            }
+        }
+        case EDID_COMMENT: {
+            return {
+            ...state,
+                comments: [... action.payload]
+            }
+        }
+        case DELETE_COMMENT: {
+            return {
+                ...state,
+                comments:  action.payload
             }
         }
         default:

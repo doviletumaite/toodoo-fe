@@ -166,6 +166,10 @@
 .dots{
   justify-self: flex-end;
   cursor: pointer;
+  height: 20px;
+}
+.comment .dots{
+  margin-left: auto;
 }
 .dropdown-container{
   z-index: 2;
@@ -319,11 +323,13 @@
     margin: 10px
   }
   .comment{
-    width: 90%;
+    width: 95%;
     height: fit-content;
     display: flex;   
     margin-top: 5px;
     margin-bottom: 5px;
+    flex-direction: row;
+    margin-right: auto;
   }
   .comment-detail{
     display: flex; 
@@ -341,4 +347,22 @@
     font-size: 13px;
     margin-top: -18px;
     line-height: 1.2;
+  }
+  .comment .dropDown{
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    background-color: #96e0f3;
+    height: 30%;
+    width: 30%;
+  }
+  .comment .dropDown p{
+    font-weight: 400;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 2px;
+    cursor: pointer;
+  }
+  .comment .dropDown p:hover{
+    font-weight: 500;
   }

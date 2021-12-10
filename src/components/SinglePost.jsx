@@ -15,7 +15,7 @@ export default function SinglePost ({post: p}) {
     const [editedPost, setEditedPost] = useState("")
   
     const state = useSelector((s) => s.post.posts)
-    console.log("poooost",state)
+  
     const commentsState = useSelector((s) => s.post.comments)
     const userGeneric = useSelector((s) => s.genericUserInfo)
     const stateUser = useSelector((s) => s.userInfo)
@@ -132,7 +132,7 @@ export default function SinglePost ({post: p}) {
    </div>) : (<div></div>)}
   
       {
-      p._id===commentsState._id ?  (
+      p._id===commentsState._id && showComments ?  (
 
          <CommentList /> ) : (<div></div>)
       }

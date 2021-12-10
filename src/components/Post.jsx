@@ -8,22 +8,18 @@ import SinglePost from "./SinglePost";
 const Post = () => {
 
   const state = useSelector((s) => s.post.posts)
-  console.log("poooost",state)
- 
   const dispatch = useDispatch();
  
   useEffect(() => {
     dispatch(getPosts());
   }, []);
 
-
   return (
     <div>
-
       {
       state.map((p) => <SinglePost post={p}/>
-       ).reverse()} 
-    
+       ).reverse()
+       } 
     </div>
   );
 };

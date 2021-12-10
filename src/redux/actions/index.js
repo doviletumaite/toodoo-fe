@@ -12,6 +12,8 @@ export const EDID_POST = 'EDID_POST'
 export const POST_NEW_COMMENT = 'POST_NEW_COMMENT'
 export const DELETE_POST = 'DELETE_POST'
 export const POST_PICTURE = 'POST_PICTURE'
+export const EDID_COMMENT = 'EDID_COMMENT'
+export const DELETE_COMMENT = 'DELETE_COMMENT'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -176,13 +178,12 @@ export const setUsernameAction = (userInfo) => ({
     return async (dispatch, getState) => {
       try {
         console.log("picture before fetch", picture)
+        const formData  = new FormData()
+        formData.append('picture', picture)
         let response = await fetch("http://localhost:3003/posts/" + id + "/picture",
         {
           method: "POST", 
-            // headers: {
-            //   "Content-Type": "multipart/form-data",
-            // },
-            body: {user: id, picture: picture}
+          body: formData
         })
         console.log(picture)
         if(response.ok){
@@ -215,5 +216,54 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
+    }
+  }
+
+  export const edidComment = (idPost, idComment, {editedComment}) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/posts/" + idPost + "/comment/"+ idComment,
+        {
+          method: "PUT", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          body: JSON.stringify({comment:editedComment})
+        })
+        console.log("body",{editedComment})
+        if(response.ok){
+           let newComment = await response.json()
+           dispatch({
+             type: EDID_COMMENT,
+             payload: newComment
+           })
+           console.log("new post",newComment )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+      dispatch(getComments(idPost))
+    }
+  }
+  export const deleteComment = (idPost, idComment) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/posts/" + idPost + "/comment/"+ idComment,
+        {
+          method: "DELETE", 
+            headers: {
+              "Content-Type": "application/json",
+            }
+        })
+        if(response.ok){
+           dispatch({
+             type: DELETE_COMMENT,
+             payload: response
+           })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+      dispatch(getComments(idPost))
     }
   }
