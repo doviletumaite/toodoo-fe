@@ -14,6 +14,7 @@ export const DELETE_POST = 'DELETE_POST'
 export const POST_PICTURE = 'POST_PICTURE'
 export const EDID_COMMENT = 'EDID_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const EDID_USER = 'EDID_USER'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -265,5 +266,34 @@ export const setUsernameAction = (userInfo) => ({
         console.log(error)
       }
       dispatch(getComments(idPost))
+    }
+  }
+  export const edidUser = ({newUserInfo}) => {
+    return async (dispatch, getState) => {
+      try {
+       
+        const accessToken = localStorage.getItem("accessToken")
+       
+        let response = await fetch("http://localhost:3003/user/me",
+        {
+          method: "PUT", 
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': 'Bearer ' + accessToken,
+            },
+          body: JSON.stringify({username: newUserInfo.username, bio: newUserInfo.bio})
+        })
+        console.log("body",{newUserInfo})
+        if(response.ok){
+           let newUserInfo = await response.json()
+           dispatch({
+             type: EDID_USER,
+             payload: newUserInfo
+           })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+      // dispatch(getUser())
     }
   }

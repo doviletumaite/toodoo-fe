@@ -1,18 +1,30 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import NavBar from "../components/NavBar"
+import { edidUser } from "../redux/actions"
 import "../style/ProfilePage.css"
 
 const ProfilePage = () => {
     const state = useSelector(s=>s.userInfo)
+    const dispatch = useDispatch()
     const date = new Date()
     const dd = String(date.getDate()).padStart(2, '0');
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const yyyy = date.getFullYear();
-
+    const today = dd + '/' + mm + '/' + yyyy;
     const [modal, setModal] = useState(false)
     const handleShowModalPersonalInfo = () => {setModal(!modal)}
-    const today = dd + '/' + mm + '/' + yyyy;
+    
+    const [editedName, setEditedName] = useState("")
+    const [editedBio, setEditedBio] = useState("")
+    const handleEditedName = (e) => {setEditedName(e.target.value)}
+    const handleEditedBio = (e) => {setEditedBio(e.target.value)}
+    const handleEdit = () => {
+      const newUserInfo = {username: editedName, bio: editedBio}
+      console.log("newuserInfo",newUserInfo )
+    dispatch(edidUser({newUserInfo}))
+    }
     return (
         <div>
             <NavBar/>
@@ -31,11 +43,19 @@ const ProfilePage = () => {
                         <button className="editInfoButton" onClick={handleShowModalPersonalInfo}>edit personal info</button>
                         {modal ? 
                         (<div className="modalContainer">
-                          <label>Name</label>
-                         <input type="text"/>
-                         <label>Bio</label>
-                         <input type="text"/>
-                        
+                          
+                         <input type="text" 
+                         placeholder="edit your name"
+                         value={editedName}
+                         onChange={handleEditedName}
+                         />
+                         
+                         <input type="text" 
+                         placeholder="edit your bio"
+                         value={editedBio}
+                         onChange={handleEditedBio}
+                         />
+                         <button onClick={handleEdit}>edit</button>
                         </div>) : (<div></div>)}
                         <p className="calendarsTitle">my calendars:</p>
                         <div className="calendarLabel"> GIM </div>
@@ -67,7 +87,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="calendar"></div>
                 </div>
-     </div>
+             </div>
     
                 {/* calendar */}
                 <div className="calendarContainer">

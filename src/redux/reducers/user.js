@@ -1,4 +1,4 @@
-import { SET_USER_INFO } from "../actions";
+import { EDID_USER, SET_USER_INFO } from "../actions";
 import { initialState } from "../store";
 
 const userReducer = (state = initialState.userInfo, action) => {
@@ -7,6 +7,13 @@ const userReducer = (state = initialState.userInfo, action) => {
             return {
                
               ...action.payload
+        
+            }
+        }
+        case EDID_USER: {
+            return {
+                
+            ...action.payload
         
             }
         }
