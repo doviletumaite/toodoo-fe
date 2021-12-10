@@ -13,17 +13,21 @@ const ProfilePage = () => {
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const yyyy = date.getFullYear();
     const today = dd + '/' + mm + '/' + yyyy;
+
     const [modal, setModal] = useState(false)
     const handleShowModalPersonalInfo = () => {setModal(!modal)}
     
+    const [modalProfilePicture, setModalProfilePicture] = useState(false)
+    const handleShowModalProfilePicture = () => {setModalProfilePicture(!modalProfilePicture)}
+
     const [editedName, setEditedName] = useState("")
     const [editedBio, setEditedBio] = useState("")
     const handleEditedName = (e) => {setEditedName(e.target.value)}
     const handleEditedBio = (e) => {setEditedBio(e.target.value)}
     const handleEdit = () => {
       const newUserInfo = {username: editedName, bio: editedBio}
-      console.log("newuserInfo",newUserInfo )
-    dispatch(edidUser({newUserInfo}))
+       dispatch(edidUser({newUserInfo}))
+       setModal(!modal)
     }
     return (
         <div>
@@ -35,11 +39,14 @@ const ProfilePage = () => {
                    <div className="profileCard">
                        <div className="img-btn-wrapper">
                        <img src={state.profilePicture}  /> 
-                        <button className="button">edit profile picture</button>
+                        <button className="button" onClick={handleShowModalProfilePicture}>edit profile picture</button>
+                        {modalProfilePicture ? (<div>
+                          <input type="file" name="picture" id="picture" />
+                        </div>) : (<div></div>)}
                        </div>
                        <div className="userInfoBox">
                         <p className="userInfoBox_profileName" >{state.username}</p>
-                        <p className="userInfoBox_bio" >{state.bio}ciao</p>
+                        <p className="userInfoBox_bio" >{state.bio}</p>
                         <button className="editInfoButton" onClick={handleShowModalPersonalInfo}>edit personal info</button>
                         {modal ? 
                         (<div className="modalContainer">

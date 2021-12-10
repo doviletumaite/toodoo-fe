@@ -1,4 +1,4 @@
-import { EDID_USER, SET_USER_INFO } from "../actions";
+import { EDID_USER, EDID_USER_PROFILE_PICTURE, SET_USER_INFO } from "../actions";
 import { initialState } from "../store";
 
 const userReducer = (state = initialState.userInfo, action) => {
@@ -15,6 +15,13 @@ const userReducer = (state = initialState.userInfo, action) => {
                 
             ...action.payload
         
+            }
+        }
+        case EDID_USER_PROFILE_PICTURE: {
+            return {
+
+            ... action.payload
+            
             }
         }
         default:

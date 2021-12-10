@@ -15,6 +15,7 @@ export const POST_PICTURE = 'POST_PICTURE'
 export const EDID_COMMENT = 'EDID_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const EDID_USER = 'EDID_USER'
+export const EDID_USER_PROFILE_PICTURE = 'EDID_USER_PROFILE_PICTURE'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -294,6 +295,35 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
-      // dispatch(getUser())
+    }
+  }
+  export const edidUserProfilePicture = (picture) => {
+    return async (dispatch, getState) => {
+      try {
+        console.log("picture before fetch", picture)
+        const formData  = new FormData()
+        formData.append('picture', picture)
+        const accessToken = localStorage.getItem("accessToken")
+       
+        let response = await fetch("http://localhost:3003/user/me",
+        {
+          method: "PUT", 
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': 'Bearer ' + accessToken,
+            },
+          body: formData
+        })
+        console.log("body",formData)
+        if(response.ok){
+           let newUserInfo = await response.json()
+           dispatch({
+             type: EDID_USER_PROFILE_PICTURE,
+             payload: newUserInfo
+           })
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
