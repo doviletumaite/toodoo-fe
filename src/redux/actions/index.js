@@ -179,7 +179,7 @@ export const setUsernameAction = (userInfo) => ({
   export const postPicture = (id, picture) => {
     return async (dispatch, getState) => {
       try {
-        console.log("picture before fetch", picture)
+        console.log("picture before fetch", typeof picture)
         const formData  = new FormData()
         formData.append('picture', picture)
         let response = await fetch("http://localhost:3003/posts/" + id + "/picture",
@@ -303,9 +303,10 @@ export const setUsernameAction = (userInfo) => ({
         console.log("picture before fetch", picture)
         const formData  = new FormData()
         formData.append('picture', picture)
+        console.log("formdata",formData)
         const accessToken = localStorage.getItem("accessToken")
        
-        let response = await fetch("http://localhost:3003/user/me",
+        let response = await fetch("http://localhost:3003/user/meAvatar",
         {
           method: "PUT", 
             headers: {

@@ -2,11 +2,12 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import NavBar from "../components/NavBar"
-import { edidUser } from "../redux/actions"
+import { edidUser, edidUserProfilePicture } from "../redux/actions"
 import "../style/ProfilePage.css"
 
 const ProfilePage = () => {
     const state = useSelector(s=>s.userInfo)
+    console.log("profilePicture", state.profilePicture)
     const dispatch = useDispatch()
     const date = new Date()
     const dd = String(date.getDate()).padStart(2, '0');
@@ -22,13 +23,24 @@ const ProfilePage = () => {
 
     const [editedName, setEditedName] = useState("")
     const [editedBio, setEditedBio] = useState("")
+    const [picture, setPicture] = useState("")
     const handleEditedName = (e) => {setEditedName(e.target.value)}
     const handleEditedBio = (e) => {setEditedBio(e.target.value)}
+
     const handleEdit = () => {
       const newUserInfo = {username: editedName, bio: editedBio}
        dispatch(edidUser({newUserInfo}))
        setModal(!modal)
     }
+    const handlePicuture = (e) => {
+      const img = e.target.files[0]
+      console.log("img",img)
+      setPicture(img) 
+    }
+   const uploadPicture = () => {
+     console.log("picture",picture)
+    dispatch(edidUserProfilePicture(picture))
+   }
     return (
         <div>
             <NavBar/>
@@ -41,7 +53,8 @@ const ProfilePage = () => {
                        <img src={state.profilePicture}  /> 
                         <button className="button" onClick={handleShowModalProfilePicture}>edit profile picture</button>
                         {modalProfilePicture ? (<div>
-                          <input type="file" name="picture" id="picture" />
+                          <input type="file" name="picture" id="picture" onChange={(e)=>handlePicuture(e)}/>
+                          <button onClick={uploadPicture}>update</button>
                         </div>) : (<div></div>)}
                        </div>
                        <div className="userInfoBox">

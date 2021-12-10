@@ -39,7 +39,7 @@ const uploadPicuture = (e) => {
     const img = e.target.files[0]
     setPicture(img)
     console.log("picture",picture)
-    dispatch(postPicture(userId, picture))
+    dispatch(postPicture(userId, e.target.files[0]))
   }
 
   return (
