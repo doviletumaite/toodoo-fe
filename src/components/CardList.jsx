@@ -9,12 +9,14 @@ const CardList = ({stateListCard}) => {
     const yyyy = date.getFullYear();
     const today = dd + '/' + mm + '/' + yyyy;
     const tasks = useSelector(s=> s.list.tasks)
+    const cardState = useSelector(s=> s.list.list)
     console.log("tasks", tasks)
+    console.log("cardState", cardState)
  return (
     
           <div className="listSession">
                 <div className="dailyList">
-                <p className="list-Title">{stateListCard.title}</p>
+                <p className="list-Title">{cardState.title}</p>
                   <div className="list">
                   <p className="date">today's date: {today}</p>   
                 <p className="dailyGoals">my daily goals:</p>
@@ -25,12 +27,12 @@ const CardList = ({stateListCard}) => {
                      
                      <div className="checkList">
                     <div className="checks">
-              { stateListCard.tasks ?
-               (stateListCard.tasks.length>= 1 ) ? 
-              stateListCard.tasks.map(t=> <Task task={t}/>)
+              { cardState.tasks ?
+               (cardState.tasks.length>= 1 ) ? 
+               cardState.tasks.map(t=> <Task task={t}/>)
               : ( <> 
                 <input className="checkbox" type="checkbox"/>
-                <label className="label">{stateListCard.tasks.task}</label>
+                <label className="label">{cardState.tasks.task}</label>
                 </>): (<></>)}
                      </div>
                      </div>
