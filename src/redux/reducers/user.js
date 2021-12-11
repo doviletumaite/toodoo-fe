@@ -12,7 +12,7 @@ const userReducer = (state = initialState.userInfo, action) => {
         }
         case EDID_USER: {
             return {
-                
+                ...state,
             ...action.payload
         
             }
@@ -20,7 +20,8 @@ const userReducer = (state = initialState.userInfo, action) => {
         case EDID_USER_PROFILE_PICTURE: {
             return {
 
-            ... action.payload
+                ...state,
+                ...action.payload
             
             }
         }

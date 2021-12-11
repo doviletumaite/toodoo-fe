@@ -260,21 +260,72 @@ box-shadow: 0 4px 8px 0 rgba(6, 128, 63, 0.541),
     width: 100%;
     height: 30px;
   }
-  /* td:nth-child(1) { 
-    background: hsl(150, 50%, 50%); 
+  .modalContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
   }
-  td:nth-child(2) { 
-    background: hsl(160, 60%, 50%); 
+  .modalContainer input{
+    margin-bottom: 5px;
+    height: 23px;
+    width: 70%;
+    border-radius: 2px;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.705);
+    font-size: 14px;
   }
-  td:nth-child(3) { 
-    background: hsl(170, 70%, 50%); 
+  .modalContainer input:focus {
+    outline: none;
   }
-  td:nth-child(4) { 
-    background: hsl(180, 80%, 50%); 
+  .editInfoButtonInputs{
+    background-color: rgb(107, 202, 226);
+    display: inline-flex;
+    border-color: transparent;
+    border-radius: 2px;
+    box-shadow: 0 4px 5px 0 rgba(66, 109, 228, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 16px;
+    color: rgb(255, 250, 250);
   }
-  td:nth-child(5) { 
-    background: hsl(190, 90%, 50%);
-   }
-  td:nth-child(6) { 
-    background: hsl(200, 99%, 50%); 
-  } */
+  .editInfoButtonInputs:hover {
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+  }
+  .editInfoButtonInputs:focus{
+    background-color:rgb(245, 173, 57);
+  }
+  .inputPictureContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+  }
+  .uploadPicButton{
+    background-color: rgb(107, 202, 226);
+    border-color: transparent;
+    border-radius: 2px;
+    box-shadow: 0 4px 5px 0 rgba(240, 115, 57, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 12px;
+    color: rgb(255, 250, 250);
+    height: 25px;
+    width: 40%;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .uploadPicButtonInput{
+    background-color: rgb(107, 202, 226);
+    border-color: transparent;
+    border-radius: 2px;
+    box-shadow: 0 4px 5px 0 rgba(240, 115, 57, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 12px;
+    color: rgb(255, 250, 250);
+    height: 25px;
+    width: 65%;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }

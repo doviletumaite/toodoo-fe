@@ -7,7 +7,7 @@ import "../style/ProfilePage.css"
 
 const ProfilePage = () => {
     const state = useSelector(s=>s.userInfo)
-    console.log("profilePicture", state.profilePicture)
+ 
     const dispatch = useDispatch()
     const date = new Date()
     const dd = String(date.getDate()).padStart(2, '0');
@@ -52,9 +52,9 @@ const ProfilePage = () => {
                        <div className="img-btn-wrapper">
                        <img src={state.profilePicture}  /> 
                         <button className="button" onClick={handleShowModalProfilePicture}>edit profile picture</button>
-                        {modalProfilePicture ? (<div>
-                          <input type="file" name="picture" id="picture" onChange={(e)=>handlePicuture(e)}/>
-                          <button onClick={uploadPicture}>update</button>
+                        {modalProfilePicture ? (<div className="inputPictureContainer">
+                          <input className="uploadPicButtonInput" type="file" name="picture" id="picture" onChange={(e)=>handlePicuture(e)}/>
+                          <button className="uploadPicButton" onClick={uploadPicture}>update</button>
                         </div>) : (<div></div>)}
                        </div>
                        <div className="userInfoBox">
@@ -75,7 +75,7 @@ const ProfilePage = () => {
                          value={editedBio}
                          onChange={handleEditedBio}
                          />
-                         <button onClick={handleEdit}>edit</button>
+                         <button className="editInfoButtonInputs" onClick={handleEdit}>edit</button>
                         </div>) : (<div></div>)}
                         <p className="calendarsTitle">my calendars:</p>
                         <div className="calendarLabel"> GIM </div>

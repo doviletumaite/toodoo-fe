@@ -176,13 +176,16 @@
   width: 10%;
   display: flex;
   margin-left: 80%; 
+  margin-top: 2px;
   position: absolute;
-  right: 30%;
+  right: 28%;
+  border-radius: 2px;
 }
 .dropdown-content{
   background-color: #96e0f3;
   width: 100%;
   text-align: center;
+  border-radius: 2px;
 }
 .dropdown-content p{
   font-weight: 400;
@@ -194,6 +197,41 @@
 .dropdown-content p:hover{
   font-weight: 500;
 }
+.modalEdit{
+  width: 90%;
+  margin: auto;
+  padding: 5px;
+}
+.inputEditPost{
+  height: 23px;
+    width: 70%;
+    border-radius: 2px;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.705);
+    font-size: 14px;
+}
+.inputEditPost:focus {
+  outline: none;
+}
+.buttonEditPost{
+ background-color: rgb(107, 202, 226);
+  display: inline-flex;
+  border-color: transparent;
+  border-radius: 2px;
+  box-shadow: 0 4px 5px 0 rgba(66, 109, 228, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 16px;
+  color: rgb(255, 250, 250);
+  margin-left: 10px;
+}
+.buttonEditPost:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+.buttonEditPost:focus{
+  background-color:rgb(245, 173, 57);
+}
+
  .profile-img-post{
      height: 40px;
      width: 40px;
@@ -342,19 +380,34 @@
     font-size: 14px;
     color: rgba(0, 0, 0, 0.692);
   }
+  .comment-time{
+    font-weight: 300;
+    margin-top: -20px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.692);
+  }
   .comment-itself{
     font-weight: 400;
     font-size: 13px;
-    margin-top: -18px;
+    margin-top: -14px;
     line-height: 1.2;
   }
+
   .comment .dropDown{
+    z-index: 2;
+    width: 10%;
     display: flex;
     flex-direction: column;
-    z-index: 2;
-    background-color: #96e0f3;
-    height: 30%;
-    width: 30%;
+    right: 30%;
+    margin-top: 2px;
+    position: absolute;
+    border-radius: 2px;
+  }
+  .dropDownCommentContent{
+    background-color: #80d6ece5;
+    width: 100%;
+    text-align: center;
+    border-radius: 2px;
   }
   .comment .dropDown p{
     font-weight: 400;
@@ -366,3 +419,37 @@
   .comment .dropDown p:hover{
     font-weight: 500;
   }
+  .editCommentContainer{
+    width: 90%;
+    margin-top: -15px;
+  }
+  .inputEditComment{
+      height: 23px;
+      width: 70%;
+      border-radius: 2px;
+      border: transparent;
+      background-color: rgb(255, 255, 255);
+      color: rgba(0, 0, 0, 0.705);
+      font-size: 14px;
+  }
+  .inputEditComment:focus {
+    outline: none;
+  }
+ 
+  .editButton{
+    background-color: rgb(107, 202, 226);
+     display: inline-flex;
+     border-color: transparent;
+     border-radius: 2px;
+     box-shadow: 0 4px 5px 0 rgba(66, 109, 228, 0.2),
+       0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     font-size: 16px;
+     color: rgb(255, 250, 250);
+     margin-left: 10px;
+   }
+   .editButton:hover {
+     box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+   }
+   .editButton:focus{
+     background-color:rgb(245, 173, 57);
+   }

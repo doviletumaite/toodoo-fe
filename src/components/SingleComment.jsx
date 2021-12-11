@@ -4,9 +4,10 @@ import "../style/Showcase.css";
 import dots from "../style/images/dots.png"
 import { useDispatch } from "react-redux";
 import { deleteComment, edidComment } from "../redux/actions";
+import moment from "moment";
 
 const SingleComment = ({comment:c}) => {
-     
+     console.log("comment", c)
     const comments = useSelector((s) => s.post.comments)
   
     const posts = useSelector((s) => s.post.posts)
@@ -42,11 +43,11 @@ const SingleComment = ({comment:c}) => {
             <div className="comment-detail">
             
              <p className="comment-name">{c.user.username}</p>
-             
+             <p className="comment-time">{moment(c.createdAt).fromNow()}</p>
               <p className="comment-itself">
                 {c.comment}
                 </p>
-                {showEdit ? (<div>
+                {showEdit ? (<div className="editCommentContainer">
                   <input className="inputEditComment"
                   value={editedComment}
                   onChange={handleComment}
@@ -60,8 +61,10 @@ const SingleComment = ({comment:c}) => {
 
            { showDropdown ? 
            (<div className="dropDown">
+             <div className="dropDownCommentContent">
              <p onClick={handleShowEdit}>edit</p>
              <p onClick={()=>handleDelete(c)}>delete</p>
+             </div>
              </div>) : (<div></div>)}
            </div>
          </div>

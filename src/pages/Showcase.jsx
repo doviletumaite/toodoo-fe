@@ -30,10 +30,6 @@ const Showcase = () => {
   dispatch(postNewPost({body}))
   dispatch(postPicture(userId, picture))
   }
-
-  const data  = new Date('2021-11-29T19:23:15.836+00:00')
-  const goodDate = data.toLocaleString('pt-BR')
-  console.log(goodDate)
  
 const uploadPicuture = (e) => {
     const img = e.target.files[0]
