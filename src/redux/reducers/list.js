@@ -1,4 +1,4 @@
-import { GET_LISTS } from "../actions";
+import { GET_LISTS, POST_NEW_LIST, SET_LIST_CARD } from "../actions";
 import { initialState } from "../store";
 
 const listReducer = (state = initialState.list, action) => {
@@ -7,10 +7,21 @@ const listReducer = (state = initialState.list, action) => {
         case GET_LISTS: {
             return {
                 ...state,
-                ...action.payload
+               lists: [...action.payload]
             }
         }
-      
+        case POST_NEW_LIST: {
+            return {
+                ...state,
+               lists: [...action.payload]
+            }
+        }
+        case SET_LIST_CARD: {
+            return {
+                ...state,
+               list: action.payload
+            }
+        }
         default:
             return state
     }

@@ -1,9 +1,16 @@
+import { useDispatch } from "react-redux"
+import { setListCard } from "../redux/actions"
 import "../style/ProfilePage.css"
 
 const List = ({list: l}) => {
+    const dispatch = useDispatch()
+    const setList = (list) => {
+        dispatch(setListCard(list))
+        console.log(list)
+    }
     return ( 
         
-            <div className="calendarLabel">{l.title} </div>
+            <div className="calendarLabel" onClick={()=>setList(l)}>{l.title} </div>
        
     )
 }

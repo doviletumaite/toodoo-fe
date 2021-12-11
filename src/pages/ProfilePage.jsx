@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
+import CardList from "../components/CardList"
 import List from "../components/List"
 import NavBar from "../components/NavBar"
-import { edidUser, edidUserProfilePicture, getList } from "../redux/actions"
+import { edidUser, edidUserProfilePicture, getList, postNewList, setListCard } from "../redux/actions"
 import "../style/ProfilePage.css"
 
 const ProfilePage = () => {
     const state = useSelector(s=>s.userInfo)
  
     const dispatch = useDispatch()
-    const date = new Date()
-    const dd = String(date.getDate()).padStart(2, '0');
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const yyyy = date.getFullYear();
-    const today = dd + '/' + mm + '/' + yyyy;
 
     const [modal, setModal] = useState(false)
     const handleShowModalPersonalInfo = () => {setModal(!modal)}
@@ -47,8 +43,20 @@ const ProfilePage = () => {
    useEffect(() => {
     dispatch(getList(state._id));
   }, []);
-  const list = useSelector(s => s.list.list)
-  console.log("list", list)
+
+  const list = useSelector(s => s.list.lists)
+  const [newList, setNewList] = useState("")
+  const handleNewList = (e) => {
+    setNewList(e.target.value)
+  }
+  const handlePostNewList = () => {
+    const bodyList = {user:state._id, title:newList }
+    dispatch(postNewList(state._id, {bodyList}))
+  }
+  const setList = (list) => {
+    dispatch(setListCard(list))
+  }
+  const stateListCard = useSelector(s=> s.list.list)
     return (
         <div>
             <NavBar/>
@@ -87,35 +95,25 @@ const ProfilePage = () => {
                         </div>) : (<div></div>)}
                         <p className="calendarsTitle">my lists of tasks:</p>
                         
-                        {list.map(l=> (<List list={l}/>)).reverse()}
+                        { (Object.keys(list).length> 1) ?
+                        list.map(l=> (<List list={l}/>)).reverse() : ( <div className="calendarLabel" onClick={()=>setList(list)}>{list[0].title}</div>)}
                         
                         <p className="addCalendar">add a new list</p>
-                        <input className="addCalendarInput" type="text"/>
+                        <div className="addListInputsWrapper">
+                        <input className="addCalendarInput" 
+                        value={newList} 
+                        onChange={handleNewList} 
+                        type="text"/>
+                        <button className="addListButton" onClick={handlePostNewList}>add</button>
+                        </div>
                         </div>
                    </div>
                 </div>
 
 
                 {/* list side */}
-                <div className="listSession">
-                <div className="dailyList">
-                <p className="list-Title">GIM</p>
-                  <div className="list">
-                  <p className="date">today's date: {today}</p>   
-                <p className="dailyGoals">my daily goals:</p>
-
-                     <div className="inputs-list">
-                <input type="text" placeholder="add some tasks!"/>
-                    </div>
-
-                    <div className="checks">
-                <input className="checkbox" type="checkbox"/>
-                <label className="label">run 30 min</label>
-                     </div>
-                  </div>
-                </div>
-                <div className="calendar"></div>
-                </div>
+         
+                { stateListCard ? (<CardList stateListCard={stateListCard}/>) : (<div></div>)}
              </div>
     
                 {/* calendar */}

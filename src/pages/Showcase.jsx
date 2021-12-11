@@ -27,7 +27,6 @@ const Showcase = () => {
 
   const handlePost = (e) => {
   dispatch(postNewPost({body}))
-  dispatch(postPicture(userId, picture))
   }
  
 const uploadPicuture = (e) => {

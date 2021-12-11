@@ -17,6 +17,8 @@ export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const EDID_USER = 'EDID_USER'
 export const EDID_USER_PROFILE_PICTURE = 'EDID_USER_PROFILE_PICTURE'
 export const GET_LISTS = 'GET_LISTS'
+export const POST_NEW_LIST = 'POST_NEW_LIST'
+export const SET_LIST_CARD = 'SET_LIST_CARD'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -346,3 +348,33 @@ export const setUsernameAction = (userInfo) => ({
       }
     }
   }
+  export const postNewList = (id, {bodyList}) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/list",
+        {
+          method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          body: JSON.stringify({ user: bodyList.user , title: bodyList.title})
+        })
+      
+        if(response.ok){
+           let newList = await response.json()
+           dispatch({
+             type: POST_NEW_LIST,
+             payload: newList
+           })
+           console.log("new list",newList )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+      dispatch(getList(id))
+    }
+  }
+  export const setListCard = (list) => ({
+    type: SET_LIST_CARD,
+    payload: list,
+  })
