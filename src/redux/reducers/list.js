@@ -13,7 +13,7 @@ const listReducer = (state = initialState.list, action) => {
         case POST_NEW_LIST: {
             return {
                 ...state,
-               lists: [...action.payload]
+               lists: action.payload
             }
         }
         case SET_LIST_CARD: {

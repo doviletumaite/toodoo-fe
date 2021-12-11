@@ -1,9 +1,15 @@
+import { useSelector } from "react-redux";
+import Task from "./Task";
+
 const CardList = ({stateListCard}) => {
+    console.log("stateListCard",stateListCard)
     const date = new Date()
     const dd = String(date.getDate()).padStart(2, '0');
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const yyyy = date.getFullYear();
     const today = dd + '/' + mm + '/' + yyyy;
+    const tasks = useSelector(s=> s.list.tasks)
+    console.log("tasks", tasks)
  return (
     
           <div className="listSession">
@@ -16,10 +22,17 @@ const CardList = ({stateListCard}) => {
                      <div className="inputs-list">
                 <input type="text" placeholder="add some tasks!"/>
                     </div>
-
+                     
+                     <div className="checkList">
                     <div className="checks">
+              { stateListCard.tasks ?
+               (stateListCard.tasks.length>= 1 ) ? 
+              stateListCard.tasks.map(t=> <Task task={t}/>)
+              : ( <> 
                 <input className="checkbox" type="checkbox"/>
-                <label className="label">run 30 min</label>
+                <label className="label">{stateListCard.tasks.task}</label>
+                </>): (<></>)}
+                     </div>
                      </div>
                   </div>
                 </div>

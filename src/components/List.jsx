@@ -6,7 +6,7 @@ const List = ({list: l}) => {
     const dispatch = useDispatch()
     const setList = (list) => {
         dispatch(setListCard(list))
-        console.log(list)
+        console.log("lsit in list component",list)
     }
     return ( 
         

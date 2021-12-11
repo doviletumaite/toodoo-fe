@@ -52,11 +52,12 @@ const ProfilePage = () => {
   const handlePostNewList = () => {
     const bodyList = {user:state._id, title:newList }
     dispatch(postNewList(state._id, {bodyList}))
+    console.log(bodyList)
   }
   const setList = (list) => {
     dispatch(setListCard(list))
   }
-  const stateListCard = useSelector(s=> s.list.list)
+  const stateListCard = useSelector(s=> s.list.lists)
     return (
         <div>
             <NavBar/>
@@ -96,7 +97,8 @@ const ProfilePage = () => {
                         <p className="calendarsTitle">my lists of tasks:</p>
                         
                         { (Object.keys(list).length> 1) ?
-                        list.map(l=> (<List list={l}/>)).reverse() : ( <div className="calendarLabel" onClick={()=>setList(list)}>{list[0].title}</div>)}
+                        list.map(l=> (<List list={l}/>)).reverse() : ( 
+                        <div className="calendarLabel" onClick={()=>setList(list)}>{list.title}</div>)}
                         
                         <p className="addCalendar">add a new list</p>
                         <div className="addListInputsWrapper">
