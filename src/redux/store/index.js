@@ -7,6 +7,7 @@ import userReducer from "../reducers/user.js"
 import postReducer from "../reducers/post.js";
 import commentReducer from "../reducers/genericUserReducer.js";
 import genericUserReducer from "../reducers/genericUserReducer.js";
+import listReducer from "../reducers/list.js";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -25,13 +26,9 @@ export const initialState = {
       genericUserInfo: {
         userGeneric: {}
       },
-      // post: {
-      //   _id:"",
-      //   text:"",
-      //   picture: "",
-      //   user: {},
-      //   comments: []
-      // },
+      list: {
+        lists: []
+      }
     
 };
 
@@ -50,7 +47,8 @@ const persistConfig = {
 const bigReducer = combineReducers({
     userInfo: userReducer,
     post: postReducer,
-    genericUserInfo: genericUserReducer
+    genericUserInfo: genericUserReducer,
+    list: listReducer
   })
 const persistedReducer = persistReducer(persistConfig, bigReducer);
 

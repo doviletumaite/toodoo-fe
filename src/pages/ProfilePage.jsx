@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
+import List from "../components/List"
 import NavBar from "../components/NavBar"
-import { edidUser, edidUserProfilePicture } from "../redux/actions"
+import { edidUser, edidUserProfilePicture, getList } from "../redux/actions"
 import "../style/ProfilePage.css"
 
 const ProfilePage = () => {
@@ -42,6 +43,12 @@ const ProfilePage = () => {
      console.log("picture",picture)
     dispatch(edidUserProfilePicture(picture))
    }
+
+   useEffect(() => {
+    dispatch(getList(state._id));
+  }, []);
+  const list = useSelector(s => s.list.list)
+  console.log("list", list)
     return (
         <div>
             <NavBar/>
@@ -78,10 +85,11 @@ const ProfilePage = () => {
                          />
                          <button className="editInfoButtonInputs" onClick={handleEdit}>edit</button>
                         </div>) : (<div></div>)}
-                        <p className="calendarsTitle">my calendars:</p>
-                        <div className="calendarLabel"> GIM </div>
-                        <div className="calendarLabel"> SCHOOL </div>
-                        <p className="addCalendar">add a new calendar</p>
+                        <p className="calendarsTitle">my lists of tasks:</p>
+                        
+                        {list.map(l=> (<List list={l}/>)).reverse()}
+                        
+                        <p className="addCalendar">add a new list</p>
                         <input className="addCalendarInput" type="text"/>
                         </div>
                    </div>

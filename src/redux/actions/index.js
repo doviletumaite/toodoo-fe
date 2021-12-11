@@ -16,6 +16,7 @@ export const EDID_COMMENT = 'EDID_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const EDID_USER = 'EDID_USER'
 export const EDID_USER_PROFILE_PICTURE = 'EDID_USER_PROFILE_PICTURE'
+export const GET_LISTS = 'GET_LISTS'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -321,6 +322,24 @@ export const setUsernameAction = (userInfo) => ({
              type: EDID_USER_PROFILE_PICTURE,
              payload: newUserInfo
            })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
+  export const getList = (id) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/list/" + id)
+        if(response.ok){
+          let lists = await response.json()
+          dispatch({
+            type: GET_LISTS,
+            payload: lists
+          })
+          console.log(lists)
         }
       } catch (error) {
         console.log(error)
