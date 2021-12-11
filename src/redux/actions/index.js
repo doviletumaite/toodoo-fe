@@ -40,7 +40,6 @@ export const setUsernameAction = (userInfo) => ({
              type: GET_POSTS,
              payload: posts
            })
-           console.log("posts",posts)
         }
         
       } catch (error) {
@@ -62,6 +61,7 @@ export const setUsernameAction = (userInfo) => ({
              type: GET_COMMENTS,
              payload: comment
            })
+             console.log(comment)
         }
       } catch (error) {
         console.log(error)
@@ -284,7 +284,6 @@ export const setUsernameAction = (userInfo) => ({
             },
           body: JSON.stringify({username: newUserInfo.username, bio: newUserInfo.bio})
         })
-        console.log("body",{newUserInfo})
         if(response.ok){
            let newUserInfo = await response.json()
            dispatch({

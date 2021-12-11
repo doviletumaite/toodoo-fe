@@ -27,6 +27,7 @@ const ProfilePage = () => {
     const handleEditedName = (e) => {setEditedName(e.target.value)}
     const handleEditedBio = (e) => {setEditedBio(e.target.value)}
 
+    
     const handleEdit = () => {
       const newUserInfo = {username: editedName, bio: editedBio}
        dispatch(edidUser({newUserInfo}))

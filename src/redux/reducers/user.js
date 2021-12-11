@@ -2,6 +2,7 @@ import { EDID_USER, EDID_USER_PROFILE_PICTURE, SET_USER_INFO } from "../actions"
 import { initialState } from "../store";
 
 const userReducer = (state = initialState.userInfo, action) => {
+  
     switch (action.type) {
         case SET_USER_INFO: {
             return {
@@ -13,10 +14,12 @@ const userReducer = (state = initialState.userInfo, action) => {
         case EDID_USER: {
             return {
                 ...state,
-            ...action.payload
+            ...action.payload,
         
             }
+            
         }
+        
         case EDID_USER_PROFILE_PICTURE: {
             return {
 

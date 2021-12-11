@@ -37,7 +37,7 @@ const postReducer = (state = initialState.post, action) => {
         case GET_COMMENTS: {
             return {
                 ...state,
-                comments: [... action.payload]
+                comments: action.payload
             }
         }
         case POST_NEW_COMMENT: {
@@ -49,7 +49,7 @@ const postReducer = (state = initialState.post, action) => {
         case EDID_COMMENT: {
             return {
             ...state,
-                comments: [... action.payload]
+                comments: [...action.payload]
             }
         }
         case DELETE_COMMENT: {

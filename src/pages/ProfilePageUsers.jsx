@@ -17,7 +17,7 @@ const ProfilePageUsers =  () => {
                        </div>
                        <div className="userInfoBox">
                         <p className="userInfoBox_profileName">{state.username}</p>
-                        <p className="userInfoBox_bio" >{state.bio}ciao</p>
+                        <p className="userInfoBox_bio" >{state.bio}</p>
                       
 
                         </div>

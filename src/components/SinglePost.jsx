@@ -7,7 +7,7 @@ import dots from "../style/images/dots.png"
 import CommentList from "./CommentList"
 
 export default function SinglePost ({post: p}) {
-
+ console.log("p", p)
     const [showComments, setShowComments] = useState(false)
     const [showDropDown, setShowDropDown] = useState(false)
     const [showAddComment, setShowAddComment] = useState(false)
@@ -58,6 +58,7 @@ export default function SinglePost ({post: p}) {
    
 
     return (
+     
          <div className="post-body">
     <div className="post-user">
       <img className="profile-img-post" src={p.user.profilePicture} />

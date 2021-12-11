@@ -22,7 +22,6 @@ const Showcase = () => {
   const [picture, setPicture] = useState("")
   const handleText = (e) => {
     setText(e.target.value)
-    console.log(text)
   }
   const body = { user: userId, text: text}
 
