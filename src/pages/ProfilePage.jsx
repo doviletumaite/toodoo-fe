@@ -7,6 +7,7 @@ import NavBar from "../components/NavBar"
 import { edidUser, edidUserProfilePicture, getList, postNewList, setListCard } from "../redux/actions"
 import "../style/ProfilePage.css"
 import del from "../style/images/delete.png"
+import Calendar from "../components/calendar/Calendar"
 
 const ProfilePage = () => {
     const state = useSelector(s=>s.userInfo)
@@ -122,83 +123,10 @@ const ProfilePage = () => {
          
                 { stateListCard ? (<CardList/>) : (<div></div>)}
              </div>
-    
+                
                 {/* calendar */}
                 <div className="calendarContainer">
-                    <table>
-                    <tr>
-           <td colSpan="14" className="month">MONTH</td>
-                    </tr>
-  <tr>
-    <td>Monday</td>
-    <td>Tuesday</td>
-    <td>Wednesday</td>
-    <td>Thursday</td>
-    <td>Friday</td>
-    <td>Saturday</td>
-    <td>Sunday</td>
-  </tr>
-
-    <tr>
-    <td>29</td>
-    <td>30</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-
-    <tr>
-    <td>29</td>
-    <td>30</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-
-    <tr>
-    <td>29</td>
-    <td>30</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-
-   <tr>
-    <td>29</td>
-    <td>30</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-
-    <tr>
-    <td>29</td>
-    <td>30</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-
-  <tr>
-    <td>29</td>
-    <td>30</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-                    </table>
+                   <Calendar/>
                 </div>
                 <div className="extra_space"></div>
             </div>
