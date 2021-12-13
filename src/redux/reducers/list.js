@@ -1,8 +1,8 @@
-import { GET_LISTS, POST_NEW_LIST, SET_LIST_CARD } from "../actions";
+import { DELETE_TASK, GET_LISTS, POST_NEW_LIST, POST_NEW_TASK, SET_LIST_CARD } from "../actions";
 import { initialState } from "../store";
 
 const listReducer = (state = initialState.list, action) => {
-  
+  console.log(action)
     switch (action.type) {
         case GET_LISTS: {
             return {
@@ -13,13 +13,25 @@ const listReducer = (state = initialState.list, action) => {
         case POST_NEW_LIST: {
             return {
                 ...state,
-               lists: action.payload
+               lists: [...action.payload]
             }
         }
         case SET_LIST_CARD: {
             return {
                 ...state,
-               list: action.payload
+                selectedList: action.payload
+            }
+        }
+        case POST_NEW_TASK: {
+            return {
+                ...state,
+                selectedList: [...action.payload]
+            }
+        }
+        case DELETE_TASK: {
+            return {
+                ...state,
+               ...action.payload
             }
         }
         default:

@@ -27,7 +27,8 @@ export const initialState = {
         userGeneric: {}
       },
       list: {
-        lists: []
+        lists: [],
+        selectedList: {}
       }
     
 };

@@ -19,6 +19,8 @@ export const EDID_USER_PROFILE_PICTURE = 'EDID_USER_PROFILE_PICTURE'
 export const GET_LISTS = 'GET_LISTS'
 export const POST_NEW_LIST = 'POST_NEW_LIST'
 export const SET_LIST_CARD = 'SET_LIST_CARD'
+export const POST_NEW_TASK = 'POST_NEW_TASK'
+export const DELETE_TASK = 'DELETE_TASK'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -341,7 +343,6 @@ export const setUsernameAction = (userInfo) => ({
             type: GET_LISTS,
             payload: lists
           })
-          console.log(lists)
         }
       } catch (error) {
         console.log(error)
@@ -378,3 +379,52 @@ export const setUsernameAction = (userInfo) => ({
     type: SET_LIST_CARD,
     payload: list,
   })
+
+  export const postNewTask = (id, newTask) => {
+    return async (dispatch, getState) => {
+      try {
+        console.log("new task in fetch beforee",newTask ) 
+        let response = await fetch("http://localhost:3003/list/" + id + "/task",
+        {
+          method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          body: JSON.stringify({ task: newTask })
+        })
+      console.log("new task in fetch",newTask )
+        if(response.ok){
+           let newTask = await response.json()
+           dispatch({
+             type: POST_NEW_TASK,
+             payload: newTask
+           })
+           console.log("new task",newTask )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+  export const deleteTask = (idList, idTask) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/list/" + idList + "/task/" + idTask ,
+        {
+          method: "DELETE", 
+            headers: {
+              "Content-Type": "application/json",
+            }
+        })
+        if(response.ok){
+           dispatch({
+             type: DELETE_TASK,
+             payload: response
+           })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
