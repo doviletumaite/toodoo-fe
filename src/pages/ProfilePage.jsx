@@ -6,6 +6,7 @@ import List from "../components/List"
 import NavBar from "../components/NavBar"
 import { edidUser, edidUserProfilePicture, getList, postNewList, setListCard } from "../redux/actions"
 import "../style/ProfilePage.css"
+import del from "../style/images/delete.png"
 
 const ProfilePage = () => {
     const state = useSelector(s=>s.userInfo)
@@ -24,7 +25,6 @@ const ProfilePage = () => {
     const handleEditedName = (e) => {setEditedName(e.target.value)}
     const handleEditedBio = (e) => {setEditedBio(e.target.value)}
 
-    
     const handleEdit = () => {
       const newUserInfo = {username: editedName, bio: editedBio}
        dispatch(edidUser({newUserInfo}))
@@ -99,9 +99,11 @@ const ProfilePage = () => {
                         </div>) : (<div></div>)}
                         <p className="calendarsTitle">my lists of tasks:</p>
                         
-                      { (Object.keys(listsState).length> 1) ?
+                      { (Object.keys(listsState).length>= 1) ?
                         listsState.map(l=> (<List list={l}/>)).reverse() : ( 
-                        <div className="calendarLabel" onClick={()=>setList(listsState)}>{listsState.title}</div>)} 
+                       <> <div className="calendarLabel" onClick={()=>setList(listsState)}>{listsState.title}</div>
+                       {listsState ?  (<></>) : <img src={del} className="deleteIcon"/> }</>
+                        )} 
                         
                         <p className="addCalendar">add a new list</p>
                         <div className="addListInputsWrapper">

@@ -21,6 +21,7 @@ export const POST_NEW_LIST = 'POST_NEW_LIST'
 export const SET_LIST_CARD = 'SET_LIST_CARD'
 export const POST_NEW_TASK = 'POST_NEW_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
+export const DELETE_LIST = 'DELETE_LIST'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -427,4 +428,24 @@ export const setUsernameAction = (userInfo) => ({
       }
     }
   }
-
+  export const deleteList = (idList) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/list/" + idList ,
+        {
+          method: "DELETE", 
+            headers: {
+              "Content-Type": "application/json",
+            }
+        })
+        if(response.ok){
+           dispatch({
+             type: DELETE_LIST,
+             payload: response
+           })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }

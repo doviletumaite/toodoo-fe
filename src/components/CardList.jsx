@@ -32,11 +32,15 @@ const CardList = () => {
       console.log("id list",cardState._id )
       dispatch(deleteTask(cardState._id, t))
 }
+
+const listState = useSelector(s => s.list.lists)
+console.log("list statein card",listState)
     return (
     
+      
           <div className="listSession">
                 <div className="dailyList">
-                <p className="list-Title">{cardState.title}</p>
+             { listState.length===0 ?  (<p className="list-Title"></p>) : ( <p className="list-Title">{cardState.title}</p>)}
                   <div className="list">
                   <p className="date">today's date: {today}</p>   
                 <p className="dailyGoals">my daily goals:</p>
@@ -64,6 +68,7 @@ const CardList = () => {
                 </div>
                 <div className="calendar"></div>
                 </div>
+              
     
  )
 }
