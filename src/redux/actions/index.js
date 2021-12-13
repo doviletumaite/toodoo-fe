@@ -23,6 +23,7 @@ export const POST_NEW_TASK = 'POST_NEW_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
 export const DELETE_LIST = 'DELETE_LIST'
 export const EDID_TASK = 'EDID_TASK'
+export const SET_TASK_DONE = 'SET_TASK_DONE'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -474,3 +475,7 @@ export const setUsernameAction = (userInfo) => ({
       }
     }
   }
+  export const setTaskDone = (task) => ({
+    type: SET_TASK_DONE,
+    payload: task,
+  })

@@ -37,9 +37,10 @@ const listState = useSelector(s => s.list.lists)
 console.log("list statein card",listState)
 console.log("list stateincar dState.tasks",cardState.tasks)
 
-   const checkValueTAsk = (e) => {
-     console.log(e)
-   }
+const checkValueTAsk = () => {
+
+}
+ 
     return (
     
       
