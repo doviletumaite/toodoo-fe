@@ -22,6 +22,7 @@ export const SET_LIST_CARD = 'SET_LIST_CARD'
 export const POST_NEW_TASK = 'POST_NEW_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
 export const DELETE_LIST = 'DELETE_LIST'
+export const EDID_TASK = 'EDID_TASK'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -442,6 +443,30 @@ export const setUsernameAction = (userInfo) => ({
            dispatch({
              type: DELETE_LIST,
              payload: response
+           })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+  export const edidTask = (idList,idTask,{task}) => {
+    return async (dispatch, getState) => {
+      try {
+      
+        let response = await fetch("http://localhost:3003/list" + idList + "/task/" + idTask,
+        {
+          method: "PUT", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          body: JSON.stringify({done: task})
+        })
+        if(response.ok){
+           let updatedTask = await response.json()
+           dispatch({
+             type: EDID_TASK,
+             payload: updatedTask
            })
         }
       } catch (error) {

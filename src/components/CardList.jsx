@@ -36,6 +36,10 @@ const CardList = () => {
 const listState = useSelector(s => s.list.lists)
 console.log("list statein card",listState)
 console.log("list stateincar dState.tasks",cardState.tasks)
+
+   const checkValueTAsk = (e) => {
+     console.log(e)
+   }
     return (
     
       
@@ -62,7 +66,7 @@ console.log("list stateincar dState.tasks",cardState.tasks)
            (  
               <>
                 <img src={del} className="deleteIcon" onClick={()=>handleDeleteTask(cardState.tasks._id)} /> 
-                <input className="checkbox" type="checkbox"/>
+                <input className="checkbox" onClick={(e)=>checkValueTAsk()} type="checkbox"/>
                 <label className="label">{cardState.tasks.task}</label>
                 </>
 

@@ -1,35 +1,49 @@
 import moment from "moment"
 import { useEffect } from "react"
 import { useState } from "react"
+import buildCalendar from "./build.js"
+import dayStyles from "./styles.js"
 
 const Calendar = () => {
     const [calendar, setCalendar] = useState([])
     const [value, setValue] = useState(moment()) 
-    
-    const startDay = value.clone().startOf("month").startOf("week") 
-    const endDay = value.clone().endOf("month").endOf("week") 
 
-      useEffect(() => {
-        const day = startDay.clone().subtract(1, "day")
-    const a =[]
-    while(day.isBefore(endDay, "day")){
-        a.push(
-            Array(7).fill(0).map(()=> day.add(1, "day").clone())
-        )
-    }
-    setCalendar(a)
+     useEffect(() => {
+    setCalendar(buildCalendar(value))
     }, [value])
+
+function currMonthName() {
+    return value.format("MMMM")
+}
+function currYeear() {
+    return value.format("YYYY")
+}
+function prevMonth() {
+    return value.clone().subtract(1, "month")
+}
+function nextMonth() {
+    return value.clone().add(1, "month")
+}
+
     return (
         <div className="calendar">
-            {calendar.map(week => <div>
+            <div className="headerCalendar">
+                <div className="previous" onClick={()=> setValue(prevMonth)}>{String.fromCharCode(171)}</div>
+                <div className="current">{currMonthName()} {currYeear()}</div>
+                <div className="next" onClick={()=>setValue(nextMonth)}>{String.fromCharCode(187)}</div>
+            </div>
+       <div className="bodyCalendar">
+       {calendar.map(week => <div>
                 {
                     week.map(day=> <div className="day" onClick={()=>setValue(day)}>
-                      <div className={value.isSame(day, "day") ? "selected" : ""}
+                      <div className={dayStyles(day, value)}
                       >  {day.format("D").toString()} </div>
                     </div> )
                 }
             </div>)
-            }</div>
+            }
+       </div>
+            </div>
     )
 }
 export default Calendar

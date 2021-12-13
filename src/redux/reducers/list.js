@@ -1,4 +1,4 @@
-import { DELETE_LIST, DELETE_TASK, GET_LISTS, POST_NEW_LIST, POST_NEW_TASK, SET_LIST_CARD } from "../actions";
+import { DELETE_LIST, DELETE_TASK, EDID_TASK, GET_LISTS, POST_NEW_LIST, POST_NEW_TASK, SET_LIST_CARD } from "../actions";
 import { initialState } from "../store";
 
 const listReducer = (state = initialState.list, action) => {
@@ -39,6 +39,12 @@ const listReducer = (state = initialState.list, action) => {
                 ...state,
                ...action.payload,
                selectedList: null
+            }
+        }
+        case EDID_TASK: {
+            return {
+                ...state,
+               ...action.payload
             }
         }
         default:
