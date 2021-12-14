@@ -8,6 +8,8 @@ import { useHistory } from "react-router";
 import {create} from "axios"
 import API from "../tools/api.js";
 import { setUsernameAction } from "../redux/actions";
+import {GoogleLogin} from "react-google-login"
+
 
 const Login = () => {
   const [email, setEmail] = useState("")
@@ -38,6 +40,7 @@ const Login = () => {
       history.push("/showcase/" + data._id)
     }
   }
+ 
 
   return (
     <div>

@@ -7,6 +7,7 @@ import Showcase from "./pages/Showcase";
 import HomePrivat from "./pages/HomePrivat";
 import ProfilePage from "./pages/ProfilePage";
 import ProfilePageUsers from "./pages/ProfilePageUsers";
+import ShowcasePre from "./pages/ShowcasePre";
 
 function App() {
 
@@ -53,6 +54,13 @@ function App() {
           exact
           render={() => (      
             <ProfilePageUsers/>     
+          )}
+        />
+           <Route
+          path="/showcasepre/:id/:token"
+          exact
+          render={() => (      
+            <ShowcasePre />     
           )}
         />
         </Switch>  
