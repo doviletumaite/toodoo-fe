@@ -33,6 +33,11 @@ function nextMonth() {
                 <div className="next" onClick={()=>setValue(nextMonth)}>{String.fromCharCode(187)}</div>
             </div>
        <div className="bodyCalendar">
+           <div className="weekDaysName">
+               {
+                   ["sun", "mon", "tue", "wed", "thu", "fri", "sat"].map(d=> <div className="week">{d}</div>)
+               }
+           </div>
        {calendar.map(week => <div>
                 {
                     week.map(day=> <div className="day" onClick={()=>setValue(day)}>

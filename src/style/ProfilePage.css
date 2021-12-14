@@ -401,6 +401,14 @@
   z-index: 1;
   text-align: center;
 }
+.weekDaysName{
+  display: flex;
+}
+.week{
+  width: calc(100% / 7);
+  box-sizing: border-box;
+  text-align: center;
+}
 .selected{
   background-color:#5fad867a ;
 }
