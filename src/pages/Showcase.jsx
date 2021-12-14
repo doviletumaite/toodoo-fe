@@ -6,7 +6,7 @@ import Post from "../components/Post";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postNewPost, postPicture } from "../redux/actions";
+import { postNewPost, postPicture, postPictureAndText } from "../redux/actions";
 
 const Showcase = () => {
   const stateUser = useSelector((s) => s.userInfo);
@@ -33,9 +33,12 @@ const uploadPicuture = (e) => {
     const img = e.target.files[0]
     setPicture(img)
     console.log("picture",picture)
-    dispatch(postPicture(userId, e.target.files[0]))
+    // dispatch(postPicture(userId, e.target.files[0]))
   }
-
+const postPicAndText = () => {
+  dispatch(postPictureAndText(picture,text ))
+  console.log("pic and text",picture,text )
+}
   return (
     <div>
       <NavBar />
@@ -59,7 +62,7 @@ const uploadPicuture = (e) => {
               <button 
               className="postButton"
               type="submit"
-              onClick={handlePost}
+              onClick={postPicAndText}
               >post it!</button>
               <img className="share-btn" src={share} onClick={handleShowFileInput} />
               </div>

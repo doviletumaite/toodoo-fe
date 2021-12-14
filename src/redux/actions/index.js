@@ -24,6 +24,7 @@ export const DELETE_TASK = 'DELETE_TASK'
 export const DELETE_LIST = 'DELETE_LIST'
 export const EDID_TASK = 'EDID_TASK'
 export const SET_TASK_DONE = 'SET_TASK_DONE'
+export const POST_PICTURE_AND_TEXT = 'POST_PICTURE_AND_TEXT'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -203,6 +204,35 @@ export const setUsernameAction = (userInfo) => ({
              payload: newPostWithPicture
            })
            console.log("deleted",id)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+  export const postPictureAndText = (picture, text) => {
+    return async (dispatch, getState) => {
+      try {
+        const accessToken = localStorage.getItem("accessToken")
+        console.log("picture before fetch", typeof picture)
+        const formData  = new FormData()
+        formData.append('picture', picture)
+        formData.append('text', JSON.stringify({ text })) 
+        let response = await fetch("http://localhost:3003/posts/postwithimage",
+        {
+          method: 'POST',
+          headers: new Headers({
+            Authorization: 'Bearer ' + accessToken,
+          }),
+          body: formData,
+        })
+        console.log(formData)
+        if(response.ok){
+          let newPost = await response.json()
+           dispatch({
+             type: POST_PICTURE_AND_TEXT,
+             payload: newPost
+           })
         }
       } catch (error) {
         console.log(error)
