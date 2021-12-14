@@ -7,7 +7,7 @@ const listReducer = (state = initialState.list, action) => {
         case GET_LISTS: {
             return {
                 ...state,
-               lists: [...action.payload]
+               lists: action.payload
             }
         }
         case POST_NEW_LIST: {

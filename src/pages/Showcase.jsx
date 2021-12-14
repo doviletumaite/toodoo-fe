@@ -29,15 +29,23 @@ const Showcase = () => {
   dispatch(postNewPost({body}))
   }
  
-const uploadPicuture = (e) => {
+const setPicuture = (e) => {
     const img = e.target.files[0]
     setPicture(img)
     console.log("picture",picture)
-    // dispatch(postPicture(userId, e.target.files[0]))
   }
 const postPicAndText = () => {
-  dispatch(postPictureAndText(picture,text, userId ))
+  
   console.log("pic and text",picture,text )
+}
+const postGeneral = () => {
+  if (text==="" && picture !== "" ){
+    dispatch(postPicture(userId,picture ))
+  } if(text!== "" && picture !== ""){
+    dispatch(postPictureAndText(picture,text, userId ))
+  } if (text!== "" && picture ===""){
+    dispatch(postNewPost({body}))
+  }
 }
   return (
     <div>
@@ -62,7 +70,7 @@ const postPicAndText = () => {
               <button 
               className="postButton"
               type="submit"
-              onClick={postPicAndText}
+              onClick={postGeneral}
               >post it!</button>
               <img className="share-btn" src={share} onClick={handleShowFileInput} />
               </div>
@@ -70,7 +78,7 @@ const postPicAndText = () => {
                 showFileInput ? (
                 <div className="labelInputPicture">add a picture!
                
-                  <input type="file" name="picture" id="picture"  onChange={(e)=>uploadPicuture(e)} />
+                  <input type="file" name="picture" id="picture"  onChange={(e)=>setPicuture(e)} />
                   {/* <button type="submit" onClick={(e)=>uploadPicuture(e)}>send</button> */}
                 </div>) : (<div></div>)
               }

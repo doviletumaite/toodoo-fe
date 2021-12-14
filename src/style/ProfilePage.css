@@ -250,8 +250,10 @@
   cursor: pointer;
 }
 .deleteIcon {
-  height: 25px;
-  width: 25px;
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 .label {
   font-size: 16px;
