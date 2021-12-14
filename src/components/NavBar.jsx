@@ -5,6 +5,8 @@ import { useHistory } from "react-router";
 import { useEffect } from "react";
 import chat from "../style/images/chat.png";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import options from "../style/images/options.png";
+import { useState } from "react";
 
 const NavBar = () => {
   const state = useSelector((s) => s.userInfo);
@@ -22,7 +24,15 @@ const NavBar = () => {
   //     check out your profile!
   //   </Tooltip>
   // );
-
+  const [dropDown, setDropDown] = useState(false)
+  const showDropdown = () => {
+    setDropDown(!dropDown)
+  }
+  
+  const logout = () => {
+    history.push("/")
+    window.localStorage.clear()
+  }
   return (
     <div className="navbar">
 
@@ -54,17 +64,22 @@ const NavBar = () => {
               delay={{ show: 250, hide: 400 }}
               overlay={renderTooltipProfile}
             > */}
+            <div className="userBox">
               <div
                 className="navbar-user"
                 onClick={() => history.push("/profilePage/" + state._id)}
               >
                 {state.username}
-              </div>
+              
+              </div></div>
+                <img src={options} className="options" onClick={showDropdown}/>
             {/* </OverlayTrigger> */}
           </>
         ) : (
           <div></div>
         )}
+
+        {dropDown ? <div className="dropdown" onClick={logout}>logout</div> : (<></>)}
       </div>
     </div>
   );

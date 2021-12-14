@@ -210,7 +210,7 @@ export const setUsernameAction = (userInfo) => ({
       }
     }
   }
-  export const postPictureAndText = (picture, text) => {
+  export const postPictureAndText = (picture, text, id) => {
     return async (dispatch, getState) => {
       try {
         const accessToken = localStorage.getItem("accessToken")
@@ -237,6 +237,7 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
+      dispatch(getPosts(id))
     }
   }
   export const getUser = (id) => {
@@ -509,3 +510,4 @@ export const setUsernameAction = (userInfo) => ({
     type: SET_TASK_DONE,
     payload: task,
   })
+

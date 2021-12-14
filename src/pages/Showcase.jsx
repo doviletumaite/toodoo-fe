@@ -36,7 +36,7 @@ const uploadPicuture = (e) => {
     // dispatch(postPicture(userId, e.target.files[0]))
   }
 const postPicAndText = () => {
-  dispatch(postPictureAndText(picture,text ))
+  dispatch(postPictureAndText(picture,text, userId ))
   console.log("pic and text",picture,text )
 }
   return (
