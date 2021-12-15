@@ -441,3 +441,9 @@
 .next:hover{
   cursor: pointer;
  }
+
+ .calendarTitle{
+   text-align: center;
+   background-color: rgb(245, 173, 57);
+   border-radius: 2px;
+ }

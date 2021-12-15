@@ -1,7 +1,9 @@
 import moment from "moment"
 import { useEffect } from "react"
 import { useState } from "react"
+import { useSelector } from "react-redux"
 import buildCalendar from "./build.js"
+import Points from "./Points.jsx"
 import dayStyles from "./styles.js"
 
 const Calendar = () => {
@@ -25,8 +27,11 @@ function nextMonth() {
     return value.clone().add(1, "month")
 }
 
+const cardState = useSelector(s=> s.list.selectedList)
+
     return (
         <div className="calendar">
+           { cardState ? <div className="calendarTitle">{cardState.title}</div> : (<></>)}
             <div className="headerCalendar">
                 <div className="previous" onClick={()=> setValue(prevMonth)}>{String.fromCharCode(171)}</div>
                 <div className="current">{currMonthName()} {currYeear()}</div>
@@ -41,8 +46,9 @@ function nextMonth() {
        {calendar.map(week => <div>
                 {
                     week.map(day=> <div className="day" onClick={()=>setValue(day)}>
-                      <div className={dayStyles(day, value)}
-                      >  {day.format("D").toString()} </div>
+                      <div className={dayStyles(day, value)}>
+                        {day.format("D").toString()} </div>
+                        <Points day={day.format("D").toString()}/>
                     </div> )
                 }
             </div>)

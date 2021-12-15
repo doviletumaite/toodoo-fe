@@ -31,7 +31,7 @@ const CardList = () => {
     }
 
     const handleDeleteTask = (t) =>{
-      console.log("id list",cardState._id )
+      console.log("id list",cardState._id, cardState )
       dispatch(deleteTask(cardState._id, t ))
 }
 

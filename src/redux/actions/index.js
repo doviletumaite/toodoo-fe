@@ -441,7 +441,7 @@ export const setUsernameAction = (userInfo) => ({
            setListCard(cardState)
     }
   }
-  export const deleteTask = (idList, idTask, tasks) => {
+  export const deleteTask = (idList, idTask) => {
     return async (dispatch, getState) => {
       try {
         let response = await fetch("http://localhost:3003/list/" + idList + "/task/" + idTask ,
@@ -452,18 +452,20 @@ export const setUsernameAction = (userInfo) => ({
             }
         })
         if(response.ok){
+          const editedList = await response.json()
            dispatch({
              type: DELETE_TASK,
-             payload: response
+             payload: editedList
            })
+           setListCard(editedList)
         }
       } catch (error) {
         console.log(error)
       }
-      setListCard(tasks)
+      
     }
   }
-  export const deleteList = (idList) => {
+  export const deleteList = (idList, list) => {
     return async (dispatch, getState) => {
       try {
         let response = await fetch("http://localhost:3003/list/" + idList ,
@@ -482,19 +484,20 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
+      setListCard(list)
     }
   }
   export const edidTask = (idList,idTask,{task}) => {
     return async (dispatch, getState) => {
       try {
       
-        let response = await fetch("http://localhost:3003/list" + idList + "/task/" + idTask,
+        let response = await fetch("http://localhost:3003/list/" + idList + "/task/" + idTask,
         {
           method: "PUT", 
             headers: {
               "Content-Type": "application/json",
             },
-          body: JSON.stringify({done: task})
+          body: JSON.stringify({done: task.value})
         })
         if(response.ok){
            let updatedTask = await response.json()
@@ -502,6 +505,7 @@ export const setUsernameAction = (userInfo) => ({
              type: EDID_TASK,
              payload: updatedTask
            })
+           console.log("updated task", updatedTask)
         }
       } catch (error) {
         console.log(error)

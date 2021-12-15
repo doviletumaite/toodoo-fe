@@ -12,10 +12,10 @@ const Task = ({task:t}) => {
            dispatch(deleteTask(cardState._id, t))
     }
     const [check, setCheck] = useState(false)
-    const checkValueTAsk = (e) => {
+    const checkValueTAsk = (id) => {
         setCheck(!check)
-        console.log(check)
-        dispatch(setTaskDone(!check))
+        // dispatch(setTaskDone(!check))
+         dispatch(edidTask(cardState._id, id, {task:check}))
       }
     return (
 
@@ -23,7 +23,7 @@ const Task = ({task:t}) => {
           <img src={del} onClick={()=>handleDeleteTask(t._id)} className="deleteIcon"/>
           <input className="checkbox" type="checkbox" 
           value={check} 
-          onChange={(e)=>checkValueTAsk(e) } 
+          onChange={()=>checkValueTAsk(t._id) } 
           />
           <label className="label">{t.task}</label>
           </div>
