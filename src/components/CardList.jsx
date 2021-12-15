@@ -56,7 +56,7 @@ const checkValueTAsk = () => {
                
                     </div>
                      
-              {/* { listState ?    <div className="checkList">
+              { listState ?    <div className="checkList">
                   <div className="checks">
                 
               { (Object.keys(cardState.tasks).length>= 1 ) ? 
@@ -73,7 +73,7 @@ const checkValueTAsk = () => {
                 )  }
                
                      </div>
-                     </div>  :(<></>) } */}
+                     </div>  :(<></>) }
                   </div>
                 </div>
                 </div>
