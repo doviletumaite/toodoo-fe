@@ -162,6 +162,7 @@
   border: 1px solid;
   border-color: rgba(0, 0, 0, 0.055);
   align-items: center;
+  margin-bottom: 10px;
 }
 .dailyList:hover {
   box-shadow: 0 4px 8px 0 rgba(236, 122, 46, 0.541),

@@ -415,7 +415,7 @@ export const setUsernameAction = (userInfo) => ({
     payload: list,
   })
 
-  export const postNewTask = (id, newTask, tasks) => {
+  export const postNewTask = (id, newTask) => {
     return async (dispatch, getState) => {
       try {
         let response = await fetch("http://localhost:3003/list/" + id + "/task",
@@ -427,16 +427,17 @@ export const setUsernameAction = (userInfo) => ({
           body: JSON.stringify({ task: newTask })
         })
         if(response.ok){
-           let newTask = await response.json()
+           let newTaskCreated = await response.json()
            dispatch({
              type: POST_NEW_TASK,
-             payload: newTask
+             payload: newTaskCreated
            })
+           console.log("tasks post task action", newTaskCreated)
         }
+
       } catch (error) {
         console.log(error)
       }
-      setListCard(tasks)
     }
   }
   export const deleteTask = (idList, idTask, tasks) => {

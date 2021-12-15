@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { deleteTask, postNewTask } from "../redux/actions";
+import { deleteTask, postNewTask, setListCard } from "../redux/actions";
 import Task from "./Task";
 import del from "../style/images/delete.png";
 
@@ -26,7 +26,8 @@ const CardList = () => {
       if(newTask===""){
         alert("add some task :)")
       } else {
-           dispatch(postNewTask(cardState._id, newTask ,tasks))
+           dispatch(postNewTask(cardState._id, newTask))
+          console.log("card state resetted", cardState)
       }
     }
 

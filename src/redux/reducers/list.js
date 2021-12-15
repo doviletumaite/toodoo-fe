@@ -25,7 +25,7 @@ const listReducer = (state = initialState.list, action) => {
         case POST_NEW_TASK: {
             return {
                 ...state,
-                selectedList: action.payload
+                selectedList: [...action.payload]
             }
         }
         case DELETE_TASK: {
@@ -50,7 +50,7 @@ const listReducer = (state = initialState.list, action) => {
         case SET_TASK_DONE: {
             return {
                 ...state,
-               done: action.payload 
+               ...action.payload 
             }
         }
         // case SET_LIST_IN_LOGOUT: {

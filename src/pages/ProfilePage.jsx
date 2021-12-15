@@ -46,7 +46,6 @@ const ProfilePage = () => {
   }, []);
 
   const listsState = useSelector(s => s.list.lists)
-  console.log("listsss",listsState)
 
   const [newList, setNewList] = useState("")
   const handleNewList = (e) => {
@@ -54,8 +53,12 @@ const ProfilePage = () => {
   }
   const handlePostNewList = () => {
     const bodyList = {user:state._id, title:newList }
-    dispatch(postNewList(state._id, {bodyList}))
+    if(bodyList.title===""){
+      alert("add a list :)")
+    } else {
+        dispatch(postNewList(state._id, {bodyList}))
     console.log("bodyList",bodyList)
+    }
   }
   const setList = (list) => {
     dispatch(setListCard(list))
