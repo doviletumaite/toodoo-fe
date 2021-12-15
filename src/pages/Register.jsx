@@ -20,7 +20,7 @@ const Register = () => {
  const dispatch = useDispatch()
  const history = useHistory()
 
- const URL = create({baseURL: "http://localhost:3003"})
+ const URL = create({baseURL: process.env.REACT_APP_DEPLOYED_API})
 
   const register = async () => {
     const {data} = await URL.post("/user/newaccount", 

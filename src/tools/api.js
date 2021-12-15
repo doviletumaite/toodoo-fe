@@ -1,6 +1,6 @@
 import {create, defaults} from "axios"
 
-const API = create({baseURL: "http://localhost:3003"})
+const API = create({baseURL: process.env.REACT_APP_DEPLOYED_API})
 
 const refreshAccessToken = async () => {
     const { data } = await API.post("/user/login", {

@@ -39,12 +39,12 @@ export const setUsernameAction = (userInfo) => ({
     payload: info,
   })
 
-  const URL = create({baseURL: "http://localhost:3003"})
-
+  // const URL = create({baseURL: "http://localhost:3003"})
+  const URL = process.env.REACT_APP_DEPLOYED_API
   export const getPosts = () => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/posts")
+        let response = await fetch(URL+"/posts")
         if(response.ok){
            let posts = await response.json()
            dispatch({
@@ -65,7 +65,7 @@ export const setUsernameAction = (userInfo) => ({
   export const getComments = (id) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/posts/" + id + "/comment")
+        let response = await fetch(URL + "/posts/" + id + "/comment")
         if(response.ok){
            let comment = await response.json()
            dispatch({
@@ -85,7 +85,7 @@ export const setUsernameAction = (userInfo) => ({
       try {
         console.log("hi",id )
         console.log("hi bodyyy POST", bodyComment )
-        let response = await fetch("http://localhost:3003/posts/" + id + "/comment",
+        let response = await fetch(URL +"/posts/" + id + "/comment",
         {
           method: "POST", 
             headers: {
@@ -113,7 +113,7 @@ export const setUsernameAction = (userInfo) => ({
   export const postNewPost = ({body}) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/posts",
+        let response = await fetch(URL +"/posts",
         {
           method: "POST", 
             headers: {
@@ -140,7 +140,7 @@ export const setUsernameAction = (userInfo) => ({
   export const edidPost = (id, {editedPost}) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/posts/" + id,
+        let response = await fetch(URL +"/posts/" + id,
         {
           method: "PUT", 
             headers: {
@@ -167,7 +167,7 @@ export const setUsernameAction = (userInfo) => ({
   export const deletePost = (id) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/posts/" + id,
+        let response = await fetch(URL +"/posts/" + id,
         {
           method: "DELETE", 
             headers: {
@@ -193,7 +193,7 @@ export const setUsernameAction = (userInfo) => ({
         console.log("picture before fetch", typeof picture)
         const formData  = new FormData()
         formData.append('picture', picture)
-        let response = await fetch("http://localhost:3003/posts/" + id + "/picture",
+        let response = await fetch(URL +"/posts/" + id + "/picture",
         {
           method: "POST", 
           body: formData
@@ -220,7 +220,7 @@ export const setUsernameAction = (userInfo) => ({
         const formData  = new FormData()
         formData.append('picture', picture)
         formData.append('text', JSON.stringify({ text })) 
-        let response = await fetch("http://localhost:3003/posts/postwithimage",
+        let response = await fetch(URL +"/posts/postwithimage",
         {
           method: 'POST',
           headers: new Headers({
@@ -245,7 +245,7 @@ export const setUsernameAction = (userInfo) => ({
   export const getUser = (id) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/user/" + id)
+        let response = await fetch(URL +"/user/" + id)
         console.log("id for the fetch", id)
         if(response.ok){
            let user = await response.json()
@@ -265,7 +265,7 @@ export const setUsernameAction = (userInfo) => ({
   export const edidComment = (idPost, idComment, {editedComment}) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/posts/" + idPost + "/comment/"+ idComment,
+        let response = await fetch(URL +"/posts/" + idPost + "/comment/"+ idComment,
         {
           method: "PUT", 
             headers: {
@@ -291,7 +291,7 @@ export const setUsernameAction = (userInfo) => ({
   export const deleteComment = (idPost, idComment) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/posts/" + idPost + "/comment/"+ idComment,
+        let response = await fetch(URL +"/posts/" + idPost + "/comment/"+ idComment,
         {
           method: "DELETE", 
             headers: {
@@ -316,7 +316,7 @@ export const setUsernameAction = (userInfo) => ({
        
         const accessToken = localStorage.getItem("accessToken")
        
-        let response = await fetch("http://localhost:3003/user/me",
+        let response = await fetch(URL +"/user/me",
         {
           method: "PUT", 
             headers: {
@@ -346,7 +346,7 @@ export const setUsernameAction = (userInfo) => ({
         console.log("formdata",formData)
         const accessToken = localStorage.getItem("accessToken")
        
-        let response = await fetch("http://localhost:3003/user/meAvatar",
+        let response = await fetch(URL +"/user/meAvatar",
         {
           method: "PUT", 
             headers: {
@@ -372,7 +372,7 @@ export const setUsernameAction = (userInfo) => ({
   export const getList = (id) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/list/" + id)
+        let response = await fetch(URL +"/list/" + id)
         if(response.ok){
           let lists = await response.json()
           dispatch({
@@ -388,7 +388,7 @@ export const setUsernameAction = (userInfo) => ({
   export const postNewList = (id, {bodyList}) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/list",
+        let response = await fetch(URL +"/list",
         {
           method: "POST", 
             headers: {
@@ -419,7 +419,7 @@ export const setUsernameAction = (userInfo) => ({
   export const postNewTask = (id, newTask, cardState) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/list/" + id + "/task",
+        let response = await fetch(URL +"/list/" + id + "/task",
         {
           method: "POST", 
             headers: {
@@ -444,7 +444,7 @@ export const setUsernameAction = (userInfo) => ({
   export const deleteTask = (idList, idTask) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/list/" + idList + "/task/" + idTask ,
+        let response = await fetch(URL +"/list/" + idList + "/task/" + idTask ,
         {
           method: "DELETE", 
             headers: {
@@ -468,7 +468,7 @@ export const setUsernameAction = (userInfo) => ({
   export const deleteList = (idList, list) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/list/" + idList ,
+        let response = await fetch(URL +"/list/" + idList ,
         {
           method: "DELETE", 
             headers: {
@@ -491,7 +491,7 @@ export const setUsernameAction = (userInfo) => ({
     return async (dispatch, getState) => {
       try {
       
-        let response = await fetch("http://localhost:3003/list/" + idList + "/task/" + idTask,
+        let response = await fetch(URL +"/list/" + idList + "/task/" + idTask,
         {
           method: "PUT", 
             headers: {
