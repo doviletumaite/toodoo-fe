@@ -4,11 +4,10 @@ import {deleteTask, edidTask, setTaskDone} from "../redux/actions"
 import { useState } from "react";
 
 const Task = ({task:t}) => {
-    console.log("t",t)
     const cardState = useSelector(s=> s.list.selectedList)
+    const listState = useSelector(s=> s.list)
     const dispatch = useDispatch()
     const handleDeleteTask = (t) =>{
-           console.log(t)
            console.log("id list",cardState._id )
            dispatch(deleteTask(cardState._id, t))
     }

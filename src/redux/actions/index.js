@@ -1,4 +1,5 @@
 import {create} from "axios"
+import { useSelector } from "react-redux"
 import API from "../../tools/api.js"
 
 export const SET_USER_INFO = 'SET_USER_INFO'
@@ -415,7 +416,7 @@ export const setUsernameAction = (userInfo) => ({
     payload: list,
   })
 
-  export const postNewTask = (id, newTask) => {
+  export const postNewTask = (id, newTask, cardState) => {
     return async (dispatch, getState) => {
       try {
         let response = await fetch("http://localhost:3003/list/" + id + "/task",
@@ -432,12 +433,12 @@ export const setUsernameAction = (userInfo) => ({
              type: POST_NEW_TASK,
              payload: newTaskCreated
            })
-           console.log("tasks post task action", newTaskCreated)
         }
 
       } catch (error) {
         console.log(error)
       }
+           setListCard(cardState)
     }
   }
   export const deleteTask = (idList, idTask, tasks) => {

@@ -26,19 +26,15 @@ const CardList = () => {
       if(newTask===""){
         alert("add some task :)")
       } else {
-           dispatch(postNewTask(cardState._id, newTask))
-          console.log("card state resetted", cardState)
+           dispatch(postNewTask(cardState._id, newTask, cardState))
       }
     }
 
     const handleDeleteTask = (t) =>{
-      console.log(t)
       console.log("id list",cardState._id )
       dispatch(deleteTask(cardState._id, t ))
 }
 
-
-console.log(listState)
 
 const checkValueTAsk = () => {
 
@@ -60,7 +56,7 @@ const checkValueTAsk = () => {
                
                     </div>
                      
-              { listState ?        <div className="checkList">
+              { listState ?    <div className="checkList">
                   <div className="checks">
                 
               { (Object.keys(cardState.tasks).length>= 1 ) ? 
