@@ -28,10 +28,11 @@ function nextMonth() {
 }
 
 const cardState = useSelector(s=> s.list.selectedList)
-
+const listState = useSelector(s=> s.list.lists)
+console.log((Object.keys(listState))>=0)
     return (
         <div className="calendar">
-           { cardState ? <div className="calendarTitle">{cardState.title}</div> : (<></>)}
+           { cardState && (Object.keys(listState))>=0 ? <div className="calendarTitle">{cardState.title}</div> : (<></>)}
             <div className="headerCalendar">
                 <div className="previous" onClick={()=> setValue(prevMonth)}>{String.fromCharCode(171)}</div>
                 <div className="current">{currMonthName()} {currYeear()}</div>
