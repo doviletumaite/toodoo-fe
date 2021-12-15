@@ -1,4 +1,4 @@
-import { DELETE_LIST, DELETE_TASK, EDID_TASK, GET_LISTS, POST_NEW_LIST, POST_NEW_TASK, SET_LIST_CARD, SET_TASK_DONE } from "../actions";
+import { DELETE_LIST, DELETE_TASK, EDID_TASK, GET_LISTS, POST_NEW_LIST, POST_NEW_TASK, SET_LIST_CARD, SET_LIST_IN_LOGOUT, SET_TASK_DONE } from "../actions";
 import { initialState } from "../store";
 
 const listReducer = (state = initialState.list, action) => {
@@ -25,7 +25,7 @@ const listReducer = (state = initialState.list, action) => {
         case POST_NEW_TASK: {
             return {
                 ...state,
-                selectedList: [...action.payload]
+                selectedList: action.payload
             }
         }
         case DELETE_TASK: {
@@ -53,6 +53,13 @@ const listReducer = (state = initialState.list, action) => {
                done: action.payload 
             }
         }
+        // case SET_LIST_IN_LOGOUT: {
+        //     return {
+        //         ...state,
+        //        list: [],
+        //        selectedList: {}
+        //     }
+        // }
         default:
             return state
     }

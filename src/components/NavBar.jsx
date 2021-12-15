@@ -7,9 +7,12 @@ import chat from "../style/images/chat.png";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import options from "../style/images/options.png";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setLogout } from "../redux/actions";
 
 const NavBar = () => {
   const state = useSelector((s) => s.userInfo);
+  const dispatch = useDispatch()
   const history = useHistory();
   const pathname = history.location.pathname;
 

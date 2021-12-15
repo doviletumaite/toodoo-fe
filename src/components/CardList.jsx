@@ -15,27 +15,29 @@ const CardList = () => {
 
     const tasks = useSelector(s=> s.list.tasks)
     const cardState = useSelector(s=> s.list.selectedList)
-    console.log("tasks", tasks)
-    console.log("cardState", cardState)
-
+    const userState = useSelector(s=> s.userInfo)
+    const listState = useSelector(s => s.list.lists)
     const [newTask, setNewTask] = useState("")
     const handleNewTask = (e) => {
       setNewTask(e.target.value)
     }
 
     const addTask = () => {
-      dispatch(postNewTask(cardState._id, newTask))
-   console.log("idList and new task",cardState._id,newTask )
+      if(newTask===""){
+        alert("add some task :)")
+      } else {
+           dispatch(postNewTask(cardState._id, newTask ,tasks))
+      }
     }
+
     const handleDeleteTask = (t) =>{
       console.log(t)
       console.log("id list",cardState._id )
-      dispatch(deleteTask(cardState._id, t))
+      dispatch(deleteTask(cardState._id, t ))
 }
 
-const listState = useSelector(s => s.list.lists)
-console.log("list statein card",listState)
-console.log("list stateincar dState.tasks",cardState.tasks)
+
+console.log(listState)
 
 const checkValueTAsk = () => {
 
@@ -46,7 +48,7 @@ const checkValueTAsk = () => {
       
           <div className="listSession">
                 <div className="dailyList">
-             { listState.length===0 ?  (<p className="list-Title"></p>) : ( <p className="list-Title">{cardState.title}</p>)}
+             { listState.length>=1 ?  ( <p className="list-Title">{cardState.title}</p>) : (<p className="list-Title"></p>) }
                   <div className="list">
                   <p className="date">today's date: {today}</p>   
                 <p className="dailyGoals">my daily goals:</p>
@@ -57,10 +59,10 @@ const checkValueTAsk = () => {
                
                     </div>
                      
-              { listState.length===0 ?  (<></>)  :     <div className="checkList">
+              { listState ?        <div className="checkList">
                   <div className="checks">
-               
-              { (cardState.tasks.length>= 1 ) ? 
+                
+              { (Object.keys(cardState.tasks).length>= 1 ) ? 
                cardState.tasks.map(t=> <Task task={t}/>)
               : 
               cardState.tasks.length=== 0 ? (<></>) :
@@ -71,10 +73,10 @@ const checkValueTAsk = () => {
                 <label className="label">{cardState.tasks.task}</label>
                 </>
 
-                ) }
+                )  }
                
                      </div>
-                     </div> }
+                     </div>  :(<></>) }
                   </div>
                 </div>
                 </div>

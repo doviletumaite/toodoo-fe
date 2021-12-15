@@ -25,6 +25,7 @@ export const DELETE_LIST = 'DELETE_LIST'
 export const EDID_TASK = 'EDID_TASK'
 export const SET_TASK_DONE = 'SET_TASK_DONE'
 export const POST_PICTURE_AND_TEXT = 'POST_PICTURE_AND_TEXT'
+export const SET_LIST_IN_LOGOUT = 'SET_LIST_IN_LOGOUT'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -414,10 +415,9 @@ export const setUsernameAction = (userInfo) => ({
     payload: list,
   })
 
-  export const postNewTask = (id, newTask) => {
+  export const postNewTask = (id, newTask, tasks) => {
     return async (dispatch, getState) => {
       try {
-        console.log("new task in fetch beforee",newTask ) 
         let response = await fetch("http://localhost:3003/list/" + id + "/task",
         {
           method: "POST", 
@@ -426,21 +426,20 @@ export const setUsernameAction = (userInfo) => ({
             },
           body: JSON.stringify({ task: newTask })
         })
-      console.log("new task in fetch",newTask )
         if(response.ok){
            let newTask = await response.json()
            dispatch({
              type: POST_NEW_TASK,
              payload: newTask
            })
-           console.log("new task",newTask )
         }
       } catch (error) {
         console.log(error)
       }
+      setListCard(tasks)
     }
   }
-  export const deleteTask = (idList, idTask) => {
+  export const deleteTask = (idList, idTask, tasks) => {
     return async (dispatch, getState) => {
       try {
         let response = await fetch("http://localhost:3003/list/" + idList + "/task/" + idTask ,
@@ -459,6 +458,7 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
+      setListCard(tasks)
     }
   }
   export const deleteList = (idList) => {
@@ -509,5 +509,9 @@ export const setUsernameAction = (userInfo) => ({
   export const setTaskDone = (task) => ({
     type: SET_TASK_DONE,
     payload: task,
+  })
+  export const setLogout = (list) => ({
+    type: SET_LIST_IN_LOGOUT,
+    payload: list,
   })
 
