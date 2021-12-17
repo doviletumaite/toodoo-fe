@@ -1,0 +1,264 @@
+.chatPageBody {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 35px;
+  height: 90vh;
+}
+/* left side */
+.left {
+  padding: 10px;
+  float: left;
+  width: 25%;
+  height: 100%;
+  background-color: rgba(174, 234, 245, 0.609);
+  border-right: solid 1px rgba(0, 0, 0, 0.24);
+ 
+}
+.serachBarContainer{
+  top:0px;
+  width: 100%;
+  height: 12%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px;
+  justify-content: flex-start;
+   margin-bottom: 10px;
+}
+.profilePictureUser{
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  margin-right: 20px;
+}
+.searchItemsContainer{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.searchItemsContainer input{
+  height: 30px;
+  width: 80%;
+  border-radius: 2px;
+  border: transparent;
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.705);
+  font-size: 16px;
+}
+.searchItemsContainer input:focus {
+  outline: none;
+}
+.serachBarContainer button{
+  background-color: rgb(107, 202, 226);
+  display: inline-flex;
+  border-color: transparent;
+  border-radius: 2px;
+  box-shadow: 0 4px 5px 0 rgba(240, 115, 57, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(255, 250, 250);
+  width: fit-content;
+  height:fit-content ;
+  margin-top: 5px;
+}
+
+.searchItemsContainer label{
+  font-size: 20px;
+}
+/* left side */
+.right {
+  padding: 10px;
+  float: left;
+  width: 25%;
+  height: 100%;
+  background-color: rgba(174, 234, 245, 0.609);
+  border-left: solid 1px rgba(0, 0, 0, 0.24);
+}
+.conversationList{
+ overflow-y: scroll;
+ height: 85%;
+}
+.convCardBody{
+  width: 95%;
+  height:fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(129, 196, 235, 0.445);
+  margin: auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.123);
+}
+.convCardBody:hover{
+  background-color: rgba(129, 196, 235, 0.342);
+  cursor: pointer;
+}
+.convCardBody .convUserImg{
+border-radius: 50%;
+height: 55px;
+width: 55px;
+margin-right: 10px;
+}
+.userName{
+  margin-left: 10px;
+  font-size: 18px;
+}
+/* chat */
+.chat {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(245, 252, 253, 0.52);
+  
+}
+.messageBox{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+.messagesContainer{
+  height: 90%;
+  width: 100%;
+  border-radius: 2px;
+  background-color: rgba(172, 197, 243, 0.342);
+  overflow-y: scroll;
+}
+.messageBody{
+  display: flex;
+  align-items: flex-start;
+  margin-left: 20px;
+  margin-top: 20px;
+  height: fit-content;
+  align-items: flex-start;
+  max-width: 70%;
+}
+.messageBody .imgMessage{
+  border-radius: 50%;
+height: 45px;
+width: 45px;
+margin:3px 10px;
+
+}
+.textContainer{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+}
+.text{
+ font-size: 18px;
+ background-color: rgba(129, 196, 235, 0.445);
+ border-radius: 25px;
+ padding: 10px;
+ height: fit-content;
+ width: fit-content;
+ margin-top: -5px;
+ margin-left: -5px;
+}
+.time{
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: -18px;
+  margin-bottom: -5px;
+ }
+ .messageBox.own{
+  display: flex;
+  justify-content: flex-end;
+ }
+ .messageBody.own{
+   display: flex;
+   flex-direction: row-reverse;
+ }
+ .text.own{
+  background-color: rgba(129, 196, 235, 0.226);
+ }
+
+/* input message box */
+.inputForMessageContainer{
+  margin-top: 10px;
+  height: 10%;
+  background-color: rgba(172, 197, 243, 0.342);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inputForMessageContainer input{
+  height: 30px;
+  width: 80%;
+  border-radius: 2px;
+  border: transparent;
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.705);
+  font-size: 16px;
+}
+.inputForMessageContainer input:focus {
+  outline: none;
+}
+.inputForMessageContainer button{
+  background-color: rgb(107, 202, 226);
+  display: inline-flex;
+  border-color: transparent;
+  border-radius: 2px;
+  box-shadow: 0 4px 5px 0 rgba(240, 115, 57, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(255, 250, 250);
+  width: fit-content;
+  height:fit-content ;
+  margin-left: 10px;
+}
+
+button:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+button:focus{
+  background-color:rgb(245, 173, 57);
+}
+/* right side */
+.header {
+  font-size: 20px;
+  margin-left: 20px;
+}
+.cardsList{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+  overflow-y: scroll;
+  height: 94%;
+}
+.cardBody{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(129, 196, 235, 0.445);
+  width: 90%;
+  height: fit-content;
+  padding: 5px;
+  margin-left: 15px;
+  margin-bottom: 2px;
+}
+.cardBody:hover{
+  background-color: rgba(129, 196, 235, 0.329);
+  cursor: pointer;
+}
+
+.cardBody img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-right: 12px;
+}
+.cardBody p {
+ font-size: 18px;
+ margin-top: 8px;
+}

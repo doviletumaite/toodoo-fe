@@ -48,14 +48,14 @@ const checkValueTAsk = () => {
              { listState.length>=1 ?  ( <p className="list-Title">{cardState.title}</p>) : (<p className="list-Title"></p>) }
                   <div className="list">
                   <p className="date">today's date: {today}</p>   
-                <p className="dailyGoals">my daily goals:</p>
+                
 
                      <div className="inputs-list">
                 <input type="text" placeholder="add some tasks!" value={newTask} onChange={handleNewTask}/>
                 <button className="addTaskButton" onClick={addTask}>add</button>
-               
+              
                     </div>
-                     
+                    <p className="dailyGoals">my daily goals:</p>  
               { listState ?    <div className="checkList">
                   <div className="checks">
                 

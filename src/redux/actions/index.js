@@ -27,6 +27,7 @@ export const EDID_TASK = 'EDID_TASK'
 export const SET_TASK_DONE = 'SET_TASK_DONE'
 export const POST_PICTURE_AND_TEXT = 'POST_PICTURE_AND_TEXT'
 export const SET_LIST_IN_LOGOUT = 'SET_LIST_IN_LOGOUT'
+export const GET_CONVERSATIONS = 'GET_CONVERSATIONS'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -521,3 +522,20 @@ export const setUsernameAction = (userInfo) => ({
     payload: list,
   })
 
+  export const getConversation = (id) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/conversation/" + id)
+        if(response.ok){
+          let conversations = await response.json()
+          dispatch({
+            type: GET_CONVERSATIONS,
+            payload: conversations
+          })
+          console.log("conversations",conversations )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }

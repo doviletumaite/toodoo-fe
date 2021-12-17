@@ -5,7 +5,7 @@
   flex-direction: row;
 } */
 .profileAndListContainer {
-  width: 100%;
+  width: 80%;
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -16,6 +16,7 @@
   height: fit-content;
   display: flex;
   flex-direction: column;
+  margin-right: 0;
 }
 .listSession {
   width: 45%;
@@ -23,6 +24,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: 0;
 }
 
 .profileCard {
@@ -56,10 +58,11 @@
   border-color: transparent;
   border-radius: 3px;
   box-shadow: 0 4px 5px 0 rgb(66 109 228 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  font-size: 12px;
   color: rgb(255, 250, 250);
-  width: 130px;
-  height: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  width:fit-content;
+  height: fit-content;
   margin-top: 10px;
   margin-left: 5px;
   margin-bottom: 8px;
@@ -89,13 +92,15 @@
   line-height: 5px;
 }
 .userInfoBox_profileName {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 600;
+  margin-top: 10px;
   color: rgba(0, 0, 0, 0.692);
 }
 .userInfoBox_bio {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
+  margin-top: 10px;
   color: rgba(0, 0, 0, 0.603);
 }
 .editInfoButton {
@@ -103,9 +108,10 @@
   border-color: transparent;
   border-radius: 3px;
   box-shadow: 0 4px 5px 0 rgb(66 109 228 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  font-size: 12px;
   color: rgb(255, 250, 250);
-  width: 130px;
+  font-size: 16px;
+  font-weight: 600;
+  width:fit-content;
   height: fit-content;
   margin-top: 8px;
   margin-left: 5px;
@@ -118,7 +124,7 @@
 
 .calendarsTitle {
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.692);
 }
@@ -132,6 +138,7 @@
   display: flex;
   color: white;
   font-weight: 600;
+  font-size: 20px;
   margin-bottom: 5px;
 }
 .calendarLabel:hover {
@@ -140,9 +147,12 @@
 }
 .addCalendar {
   margin-top: 20px;
+  font-weight: 500;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.692);
 }
 .addCalendarInput {
-  height: 22px;
+  height: 30px;
   margin: auto;
   border: transparent;
   border-radius: 2px;
@@ -173,7 +183,7 @@
   margin-top: 5px;
   margin-bottom: 3px;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.623);
 }
@@ -186,16 +196,17 @@
 }
 .date {
   text-align: center;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   color: rgba(0, 0, 0, 0.692);
+  margin-top: 5px;
 }
 .dailyGoals {
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.692);
-  margin-top: -18px;
+  margin-top: 18px;
 }
 .inputs-list {
   display: flex;
@@ -204,10 +215,11 @@
 }
 .inputs-list input:first-child {
   width: 80%;
-  height: 22px;
+  height: 30px;
   margin: auto;
   border: transparent;
   border-radius: 2px;
+  font-size: 18px;
 }
 .inputs-list input:first-child:focus {
   outline: none;
@@ -217,12 +229,13 @@
   border-color: transparent;
   border-radius: 3px;
   box-shadow: 0 4px 5px 0 rgb(66 109 228 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  font-size: 12px;
   color: rgb(255, 250, 250);
-  width: auto;
+  font-size: 16px;
+  font-weight: 600;
+  width:fit-content;
   height: fit-content;
-  margin-left: -15px;
-  margin-right: 5px;
+  margin-left: -25px;
+  margin-right: 20px;
 }
 .addTaskButton:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
@@ -241,6 +254,7 @@
   width: 100%;
   margin-left: auto;
   justify-content: flex-start;
+  align-items: baseline;
 }
 .checkLine:hover {
   background-color: rgba(245, 214, 166, 0.664);
@@ -257,8 +271,8 @@
   margin-left: 5px;
 }
 .label {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   color: rgba(0, 0, 0, 0.692);
 }
 .checks {
@@ -288,13 +302,13 @@
 }
 .modalContainer input {
   margin-bottom: 5px;
-  height: 23px;
+  height: 30px;
   width: 70%;
   border-radius: 2px;
   border: transparent;
   background-color: rgb(255, 255, 255);
   color: rgba(0, 0, 0, 0.705);
-  font-size: 14px;
+  font-size: 18px;
 }
 .modalContainer input:focus {
   outline: none;
@@ -308,6 +322,10 @@
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: 16px;
   color: rgb(255, 250, 250);
+  font-size: 16px;
+  font-weight: 600;
+  width:fit-content;
+  height: fit-content;
 }
 .editInfoButtonInputs:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
@@ -327,10 +345,11 @@
   border-radius: 2px;
   box-shadow: 0 4px 5px 0 rgba(240, 115, 57, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-size: 12px;
   color: rgb(255, 250, 250);
-  height: 25px;
-  width: 40%;
+  font-size: 16px;
+  font-weight: 600;
+  width:fit-content;
+  height: fit-content;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -339,15 +358,15 @@
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
 }
 .uploadPicButtonInput {
-  background-color: rgb(107, 202, 226);
+  background-color: rgba(107, 202, 226, 0.616);
   border-color: transparent;
   border-radius: 2px;
   box-shadow: 0 4px 5px 0 rgba(240, 115, 57, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-size: 12px;
+  font-size: 16px;
   color: rgb(255, 250, 250);
-  height: 25px;
-  width: 65%;
+  height:fit-content;
+  width:fit-content;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -365,10 +384,11 @@
   border-radius: 2px;
   box-shadow: 0 4px 5px 0 rgba(240, 115, 57, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-size: 12px;
   color: rgb(255, 250, 250);
-  height: 25px;
-  width: auto;
+  font-size: 16px;
+  font-weight: 600;
+  width:fit-content;
+  height: fit-content;
   text-align: center;
   margin-left: 5px;
 }
@@ -390,6 +410,7 @@
   box-shadow: 0 4px 8px 0 rgba(6, 128, 63, 0.541),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 2px;
+  margin-top: 50px;
 }
 .calendar:hover {
   box-shadow: 0 6px 10px 0 rgba(6, 128, 63, 0.541),
@@ -397,7 +418,7 @@
 }
 .calendar .day {
   width: calc(100% / 7);
-  height: 44px;
+  height: 60px;
   display: inline-block;
   padding: 0px;
   box-sizing: border-box;
@@ -428,6 +449,8 @@
   justify-content: space-evenly;
   background-color: #1aa35fa9;
   border-radius: 2px;
+  height: 40px;
+  font-size: 20px;
 }
 .previous{
   font-weight: 800;

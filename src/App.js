@@ -65,7 +65,7 @@ function App() {
           )}
         />
         <Route
-          path="/chat"
+          path="/chat/:id"
           exact
           render={() => (      
             <Chat />     
