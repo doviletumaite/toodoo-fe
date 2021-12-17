@@ -8,6 +8,7 @@ import HomePrivat from "./pages/HomePrivat";
 import ProfilePage from "./pages/ProfilePage";
 import ProfilePageUsers from "./pages/ProfilePageUsers";
 import ShowcasePre from "./pages/ShowcasePre";
+import Chat from "./pages/Chat";
 
 function App() {
 
@@ -61,6 +62,13 @@ function App() {
           exact
           render={() => (      
             <ShowcasePre />     
+          )}
+        />
+        <Route
+          path="/chat"
+          exact
+          render={() => (      
+            <Chat />     
           )}
         />
         </Switch>  
