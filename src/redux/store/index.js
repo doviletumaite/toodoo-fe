@@ -32,9 +32,12 @@ export const initialState = {
         selectedList: {}
       },
       conversations: {
-        active: {},
-        chats: []
-      }
+        active: "",
+        chats: [], 
+        users: [],
+        friends: [],
+        friendsOnline:[]     
+       }
 };
 
 const persistConfig = {

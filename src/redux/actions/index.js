@@ -28,6 +28,15 @@ export const SET_TASK_DONE = 'SET_TASK_DONE'
 export const POST_PICTURE_AND_TEXT = 'POST_PICTURE_AND_TEXT'
 export const SET_LIST_IN_LOGOUT = 'SET_LIST_IN_LOGOUT'
 export const GET_CONVERSATIONS = 'GET_CONVERSATIONS'
+export const GET_USERS = 'GET_USERS'
+export const GET_MESSAGES = 'GET_MESSAGES'
+export const SET_ACTIVE_CHAT = 'SET_ACTIVE_CHAT'
+export const POST_NEW_MESSAGE = 'POST_NEW_MESSAGE'
+export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE'
+export const SET_SEL_CHAT = 'SET_SEL_CHAT'
+export const INCOMING_MESSAGE = 'INCOMING_MESSAGE'
+export const FIND_USERS = 'FIND_USERS'
+export const NEW_CONVERSATIONS = 'NEW_CONVERSATIONS'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -532,10 +541,136 @@ export const setUsernameAction = (userInfo) => ({
             type: GET_CONVERSATIONS,
             payload: conversations
           })
-          console.log("conversations",conversations )
+          
         }
       } catch (error) {
         console.log(error)
       }
     }
   }
+  export const createConversation = ({body}) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/conversation", 
+          {
+            method: "POST", 
+              headers: {
+                "Content-Type": "application/json",
+              },
+            body: JSON.stringify({ senderId: body.senderId ,receiverId: body.receiverId  })
+          })
+        
+        if(response.ok){
+          let conversation = await response.json()
+          dispatch({
+            type: NEW_CONVERSATIONS,
+            payload: conversation
+          })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+  export const getUsers = (id) => {
+    return async (dispatch, getState) => {
+      try {
+        const accessToken = localStorage.getItem("accessToken")
+        let response = await fetch("http://localhost:3003/user/" + id,
+        { headers: {  'Authorization': 'Bearer ' + accessToken }})
+      
+        if(response.ok){
+           let users = await response.json()
+           dispatch({
+             type: GET_USERS,
+             payload: users
+           })
+        }
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+  export const getMessages = (id) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch("http://localhost:3003/message/" + id)
+      
+        if(response.ok){
+           let messages = await response.json()
+           dispatch({
+             type: GET_MESSAGES,
+             payload: {messages, conversationId: id}
+           })
+        }
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
+  export const setActiveChat = (conversation) => ({
+    type: SET_ACTIVE_CHAT,
+    payload: conversation,
+  })
+
+  export const postNewMessage = ( {message}) => {
+    return async (dispatch, getState) => {
+      try {
+        console.log({message})
+        let response = await fetch("http://localhost:3003/message",
+        {
+          method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          body: JSON.stringify({ conversationId: message.conversationId , sender: message.sender , text: message.text })
+        })
+      
+        if(response.ok){
+           let newMessage = await response.json()
+           dispatch({
+             type: POST_NEW_MESSAGE,
+             payload: newMessage
+           })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+  
+    }
+  }
+
+  export const incomingMessage = (message) => ({
+    type: "INCOMING_MESSAGE",
+    payload: message,
+  })
+
+  export const setSelectedChat = (chatId) => ({
+    type: "SET_SEL_CHAT",
+    payload: chatId,
+  })
+  export const searchUser = (query) => {
+    return async (dispatch, getState) => {
+      try {
+        const accessToken = localStorage.getItem("accessToken")
+        let response = await fetch("http://localhost:3003/user?username=" + query,
+        { headers: {  'Authorization': 'Bearer ' + accessToken }})
+      
+        if(response.ok){
+           let user = await response.json()
+           dispatch({
+             type: FIND_USERS,
+             payload: user
+           })
+           console.log("user find", user)
+        }
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+ 

@@ -1,97 +1,155 @@
-import { useEffect, FormEvent, useState,} from 'react'
-import { io } from 'socket.io-client'
-import { useDispatch, useSelector } from 'react-redux'
-import NavBar from '../components/NavBar'
-import "../style/Chat.css"
-import Conversation from '../components/Conversation'
-import Message from '../components/Message'
-import UsersOnline from '../components/UsersOnline'
-import { getConversation } from '../redux/actions'
+import { useEffect, FormEvent, useState } from "react";
+import { io } from "socket.io-client";
+import { useDispatch, useSelector } from "react-redux";
+import NavBar from "../components/NavBar";
+import "../style/Chat.css";
+import Conversation from "../components/Conversation";
+import Message from "../components/Message";
+import UsersOnline from "../components/UsersOnline";
+import {
+  getConversation,
+  getMessages,
+  getUsers,
+  incomingMessage,
+  postNewMessage,
+  searchUser,
+  sendNewMessage,
+  setSelectedChat,
+} from "../redux/actions";
+import { useRef } from "react";
+import Found from "../components/Found";
 
-const ADDRESS = 'http://localhost:3003'
-const socket = io(ADDRESS, { transports: ['websocket'] })
+const ADDRESS = "http://localhost:3003";
+const socketIO = io(ADDRESS, { transports: ["websocket"] });
+
 const Chat = () => {
-   const userState =  useSelector(s => s.userInfo)
-   const dispatch = useDispatch()
-   useEffect(() => {
-    dispatch(getConversation(userState._id))
-  }, []);
+  const userState = useSelector((s) => s.userInfo);
+  const chats = useSelector((s) => s.conversations.chats);
+
+   const dispatch = useDispatch();
+
+  const [chat, setChat] = useState(false);
+  const [newMessage, setNewMessage] = useState("");
+  const [query, setQuery] = useState("");
+
+  const selectedChat = useSelector(
+    (state) => state.conversations.chats.find( chat => chat._id === state.conversations.active)
+  );
   
-    return(
-        <div>
-         <NavBar/>
-         {/* left side  */}
-         <div className='chatPageBody'>
-          <div className="conversations col left">
-               <div className="serachBarContainer">
-              <img className='profilePictureUser' src={userState.profilePicture} />
-              <div className="searchItemsContainer">
-                <label>search somebody</label>
-                <input type="text"/>     
-                <button>search</button>
-                </div>
-            </div>
-            <div className='conversationList'>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            <Conversation/>
-            </div>
-          </div>
-          {/* chat center side  */}
-          <div className="chat col">
-            <div className="messagesContainer">
-              <Message/>
-              <Message own={true}/> 
-              <Message/>
-              <Message/>
-              <Message/>
-              <Message/>
-              <Message/>
-              <Message/>
-              <Message/>
+  
+  useEffect(() => {
+    dispatch(getConversation(userState._id));
+  }, []);
 
-            </div>
-            <div className="inputForMessageContainer">
-              <input type="text" placeholder='write something'/>
-              <button>send</button>
-            </div>
-          </div>
-          {/* right side  */}
-          <div className="onlineUsersList col right">
-            <div className="header">users online</div>
-            <div className="cardsList">
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
-              <UsersOnline/>
+  const handleChat = (c) => {
+    setChat(true);
+    dispatch(setSelectedChat(c._id));
+    dispatch(getMessages(c._id));
+  };
+ 
 
-            
+  const handleSubmitMessage = async (e) => {
+    e.preventDefault();
+    const receiverId = selectedChat.members.find((m) => m !== userState._id);
+
+    socketIO.emit("sendMessage", {
+      sender: userState._id,
+      receiverId,
+      text: newMessage,
+      conversationId: selectedChat._id,
+    });
+  
+  };
+
+  useEffect(() => {
+    socketIO.emit("addUser", userState._id);
+    socketIO.on("getUsers", (users) => {
+      console.log("users from socket",users)
+    const usersOnline = async () => {
+     const peopleOnline = await users
+    const foundOnlinPeople =  dispatch(getUsers(users.userID))
+    console.log("find users onliinnneee", foundOnlinPeople)
+    } 
+    });
+
+    socketIO.on("incoming-msg", (message) => {
+      dispatch(incomingMessage({message}));
+      console.log("messageeeeCoooming", message)
+    });
+  }, []);
+
+  const find = () => {
+    dispatch(searchUser(query))
+  }
+
+// const scrollRef = useRef()
+
+//  useEffect(() => {
+//      scrollRef.current.scrollIntoView({behavior: "smooth"}) 
+//  }, [newMessage])
+
+  return (
+    <div>
+      <NavBar />
+      {/* left side  */}
+      <div className="chatPageBody">
+        <div className="conversations col left">
+          <div className="serachBarContainer">
+            <img
+              className="profilePictureUser"
+              src={userState.profilePicture}
+            />
+            <div className="searchItemsContainer">
+              <label>search somebody</label>
+              <input type="text" value={query} onChange={(e)=>setQuery(e.target.value)}/>
+              <button onClick={find}>search</button>
             </div>
           </div>
-         </div>
+          <div className="conversationList">
+          <Found /> 
+            {chats ? (
+              chats.map((c) => (
+                <Conversation conversation={c} onClick={() => handleChat(c)} />
+              ))
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
-    )
-}
-export default Chat
+        {/* chat center side  */}
+        <div className="chat col">
+          <div className="messagesContainer">
+           {/* <div ref={scrollRef}> */}
+            {chat && selectedChat ? (
+              selectedChat.messages?.map((c) => (
+            
+                <Message messages={c} own={c.sender === userState._id} />
+           
+              ))
+            ) : (
+              <></>
+            )}
+            {/* </div>  */}
+          </div>
+          <div className="inputForMessageContainer">
+            <input
+              type="text"
+              placeholder="write something"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+            />
+            <button onClick={handleSubmitMessage}>send</button>
+          </div>
+        </div>
+        {/* right side  */}
+        <div className="onlineUsersList col right">
+          <div className="header">users online</div>
+          <div className="cardsList">
+            <UsersOnline />
+          </div>
+        </div>
+      </div> 
+    </div>
+  );
+};
+export default Chat;

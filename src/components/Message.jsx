@@ -1,14 +1,26 @@
+import moment from "moment"
+import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
+import { getUsers } from "../redux/actions"
 
-const Message = ({own}) => {
+const Message = ({own, messages:c}) => {
     const userState =  useSelector(s => s.userInfo)
+    const dispatch = useDispatch()
+    const friendsState = useSelector(s => s.conversations.users)
+    const thatFriend = friendsState.find(f => f._id === c.sender && f._id !== userState._id)
+    // const activeChat = store.activeChat
+
+    // messages....
+
+
+    // useEffect(() => { setMessage }, [JSON.stringify(activeChat)])
     return(
         <div className={ own ? "messageBox own" : "messageBox"}>
         <div className={ own ? "messageBody own" : "messageBody"}>
-        <img src={userState.profilePicture} className="imgMessage"/>
+      {thatFriend==undefined ? <img src={own ? userState.profilePicture : ""} className="imgMessage"/> : <img src={own ? userState.profilePicture : thatFriend.profilePicture} className="imgMessage"/>}
         <div className="textContainer">
-            <p className="text own">ciaogsffddfhjnwsdfp j epftj wpifijws  werf jwepofj weopèdj sedf sedfh sdf hsdif hifehg sdfgwdi sdof eprfujdwepdu ped fps drfp dfgpujg wpoiujg prfdg pis</p>
-            <p className="time">5 min ago</p>
+            <p className={ own ? "text own" : "text"}>{c.text}</p>
+            <p className="time">{moment(c.createdAt).fromNow()}</p>
         </div>
         
         </div>

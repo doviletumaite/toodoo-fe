@@ -106,6 +106,13 @@ margin-right: 10px;
   margin-left: 10px;
   font-size: 18px;
 }
+.startConv{
+  margin-top: -10px;
+  margin-left: 5px;
+}
+.hidden{
+  display:none;
+}
 /* chat */
 .chat {
   padding: 10px;
@@ -126,7 +133,7 @@ margin-right: 10px;
   height: 90%;
   width: 100%;
   border-radius: 2px;
-  background-color: rgba(172, 197, 243, 0.342);
+  background-color: rgba(172, 197, 243, 0.349);
   overflow-y: scroll;
 }
 .messageBody{
@@ -154,7 +161,7 @@ margin:3px 10px;
 }
 .text{
  font-size: 18px;
- background-color: rgba(129, 196, 235, 0.445);
+ background-color: rgba(129, 196, 235, 0.603);
  border-radius: 25px;
  padding: 10px;
  height: fit-content;
