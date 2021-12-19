@@ -1,4 +1,4 @@
-import { CLEAR_FRIEND_SEARC, FIND_USERS, GET_CONVERSATIONS, GET_MESSAGES, GET_USERS, INCOMING_MESSAGE, NEW_CONVERSATIONS, POST_NEW_MESSAGE, SEND_NEW_MESSAGE, SET_SEL_CHAT } from "../actions";
+import { CLEAR_FRIEND_SEARC, FIND_USERS, GET_CONVERSATIONS, GET_MESSAGES, GET_USERS, INCOMING_MESSAGE, NEW_CONVERSATIONS, POST_NEW_MESSAGE, SEND_NEW_MESSAGE, SET_SEL_CHAT, SET_USERS_ONLINE } from "../actions";
 import { initialState } from "../store";
 
 const conversationReducer = (state = initialState.conversations, action) => {
@@ -81,19 +81,35 @@ const conversationReducer = (state = initialState.conversations, action) => {
         case INCOMING_MESSAGE: {
 
             const chats = [...state.chats]
-            const index = chats.findIndex( chat => chat._id == action.payload.conversationId)
+            const index = chats.findIndex( chat => chat._id == action.payload.message.conversationId)
 
-            delete action.payload.conversationId
-
+            delete action.payload.message.conversationId
+            // console.log("chat index and index", chats[index], index, chats)
             chats[index] = { ...chats[index],
                 messages: [
-                    ...(chats[index].messages ), 
-                    action.payload
+                    ...(chats[index]?.messages || []), 
+                    action.payload.message
                 ]
             }
 
             return {...state, chats} 
         }
+        case SET_USERS_ONLINE:
+            let onlineFriends = [...state.friendsOnline]
+            const found = onlineFriends.find( friend => friend._id === action.payload._id)
+            // console.log("friend found online?",found)
+            if (!found) {
+                return { 
+                    ...state,
+                    friendsOnline: [...state.friendsOnline,action.payload]
+                 }
+             } else {
+             return {
+                 ...state,
+                 friendsOnline: [...state.friendsOnline]
+             } 
+         }
+        
         default:
             return state
     } 

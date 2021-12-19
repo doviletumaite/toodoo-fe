@@ -37,6 +37,7 @@ export const SET_SEL_CHAT = 'SET_SEL_CHAT'
 export const INCOMING_MESSAGE = 'INCOMING_MESSAGE'
 export const FIND_USERS = 'FIND_USERS'
 export const NEW_CONVERSATIONS = 'NEW_CONVERSATIONS'
+export const SET_USERS_ONLINE = 'SET_USERS_ONLINE'
 
 export const setUsernameAction = (userInfo) => ({
     type: SET_USER_INFO,
@@ -616,17 +617,16 @@ export const setUsernameAction = (userInfo) => ({
     payload: conversation,
   })
 
-  export const postNewMessage = ( {message}) => {
+  export const postNewMessage = ( {messageTosend}) => {
     return async (dispatch, getState) => {
       try {
-        console.log({message})
         let response = await fetch("http://localhost:3003/message",
         {
           method: "POST", 
             headers: {
               "Content-Type": "application/json",
             },
-          body: JSON.stringify({ conversationId: message.conversationId , sender: message.sender , text: message.text })
+          body: JSON.stringify({ conversationId: messageTosend.conversationId , sender: messageTosend.sender , text: messageTosend.text })
         })
       
         if(response.ok){
@@ -639,7 +639,6 @@ export const setUsernameAction = (userInfo) => ({
       } catch (error) {
         console.log(error)
       }
-  
     }
   }
 
@@ -673,4 +672,7 @@ export const setUsernameAction = (userInfo) => ({
       }
     }
   }
- 
+  export const setUsersOnline = (user) => ({
+    type: "SET_USERS_ONLINE",
+    payload: user,
+  })

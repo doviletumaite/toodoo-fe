@@ -15,6 +15,7 @@ import {
   searchUser,
   sendNewMessage,
   setSelectedChat,
+  setUsersOnline,
 } from "../redux/actions";
 import { useRef } from "react";
 import Found from "../components/Found";
@@ -25,7 +26,7 @@ const socketIO = io(ADDRESS, { transports: ["websocket"] });
 const Chat = () => {
   const userState = useSelector((s) => s.userInfo);
   const chats = useSelector((s) => s.conversations.chats);
-
+  const usersOnlineState = useSelector((s) => s.conversations.friendsOnline);
    const dispatch = useDispatch();
 
   const [chat, setChat] = useState(false);
@@ -35,7 +36,6 @@ const Chat = () => {
   const selectedChat = useSelector(
     (state) => state.conversations.chats.find( chat => chat._id === state.conversations.active)
   );
-  
   
   useEffect(() => {
     dispatch(getConversation(userState._id));
@@ -58,24 +58,50 @@ const Chat = () => {
       text: newMessage,
       conversationId: selectedChat._id,
     });
-  
-  };
+    const messageTosend = {
+      sender: userState._id,
+      text: newMessage,
+      conversationId: selectedChat._id,
+    }
+   
+  // dispatch(postNewMessage({messageTosend}))
+}
 
   useEffect(() => {
     socketIO.emit("addUser", userState._id);
     socketIO.on("getUsers", (users) => {
       console.log("users from socket",users)
-    const usersOnline = async () => {
-     const peopleOnline = await users
-    const foundOnlinPeople =  dispatch(getUsers(users.userID))
-    console.log("find users onliinnneee", foundOnlinPeople)
-    } 
-    });
+    
+    const usersOnline = async (id) => {
+     
+    try {
 
+      const accessToken = localStorage.getItem("accessToken")
+      let response = await fetch("http://localhost:3003/user/" + id,
+      { headers: {  'Authorization': 'Bearer ' + accessToken }})
+    
+      if(response.ok){
+         let peopleOnline = await response.json()
+         console.log("find users onliinnneee", peopleOnline)
+         dispatch(setUsersOnline(peopleOnline))
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+    } 
+    users.forEach(u=> { 
+    const personeOnline =  usersOnline(u.userID) 
+     }) 
+    // usersOnline(u.userID)
+   
+    });
+   
     socketIO.on("incoming-msg", (message) => {
       dispatch(incomingMessage({message}));
       console.log("messageeeeCoooming", message)
     });
+ 
   }, []);
 
   const find = () => {
@@ -145,7 +171,7 @@ const Chat = () => {
         <div className="onlineUsersList col right">
           <div className="header">users online</div>
           <div className="cardsList">
-            <UsersOnline />
+           {usersOnlineState ? usersOnlineState.map(u=> <UsersOnline usersOnlineState={u}/>) : (<></>) }
           </div>
         </div>
       </div> 

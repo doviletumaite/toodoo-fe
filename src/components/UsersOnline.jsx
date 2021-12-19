@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux"
 
-const UsersOnline = () => {
-    const userState =  useSelector(s => s.userInfo)
+const UsersOnline = ({usersOnlineState}) => {
     return (
      <div className="cardBody">
-      <img src={userState.profilePicture} />
-      <p>Name</p>
+      <img src={usersOnlineState.profilePicture} />
+      <p>{usersOnlineState.username}</p>
      </div>
     )
 }

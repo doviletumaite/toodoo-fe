@@ -5,15 +5,10 @@ import { getUsers } from "../redux/actions"
 
 const Message = ({own, messages:c}) => {
     const userState =  useSelector(s => s.userInfo)
-    const dispatch = useDispatch()
     const friendsState = useSelector(s => s.conversations.users)
     const thatFriend = friendsState.find(f => f._id === c.sender && f._id !== userState._id)
-    // const activeChat = store.activeChat
-
-    // messages....
-
-
-    // useEffect(() => { setMessage }, [JSON.stringify(activeChat)])
+ 
+  
     return(
         <div className={ own ? "messageBox own" : "messageBox"}>
         <div className={ own ? "messageBody own" : "messageBody"}>
