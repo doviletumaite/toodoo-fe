@@ -620,6 +620,7 @@ export const setUsernameAction = (userInfo) => ({
   export const postNewMessage = ( {messageTosend}) => {
     return async (dispatch, getState) => {
       try {
+        
         let response = await fetch("http://localhost:3003/message",
         {
           method: "POST", 
@@ -628,7 +629,7 @@ export const setUsernameAction = (userInfo) => ({
             },
           body: JSON.stringify({ conversationId: messageTosend.conversationId , sender: messageTosend.sender , text: messageTosend.text })
         })
-      
+       console.log("message sended in fetch", {messageTosend} )
         if(response.ok){
            let newMessage = await response.json()
            dispatch({

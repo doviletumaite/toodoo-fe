@@ -51,20 +51,17 @@ const Chat = () => {
   const handleSubmitMessage = async (e) => {
     e.preventDefault();
     const receiverId = selectedChat.members.find((m) => m !== userState._id);
-
-    socketIO.emit("sendMessage", {
-      sender: userState._id,
-      receiverId,
-      text: newMessage,
-      conversationId: selectedChat._id,
-    });
+ 
+  console.log("+++++++",userState._id)
     const messageTosend = {
       sender: userState._id,
       text: newMessage,
+      receiverId,
       conversationId: selectedChat._id,
     }
-   
-  // dispatch(postNewMessage({messageTosend}))
+    socketIO.emit("sendMessage", messageTosend);
+    
+    dispatch(postNewMessage({messageTosend}))
 }
 
   useEffect(() => {
@@ -82,7 +79,7 @@ const Chat = () => {
     
       if(response.ok){
          let peopleOnline = await response.json()
-         console.log("find users onliinnneee", peopleOnline)
+       
          dispatch(setUsersOnline(peopleOnline))
       }
     } catch (error) {
@@ -91,14 +88,17 @@ const Chat = () => {
 
     } 
     users.forEach(u=> { 
-    const personeOnline =  usersOnline(u.userID) 
+     usersOnline(u.userID) 
      }) 
-    // usersOnline(u.userID)
    
     });
-   
-    socketIO.on("incoming-msg", (message) => {
-      dispatch(incomingMessage({message}));
+  //  const message = {
+  //    text:newMessage,
+  //    conversationId:selectedChat._id,
+  //    sender:userState._id
+  //  }
+    socketIO.on("incoming-msg", (message  ) => {
+      dispatch(incomingMessage(message));
       console.log("messageeeeCoooming", message)
     });
  

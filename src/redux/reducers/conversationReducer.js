@@ -81,14 +81,14 @@ const conversationReducer = (state = initialState.conversations, action) => {
         case INCOMING_MESSAGE: {
 
             const chats = [...state.chats]
-            const index = chats.findIndex( chat => chat._id == action.payload.message.conversationId)
+            const index = chats.findIndex( chat => chat._id == action.payload.conversationId)
 
-            delete action.payload.message.conversationId
+            delete action.payload.conversationId
             // console.log("chat index and index", chats[index], index, chats)
             chats[index] = { ...chats[index],
                 messages: [
                     ...(chats[index]?.messages || []), 
-                    action.payload.message
+                    action.payload
                 ]
             }
 
