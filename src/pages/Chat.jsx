@@ -52,7 +52,6 @@ const Chat = () => {
     e.preventDefault();
     const receiverId = selectedChat.members.find((m) => m !== userState._id);
  
-  console.log("+++++++",userState._id)
     const messageTosend = {
       sender: userState._id,
       text: newMessage,
