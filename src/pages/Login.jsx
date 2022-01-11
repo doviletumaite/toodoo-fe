@@ -24,7 +24,7 @@ const Login = () => {
   const URL = create({baseURL: process.env.REACT_APP_DEPLOYED_API})
   const URLDEP = process.env.REACT_APP_DEPLOYED_API
   const login = async () => {
-    const {data} = await URLDEP.post("/user/login",
+    const {data} = await URL.post("/user/login",
     { email, password },
       { method: "POST" }
     )
@@ -40,7 +40,13 @@ const Login = () => {
       history.push("/showcase/" + data._id)
     }
   }
- 
+  const googleButton = async () => {
+    const {data} = await API.get("/user/me")
+    if(data){
+      dispatch(setUsernameAction(data))
+      history.push("/showcase/" + data._id)
+    }
+  }
 
   return (
     <div>
@@ -75,14 +81,14 @@ const Login = () => {
             onClick={(e)=>login()}
             >login</button>
           </Link>
-          <a href="http://localhost:3003/user/googleLogin">
+       
             <button className="googleButton"
-            onClick={() => dispatch(setUsernameAction(data))}
+            onClick={() => googleButton()}
             >
               <img src={google} />
               Sign in with Google
             </button>
-          </a>
+         
 
           <div className="registerString">not registered yet?</div>
           <Link to="/register" className="registerLink">
