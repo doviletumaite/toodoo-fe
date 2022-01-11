@@ -9,7 +9,7 @@ import "../style/Login.css";
 const ShowcasePre = () => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const URL = create({baseURL: "http://localhost:3003"})
+    const URL = create({baseURL: process.env.REACT_APP_DEPLOYED_API})
     const path  = history.location.pathname.split('/')
     console.log(path[2])
     console.log(path[3])

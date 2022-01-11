@@ -41,10 +41,13 @@ const Login = () => {
     }
   }
   const googleButton = async () => {
-  
-      history.push(URLDEP+"/googleLogin")
+    const {data} = await API.get("/user/me")
+    if(data){
+      dispatch(setUsernameAction(data))
+      console.log("google.id", data._id)
+      history.push("/showcase/" + data._id)
     }
-  
+  }
 
   return (
     <div>
@@ -79,14 +82,14 @@ const Login = () => {
             onClick={(e)=>login()}
             >login</button>
           </Link>
-       
+          <a href="http://localhost:3003/user/googleLogin">
             <button className="googleButton"
             onClick={() => googleButton()}
             >
               <img src={google} />
               Sign in with Google
             </button>
-         
+          </a>
 
           <div className="registerString">not registered yet?</div>
           <Link to="/register" className="registerLink">
