@@ -69,7 +69,7 @@ export default function SinglePost ({post: p}) {
         </Link>
 
         <p>{p.user.bio}</p>
-        <p>{moment(p.createdAt).fromNow()}</p>
+        <p className="time">{moment(p.createdAt).fromNow()}</p>
       </div>
 
     {p.user._id===userID ?   <img src={dots} className="dots" onClick={()=>handleShowDropdown(p._id)}/> : <> </>}

@@ -1,6 +1,7 @@
 .wrapper{
   width: 100%;
   margin-top: 50px;
+  zoom: 130%;
 }
 .loginBox {
   display: flex;

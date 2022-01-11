@@ -8,6 +8,7 @@ import postReducer from "../reducers/post.js";
 import commentReducer from "../reducers/genericUserReducer.js";
 import genericUserReducer from "../reducers/genericUserReducer.js";
 import listReducer from "../reducers/list.js";
+import conversationReducer from "../reducers/conversationReducer.js";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -29,8 +30,14 @@ export const initialState = {
       list: {
         lists: [],
         selectedList: {}
-      }
-    
+      },
+      conversations: {
+        active: "",
+        chats: [], 
+        users: [],
+        friends: [],
+        friendsOnline:[]     
+       }
 };
 
 const persistConfig = {
@@ -49,7 +56,8 @@ const bigReducer = combineReducers({
     userInfo: userReducer,
     post: postReducer,
     genericUserInfo: genericUserReducer,
-    list: listReducer
+    list: listReducer,
+    conversations: conversationReducer
   })
 const persistedReducer = persistReducer(persistConfig, bigReducer);
 
