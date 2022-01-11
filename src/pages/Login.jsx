@@ -24,7 +24,7 @@ const Login = () => {
   const URL = create({baseURL: process.env.REACT_APP_DEPLOYED_API})
   const URLDEP = process.env.REACT_APP_DEPLOYED_API
   const login = async () => {
-    const {data} = await URL.post("/user/login",
+    const {data} = await URLDEP.post("/user/login",
     { email, password },
       { method: "POST" }
     )
