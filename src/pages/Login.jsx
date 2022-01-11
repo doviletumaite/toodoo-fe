@@ -41,12 +41,10 @@ const Login = () => {
     }
   }
   const googleButton = async () => {
-    const {data} = await API.get("/user/me")
-    if(data){
-      dispatch(setUsernameAction(data))
-      history.push("/showcase/" + data._id)
+  
+      history.push(URLDEP+"/googleLogin")
     }
-  }
+  
 
   return (
     <div>
