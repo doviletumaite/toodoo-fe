@@ -51,7 +51,7 @@ function App() {
           )}
         />
           <Route
-          path="/profilePageUsers/:username"
+          path="/profilePageUsers/:id"
           exact
           render={() => (      
             <ProfilePageUsers/>     
