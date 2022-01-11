@@ -8,7 +8,7 @@ import { useHistory } from "react-router";
 import {create} from "axios"
 import API from "../tools/api.js";
 import { setUsernameAction } from "../redux/actions";
-import {GoogleLogin} from "react-google-login"
+
 
 
 const Login = () => {
