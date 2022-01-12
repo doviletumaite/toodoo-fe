@@ -97,7 +97,7 @@ const conversationReducer = (state = initialState.conversations, action) => {
         case SET_USERS_ONLINE:
             let onlineFriends = [...state.friendsOnline]
             const found = onlineFriends.find( friend => friend._id === action.payload._id)
-            // console.log("friend found online?",found)
+            console.log("friend found online?",found)
             if (!found) {
                 return { 
                     ...state,
