@@ -101,7 +101,7 @@ const Register = () => {
             onClick={login}
             >join!</button>
           </a>
-          <a href="http://localhost:3003/user/googleLogin">
+          <a href="https://toodooapi.herokuapp.com/user/googleLogin">
             <button className="googleButton">
               <img src={google} />
               Sign in with Google
