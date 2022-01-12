@@ -20,7 +20,7 @@ import {
 import { useRef } from "react";
 import Found from "../components/Found";
 
-const ADDRESS = "http://localhost:3003";
+const ADDRESS = process.env.REACT_APP_DEPLOYED_API;
 const socketIO = io(ADDRESS, { transports: ["websocket"] });
 
 const Chat = () => {
@@ -73,7 +73,8 @@ const Chat = () => {
     try {
 
       const accessToken = localStorage.getItem("accessToken")
-      let response = await fetch("http://localhost:3003/user/" + id,
+      console.log("user id for user online", id)
+      let response = await fetch(ADDRESS+"/user/" + id,
       { headers: {  'Authorization': 'Bearer ' + accessToken }})
     
       if(response.ok){
