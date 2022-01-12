@@ -535,7 +535,7 @@ export const setUsernameAction = (userInfo) => ({
   export const getConversation = (id) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/conversation/" + id)
+        let response = await fetch(URL + "/conversation/" + id)
         if(response.ok){
           let conversations = await response.json()
           dispatch({
@@ -552,7 +552,7 @@ export const setUsernameAction = (userInfo) => ({
   export const createConversation = ({body}) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/conversation", 
+        let response = await fetch(URL + "/conversation", 
           {
             method: "POST", 
               headers: {
@@ -577,7 +577,7 @@ export const setUsernameAction = (userInfo) => ({
     return async (dispatch, getState) => {
       try {
         const accessToken = localStorage.getItem("accessToken")
-        let response = await fetch("http://localhost:3003/user/" + id,
+        let response = await fetch(URL+"/user/" + id,
         { headers: {  'Authorization': 'Bearer ' + accessToken }})
       
         if(response.ok){
@@ -596,7 +596,7 @@ export const setUsernameAction = (userInfo) => ({
   export const getMessages = (id) => {
     return async (dispatch, getState) => {
       try {
-        let response = await fetch("http://localhost:3003/message/" + id)
+        let response = await fetch(URL+"/message/" + id)
       
         if(response.ok){
            let messages = await response.json()
@@ -621,7 +621,7 @@ export const setUsernameAction = (userInfo) => ({
     return async (dispatch, getState) => {
       try {
         
-        let response = await fetch("http://localhost:3003/message",
+        let response = await fetch(URL+ "/message",
         {
           method: "POST", 
             headers: {
@@ -656,7 +656,7 @@ export const setUsernameAction = (userInfo) => ({
     return async (dispatch, getState) => {
       try {
         const accessToken = localStorage.getItem("accessToken")
-        let response = await fetch("http://localhost:3003/user?username=" + query,
+        let response = await fetch(URL + "/user?username=" + query,
         { headers: {  'Authorization': 'Bearer ' + accessToken }})
       
         if(response.ok){
