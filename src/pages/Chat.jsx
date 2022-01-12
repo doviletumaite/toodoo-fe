@@ -32,7 +32,7 @@ const Chat = () => {
   const [chat, setChat] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [query, setQuery] = useState("");
-
+  const [onlineUsers, setOnlineUsers] = useState([]);
   const selectedChat = useSelector(
     (state) => state.conversations.chats.find( chat => chat._id === state.conversations.active)
   );
@@ -79,24 +79,23 @@ const Chat = () => {
     
       if(response.ok){
          let peopleOnline = await response.json()
-       
-         dispatch(setUsersOnline(peopleOnline))
+         setOnlineUsers(peopleOnline)
+         dispatch(setUsersOnline(onlineUsers))
+        console.log("people onlie",peopleOnline )
       }
     } catch (error) {
       console.log(error)
     }
 
     } 
-    users.forEach(u=> { 
-     usersOnline(u.userID) 
+    console.log("users socket online", users)
+    users.map(u=> { 
+     usersOnline(u.userId) 
+     console.log("user id online from socket",u)
      }) 
    
     });
-  //  const message = {
-  //    text:newMessage,
-  //    conversationId:selectedChat._id,
-  //    sender:userState._id
-  //  }
+
     socketIO.on("incoming-msg", (message  ) => {
       dispatch(incomingMessage(message));
       console.log("messageeeeCoooming", message)
