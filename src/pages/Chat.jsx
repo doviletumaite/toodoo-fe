@@ -110,7 +110,10 @@ const Chat = () => {
 // const scrollRef = useRef()
 
 //  useEffect(() => {
-//      scrollRef.current.scrollIntoView({behavior: "smooth"}) 
+//    if(scrollRef !== undefined){
+//        scrollRef.current.scrollIntoView({behavior: "smooth"}) 
+//    }
+   
 //  }, [newMessage])
 
   return (
@@ -144,17 +147,17 @@ const Chat = () => {
         {/* chat center side  */}
         <div className="chat col">
           <div className="messagesContainer">
-           {/* <div ref={scrollRef}> */}
+          
             {chat && selectedChat ? (
               selectedChat.messages?.map((c) => (
-            
+            //  <div ref={scrollRef}>
                 <Message messages={c} own={c.sender === userState._id} />
-           
+            // </div> 
               ))
             ) : (
               <></>
             )}
-            {/* </div>  */}
+           
           </div>
           <div className="inputForMessageContainer">
             <input

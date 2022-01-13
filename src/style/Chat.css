@@ -135,11 +135,12 @@ margin-right: 10px;
   border-radius: 2px;
   background-color: rgba(172, 197, 243, 0.349);
   overflow-y: scroll;
+  padding: 10px;
 }
 .messageBody{
   display: flex;
   align-items: flex-start;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-top: 20px;
   height: fit-content;
   align-items: flex-start;
@@ -268,4 +269,24 @@ button:focus{
 .cardBody p {
  font-size: 18px;
  margin-top: 8px;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 252, 253, 0.52); 
 }
