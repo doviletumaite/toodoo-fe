@@ -42,10 +42,11 @@ const Login = () => {
   }
   const googleButton = async () => {
     const {data} = await API.get("/user/me")
+    console.log("DATA FROM GOOGLE BUTTON", data)
     if(data){
       dispatch(setUsernameAction(data))
       console.log("google.id", data._id)
-      history.push("/showcase/" + data._id)
+      // history.push("/showcase/" + data._id)
     }
   }
 
