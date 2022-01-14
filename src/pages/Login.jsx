@@ -85,7 +85,7 @@ const Login = () => {
           </Link>
           <a href="https://toodooapi.herokuapp.com/user/googleLogin">
             <button className="googleButton"
-            onClick={() => googleButton()}
+            // onClick={() => googleButton()}
             >
               <img src={google} />
               Sign in with Google
