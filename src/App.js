@@ -9,11 +9,13 @@ import ProfilePage from "./pages/ProfilePage";
 import ProfilePageUsers from "./pages/ProfilePageUsers";
 import ShowcasePre from "./pages/ShowcasePre";
 import Chat from "./pages/Chat";
+import Scroll from "./components/Scroll";
 
 function App() {
 
   return (
-    <div className="body">    
+    <div className="body">   
+    <Scroll/> 
       <Router>
         <Switch>
         <Route exact

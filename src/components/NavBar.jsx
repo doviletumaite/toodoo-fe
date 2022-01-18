@@ -9,6 +9,7 @@ import options from "../style/images/options.png";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setLogout } from "../redux/actions";
+import stickybits from "stickybits";
 
 const NavBar = () => {
   const state = useSelector((s) => s.userInfo);
@@ -36,6 +37,8 @@ const NavBar = () => {
     history.push("/")
     window.localStorage.clear()
   }
+
+  stickybits('navbar')
   return (
     <div className="navbar">
 

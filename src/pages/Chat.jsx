@@ -19,6 +19,7 @@ import {
 } from "../redux/actions";
 import { useRef } from "react";
 import Found from "../components/Found";
+import { Scrollbar } from "smooth-scrollbar-react";
 
 const ADDRESS = process.env.REACT_APP_DEPLOYED_API;
 const socketIO = io(ADDRESS, { transports: ["websocket"] });
@@ -107,14 +108,12 @@ const Chat = () => {
     dispatch(searchUser(query))
   }
 
-// const scrollRef = useRef()
+const scrollRef = useRef(null)
 
-//  useEffect(() => {
-//    if(scrollRef !== undefined){
-//        scrollRef.current.scrollIntoView({behavior: "smooth"}) 
-//    }
+ useEffect(() => {
+    scrollRef.current?.scrollTo(0,0) 
    
-//  }, [newMessage])
+ }, [])
 
   return (
     <div>
@@ -147,17 +146,17 @@ const Chat = () => {
         {/* chat center side  */}
         <div className="chat col">
           <div className="messagesContainer">
-          
+           <div ref={scrollRef}>
             {chat && selectedChat ? (
               selectedChat.messages?.map((c) => (
-            //  <div ref={scrollRef}>
+            
                 <Message messages={c} own={c.sender === userState._id} />
-            // </div> 
+             
               ))
             ) : (
               <></>
             )}
-           
+           </div> 
           </div>
           <div className="inputForMessageContainer">
             <input
