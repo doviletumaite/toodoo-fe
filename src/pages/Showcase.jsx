@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postNewPost, postPicture, postPictureAndText } from "../redux/actions";
+import Scroll from "../components/Scroll";
 
 const Showcase = () => {
   const stateUser = useSelector((s) => s.userInfo);
@@ -47,10 +48,13 @@ const postGeneral = () => {
     dispatch(postNewPost({body}))
   }
 }
+
+
   return (
     <div>
       <NavBar />
-      <div className="showcase-main">
+      <Scroll/>
+      <div className="showcase-main" id="showcaseBody">
         <div className="shareBox">
 
           <button className="input-share" onClick={handleShow}>

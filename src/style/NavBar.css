@@ -1,11 +1,12 @@
 .navbar{
     background-color: rgb(245, 173, 57);;
     height: 6vh;
-    position:sticky;
+    /* position:fixed; */
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(123, 84, 231, 0.513), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 10px;
-    position: -webkit-sticky;
+    /* position: -webkit-sticky;
+    position: sticky; */
     top: 0;
     padding-left: 60px;
     padding-right: 60px;
