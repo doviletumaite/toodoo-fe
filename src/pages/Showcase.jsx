@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postNewPost, postPicture, postPictureAndText } from "../redux/actions";
 import Scroll from "../components/Scroll";
+import stickybits from "stickybits";
 
 const Showcase = () => {
   const stateUser = useSelector((s) => s.userInfo);
@@ -49,11 +50,10 @@ const postGeneral = () => {
   }
 }
 
-
   return (
     <div>
       <NavBar />
-      <Scroll/>
+     
       <div className="showcase-main" id="showcaseBody">
         <div className="shareBox">
 
