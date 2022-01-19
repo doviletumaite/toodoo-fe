@@ -38,7 +38,20 @@ const NavBar = () => {
     window.localStorage.clear()
   }
 
-  stickybits('navbar')
+  stickybits('navbar',{
+    customStickyChangeNumber: null,
+    noStyles: false,
+    stickyBitStickyOffset: 0,
+    scrollEl: window,
+    parentClass: 'js-stickybit-parent',
+    stickyClass: 'js-is-sticky',
+    stuckClass: 'js-is-stuck',
+    stickyChangeClass: 'js-is-sticky--change',
+    useFixed: false,
+    verticalPosition: 'top',
+    useStickyClasses: true,
+    useGetBoundingClientRect: false
+  });
   return (
     <div className="navbar">
 
