@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postNewPost, postPicture, postPictureAndText } from "../redux/actions";
-import Scroll from "../components/Scroll";
 import stickybits from "stickybits";
+import { Scrollbar } from "smooth-scrollbar-react";
 
 const Showcase = () => {
   const stateUser = useSelector((s) => s.userInfo);
@@ -53,7 +53,13 @@ const postGeneral = () => {
   return (
     <div>
       <NavBar />
-     
+      <Scrollbar 
+      speed={50}
+      damping={0.01}
+      overscrollDamping={0.2}
+      thumbMinSize={20}
+      renderByPixels={true}
+      continuousScrolling={true}>
       <div className="showcase-main" id="showcaseBody">
         <div className="shareBox">
 
@@ -96,6 +102,7 @@ const postGeneral = () => {
 
         <Post />
       </div>
+      </Scrollbar>
     </div>
   );
 };
