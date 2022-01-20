@@ -20,7 +20,7 @@ import {
 import { useRef } from "react";
 import Found from "../components/Found";
 import { Scrollbar } from "smooth-scrollbar-react";
-import ScrollableFeed from 'react-scrollable-feed'
+import ScrollableFeed from "react-scrollable-feed";
 
 const ADDRESS = process.env.REACT_APP_DEPLOYED_API;
 const socketIO = io(ADDRESS, { transports: ["websocket"] });
@@ -29,16 +29,18 @@ const Chat = () => {
   const userState = useSelector((s) => s.userInfo);
   const chats = useSelector((s) => s.conversations.chats);
   const usersOnlineState = useSelector((s) => s.conversations.friendsOnline);
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [chat, setChat] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [query, setQuery] = useState("");
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const selectedChat = useSelector(
-    (state) => state.conversations.chats.find( chat => chat._id === state.conversations.active)
+  const selectedChat = useSelector((state) =>
+    state.conversations.chats.find(
+      (chat) => chat._id === state.conversations.active
+    )
   );
-  
+
   useEffect(() => {
     dispatch(getConversation(userState._id));
   }, []);
@@ -47,75 +49,69 @@ const Chat = () => {
     setChat(true);
     dispatch(setSelectedChat(c._id));
     dispatch(getMessages(c._id));
-    scrollRef.current?.scrollIntoView({ behavior: "smooth"}) 
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   };
- 
 
   const handleSubmitMessage = async (e) => {
     e.preventDefault();
     const receiverId = selectedChat.members.find((m) => m !== userState._id);
- 
+
     const messageTosend = {
       sender: userState._id,
       text: newMessage,
       receiverId,
       conversationId: selectedChat._id,
-    }
+    };
     socketIO.emit("sendMessage", messageTosend);
-    
-    dispatch(postNewMessage({messageTosend}))
-}
+
+    dispatch(postNewMessage({ messageTosend }));
+  };
 
   useEffect(() => {
     socketIO.emit("addUser", userState._id);
     socketIO.on("getUsers", (users) => {
-      console.log("users from socket",users)
-    
-    const usersOnline = async (id) => {
-     
-    try {
+      console.log("users from socket", users);
 
-      const accessToken = localStorage.getItem("accessToken")
-      console.log("user id for user online", id)
-      let response = await fetch(ADDRESS+"/user/" + id,
-      { headers: {  'Authorization': 'Bearer ' + accessToken }})
-    
-      if(response.ok){
-         let peopleOnline = await response.json()
-         setOnlineUsers(peopleOnline)
-         dispatch(setUsersOnline(onlineUsers))
-        console.log("people onlie",peopleOnline )
-      }
-    } catch (error) {
-      console.log(error)
-    }
+      const usersOnline = async (id) => {
+        try {
+          const accessToken = localStorage.getItem("accessToken");
+          console.log("user id for user online", id);
+          let response = await fetch(ADDRESS + "/user/" + id, {
+            headers: { Authorization: "Bearer " + accessToken },
+          });
 
-    } 
-    console.log("users socket online", users)
-    users.map(u=> { 
-     usersOnline(u.userId) 
-     console.log("user id online from socket",u)
-     }) 
-   
+          if (response.ok) {
+            let peopleOnline = await response.json();
+            setOnlineUsers(peopleOnline);
+            dispatch(setUsersOnline(onlineUsers));
+            console.log("people onlie", peopleOnline);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      console.log("users socket online", users);
+      users.map((u) => {
+        usersOnline(u.userId);
+        console.log("user id online from socket", u);
+      });
     });
 
-    socketIO.on("incoming-msg", (message  ) => {
+    socketIO.on("incoming-msg", (message) => {
       dispatch(incomingMessage(message));
-      console.log("messageeeeCoooming", message)
+      console.log("messageeeeCoooming", message);
     });
- 
   }, []);
 
   const find = () => {
-    dispatch(searchUser(query))
-  }
+    dispatch(searchUser(query));
+  };
 
-const scrollRef = useRef(null)
+  const scrollRef = useRef(null);
 
- useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth"}) 
-
- }, [chat])
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chat]);
 
   return (
     <div>
@@ -130,12 +126,16 @@ const scrollRef = useRef(null)
             />
             <div className="searchItemsContainer">
               <label>search somebody</label>
-              <input type="text" value={query} onChange={(e)=>setQuery(e.target.value)}/>
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
               <button onClick={find}>search</button>
             </div>
           </div>
           <div className="conversationList">
-          <Found /> 
+            <Found />
             {chats ? (
               chats.map((c) => (
                 <Conversation conversation={c} onClick={() => handleChat(c)} />
@@ -148,17 +148,15 @@ const scrollRef = useRef(null)
         {/* chat center side  */}
         <div className="chat col">
           <div className="messagesContainer">
-            <div  className="scrollReference" ref={scrollRef}>  
-       {chat && selectedChat ? (
-              selectedChat.messages?.map((c) => (
-            
-                <Message messages={c} own={c.sender === userState._id} />
-             
-              ))
-            ) : (
-              <></>
-            )}
-               </div>  
+            <div className="scrollReference" ref={scrollRef}>
+              {chat && selectedChat ? (
+                selectedChat.messages?.map((c) => (
+                  <Message messages={c} own={c.sender === userState._id} />
+                ))
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
           <div className="inputForMessageContainer">
             <input
@@ -174,10 +172,14 @@ const scrollRef = useRef(null)
         <div className="onlineUsersList col right">
           <div className="header">users online</div>
           <div className="cardsList">
-           {usersOnlineState ? usersOnlineState.map(u=> <UsersOnline usersOnlineState={u}/>) : (<></>) }
+            {usersOnlineState ? (
+              usersOnlineState.map((u) => <UsersOnline usersOnlineState={u} />)
+            ) : (
+              <></>
+            )}
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   );
 };
