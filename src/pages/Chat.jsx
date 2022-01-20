@@ -20,6 +20,7 @@ import {
 import { useRef } from "react";
 import Found from "../components/Found";
 import { Scrollbar } from "smooth-scrollbar-react";
+import ScrollableFeed from 'react-scrollable-feed'
 
 const ADDRESS = process.env.REACT_APP_DEPLOYED_API;
 const socketIO = io(ADDRESS, { transports: ["websocket"] });
@@ -46,6 +47,7 @@ const Chat = () => {
     setChat(true);
     dispatch(setSelectedChat(c._id));
     dispatch(getMessages(c._id));
+    scrollRef.current?.scrollIntoView({ behavior: "smooth"}) 
   };
  
 
@@ -111,9 +113,9 @@ const Chat = () => {
 const scrollRef = useRef(null)
 
  useEffect(() => {
-    scrollRef.current?.scrollTo(0,0) 
-   
- }, [])
+    scrollRef.current?.scrollIntoView({ behavior: "smooth"}) 
+
+ }, [chat])
 
   return (
     <div>
@@ -146,8 +148,8 @@ const scrollRef = useRef(null)
         {/* chat center side  */}
         <div className="chat col">
           <div className="messagesContainer">
-           <div ref={scrollRef}>
-            {chat && selectedChat ? (
+            <div  className="scrollReference" ref={scrollRef}>  
+       {chat && selectedChat ? (
               selectedChat.messages?.map((c) => (
             
                 <Message messages={c} own={c.sender === userState._id} />
@@ -156,7 +158,7 @@ const scrollRef = useRef(null)
             ) : (
               <></>
             )}
-           </div> 
+               </div>  
           </div>
           <div className="inputForMessageContainer">
             <input
