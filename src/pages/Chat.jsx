@@ -107,7 +107,7 @@ const Chat = () => {
     dispatch(searchUser(query));
   };
 
-  const scrollRef = useRef(null);
+  const scrollRef = useRef();
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -148,15 +148,17 @@ const Chat = () => {
         {/* chat center side  */}
         <div className="chat col">
           <div className="messagesContainer">
-            <div className="scrollReference" ref={scrollRef}>
+           
               {chat && selectedChat ? (
                 selectedChat.messages?.map((c) => (
+                 <div className="scrollReference" ref={scrollRef}>  
                   <Message messages={c} own={c.sender === userState._id} />
+                 </div>
                 ))
               ) : (
                 <></>
               )}
-            </div>
+          
           </div>
           <div className="inputForMessageContainer">
             <input
