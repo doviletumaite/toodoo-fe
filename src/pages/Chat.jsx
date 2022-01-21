@@ -111,7 +111,7 @@ const Chat = () => {
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chat]);
+  }, [chat, newMessage]);
 
   return (
     <div>
