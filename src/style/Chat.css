@@ -113,6 +113,31 @@ margin-right: 10px;
 .hidden{
   display:none;
 }
+
+.foundCardBody{
+  width: fit-content;
+  height:fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+}
+.foundCardBody:hover{
+ background-color:  rgba(129, 196, 235, 0.342);
+ cursor: pointer;
+}
+.foundConvUserImg{
+  border-radius: 50%;
+height: 35px;
+width: 35px;
+margin-right: 10px;
+}
+.foundUserName{
+  margin-left: 2px;
+  font-size: 14px;
+  margin-top: 10px;
+}
 /* chat */
 .chat {
   padding: 10px;

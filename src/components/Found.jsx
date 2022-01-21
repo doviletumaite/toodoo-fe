@@ -17,12 +17,13 @@ const Found = () => {
        dispatch(createConversation({body}))
        setVisibility("hidden")
     }
+
     return (
         <div>
-       { foundFriend ?  <div className={visibility === "hidden" ? "hidden" :"convCardBody"} onClick={()=>newConversation(foundFriend._id)}>
-        <img src={foundFriend.profilePicture} className="convUserImg" />
+       { foundFriend ?  <div className={visibility === "hidden" ? "hidden" :"foundCardBody"} onClick={()=>newConversation(foundFriend._id)}>
+        <img src={foundFriend.profilePicture} className="foundConvUserImg" />
         <div>
-        <p className="userName">{foundFriend.username}</p>
+        <p className="foundUserName">{foundFriend.username}</p>
         </div>
     </div> : (<></>) }
     </div>

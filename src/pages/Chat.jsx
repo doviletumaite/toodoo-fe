@@ -69,31 +69,26 @@ const Chat = () => {
   useEffect(() => {
     socketIO.emit("addUser", userState._id);
     socketIO.on("getUsers", (users) => {
-     
-
       const usersOnline = async (id) => {
         try {
           const accessToken = localStorage.getItem("accessToken");
-   
+
           let response = await fetch(ADDRESS + "/user/" + id, {
             headers: { Authorization: "Bearer " + accessToken },
           });
 
           if (response.ok) {
             let personOnline = await response.json();
-        
-         
+
             dispatch(setUsersOnline(personOnline));
-          
           }
         } catch (error) {
           console.log(error);
         }
       };
-      
+
       users.map((u) => {
         usersOnline(u.userId);
-     
       });
     });
 
@@ -103,8 +98,11 @@ const Chat = () => {
     });
   }, []);
 
+  const [peopleFromSearch, setPeopleFromSearch] = useState([])
   const find = () => {
     dispatch(searchUser(query));
+    setPeopleFromSearch(query)
+    console.log("people from search",query )
   };
 
   const scrollRef = useRef();
@@ -131,11 +129,14 @@ const Chat = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
+              
               <button onClick={find}>search</button>
+                
             </div>
+           <Found />
           </div>
           <div className="conversationList">
-            <Found />
+           
             {chats ? (
               chats.map((c) => (
                 <Conversation conversation={c} onClick={() => handleChat(c)} />
@@ -148,17 +149,15 @@ const Chat = () => {
         {/* chat center side  */}
         <div className="chat col">
           <div className="messagesContainer">
-           
-              {chat && selectedChat ? (
-                selectedChat.messages?.map((c) => (
-                 <div className="scrollReference" ref={scrollRef}>  
+            {chat && selectedChat ? (
+              selectedChat.messages?.map((c) => (
+                <div className="scrollReference" ref={scrollRef}>
                   <Message messages={c} own={c.sender === userState._id} />
-                 </div>
-                ))
-              ) : (
-                <></>
-              )}
-          
+                </div>
+              ))
+            ) : (
+              <></>
+            )}
           </div>
           <div className="inputForMessageContainer">
             <input
