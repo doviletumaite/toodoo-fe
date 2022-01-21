@@ -34,7 +34,6 @@ const Chat = () => {
   const [chat, setChat] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [query, setQuery] = useState("");
-  const [onlineUsers, setOnlineUsers] = useState([]);
   const selectedChat = useSelector((state) =>
     state.conversations.chats.find(
       (chat) => chat._id === state.conversations.active
@@ -70,30 +69,31 @@ const Chat = () => {
   useEffect(() => {
     socketIO.emit("addUser", userState._id);
     socketIO.on("getUsers", (users) => {
-      console.log("users from socket", users);
+     
 
       const usersOnline = async (id) => {
         try {
           const accessToken = localStorage.getItem("accessToken");
-          console.log("user id for user online", id);
+   
           let response = await fetch(ADDRESS + "/user/" + id, {
             headers: { Authorization: "Bearer " + accessToken },
           });
 
           if (response.ok) {
-            let peopleOnline = await response.json();
-            setOnlineUsers(peopleOnline);
-            dispatch(setUsersOnline(onlineUsers));
-            console.log("people onlie", peopleOnline);
+            let personOnline = await response.json();
+        
+         
+            dispatch(setUsersOnline(personOnline));
+          
           }
         } catch (error) {
           console.log(error);
         }
       };
-      console.log("users socket online", users);
+      
       users.map((u) => {
         usersOnline(u.userId);
-        console.log("user id online from socket", u);
+     
       });
     });
 
