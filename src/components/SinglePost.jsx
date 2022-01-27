@@ -65,16 +65,12 @@ export default function SinglePost ({post: p}) {
       <div className="post-user-pGroup">
 
         <Link to={"/profilePageUsers/"+p.user._id} >
-        <p onClick={()=>handleUser(p.user._id)}>{p.user.username}</p>
+        <p onClick={()=>handleUser(p.user._id)} className="usernamePost">{p.user.username}</p>
         </Link>
 
         <p>{p.user.bio}</p>
         <p className="time">{moment(p.createdAt).fromNow()}</p>
       </div>
-
-    {p.user._id===userID ?   <img src={dots} className="dots" onClick={()=>handleShowDropdown(p._id)}/> : <> </>}
-    </div>
-
   { showDropDown &&  p.user._id===userID ? 
   <div className="dropdown-container">
      <div className="dropdown-content">
@@ -82,7 +78,11 @@ export default function SinglePost ({post: p}) {
     <p onClick={()=>handleDelete(p._id, p.user._id)}>delete</p>
     </div>
     </div> : <div></div>}
+    {p.user._id===userID ?   <img src={dots} className="dots" onClick={()=>handleShowDropdown(p._id)}/> : <> </>}
+  
 
+
+  </div>
     { showModal ? (<div className="modalEdit">
       <input type="text" className="inputEditPost" value={editedPost} onChange={handleEditedPost}/>
       <button className="buttonEditPost" onClick={()=>handleEdit(p._id)}>edit</button>

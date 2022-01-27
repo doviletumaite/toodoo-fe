@@ -54,18 +54,19 @@ const SingleComment = ({comment:c}) => {
                   type="text"/>
                   <button className="editButton" onClick={()=>handleNewComment(c)}>edit</button>
                 </div>) : (<div></div>)}
-             </div>
-          { c.user._id === user._id ?  
-          (<img className="dots" src={dots} onClick={handleDropDown}/>)
-           : (<div></div>)}
-
-           { showDropdown ? 
+                 { showDropdown ? 
            (<div className="dropDown">
              <div className="dropDownCommentContent">
              <p onClick={handleShowEdit}>edit</p>
              <p onClick={()=>handleDelete(c)}>delete</p>
              </div>
              </div>) : (<div></div>)}
+             </div>
+          { c.user._id === user._id ?  
+          (<img className="dots" src={dots} onClick={handleDropDown}/>)
+           : (<div></div>)}
+
+          
            </div>
          </div>
         </div>
