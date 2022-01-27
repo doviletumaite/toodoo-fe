@@ -53,13 +53,7 @@ const postGeneral = () => {
   return (
     <div>
       <NavBar />
-      <Scrollbar 
-      speed={50}
-      damping={0.01}
-      overscrollDamping={0.2}
-      thumbMinSize={20}
-      renderByPixels={true}
-      continuousScrolling={true}>
+      
       <div className="showcase-main" id="showcaseBody">
         <div className="shareBox">
 
@@ -102,7 +96,7 @@ const postGeneral = () => {
 
         <Post />
       </div>
-      </Scrollbar>
+    
     </div>
   );
 };
