@@ -155,8 +155,8 @@
   .post-user-pGroup a:hover{
     text-decoration: none;
    }
-  .post-user p:first-child{
-    font-weight: 500;
+   .post-user-pGroup .usernamePost{
+    font-weight: 600;
     font-size: 20px;
  }
   .post-user p{
@@ -177,6 +177,8 @@
   justify-self: flex-end;
   cursor: pointer;
   height: 24px;
+  margin-right: 20px;
+  margin-left: 10px;
 }
 .comment .dots{
   margin-left: auto;
@@ -185,9 +187,10 @@
   z-index: 2;
   width: 10%;
   display: flex;
-  margin-top: 2px;
-  position: absolute;
-  right: 5%;
+  /* margin-top: 2px;
+  margin-left: 5px; */
+  /* position: absolute;
+  right: 5%; */
   border-radius: 2px;
 }
 .dropdown-content{
@@ -408,11 +411,11 @@
   .comment .dropDown{
     z-index: 2;
     width: 10%;
+    right: 28%;
+    position: absolute;
     display: flex;
     flex-direction: column;
-    right: 4%;
     margin-top: 2px;
-    position: absolute;
     border-radius: 2px;
   }
   .dropDownCommentContent{
