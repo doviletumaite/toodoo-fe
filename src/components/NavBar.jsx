@@ -73,9 +73,12 @@ const NavBar = () => {
             > */}
               <Link to={"/chat/" + state._id} className="navbar-title-link">
                 <img className="chat-logo" src={chat} />
+                
               </Link>
             {/* </OverlayTrigger> */}
-
+            <Link to={"/chat/" + state._id} className="navbar-chat-link">
+            <div className="messages">chat</div>
+            </Link>
             <img className="user_pic" src={state.profilePicture} />
 
             {/* <OverlayTrigger
