@@ -30,14 +30,26 @@
  text-decoration: none;
 }
 
+.messages{
+    color:rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: 700;
+    position: relative;  
+    margin-right: 20px;
+}
+.messages:hover{
+    color:#DFEAFA;
+}
+.navbar-chat-link:hover{
+    text-decoration: none;
+   }
+   
 .user_pic{
     height: 50px;
     width: 50px;
     border-radius: 30px;
 }
-.chat-logo{
-    margin-right: 20px;
-}
+
 .navbar-user{
     color:rgb(255, 255, 255);
     font-size: 30px;
