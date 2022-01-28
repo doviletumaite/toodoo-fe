@@ -28,16 +28,18 @@ const ProfilePage = () => {
 
     const handleEdit = () => {
       const newUserInfo = {username: editedName, bio: editedBio}
+      if(editedName===""){
+         alert("remember to edit your name as well :)")
+      } else {
        dispatch(edidUser({newUserInfo}))
        setModal(!modal)
+       }
     }
     const handlePicuture = (e) => {
       const img = e.target.files[0]
-      console.log("img",img)
       setPicture(img) 
     }
    const uploadPicture = () => {
-     console.log("picture",picture)
     dispatch(edidUserProfilePicture(picture))
    }
 
