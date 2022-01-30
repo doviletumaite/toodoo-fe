@@ -50,18 +50,14 @@ export default function SinglePostGenericUser ({post: p}) {
             dispatch(deletePost(id))
       }
     }
-   
 
     return (   
          <div className="post-body">
          <div className="post-user">
       <img className="profile-img-post" src={userGeneric.profilePicture} />
       <div className="post-user-pGroup">
-
-        
+  
         <p className="usernamePost">{userGeneric.username}</p>
-   
-
         <p>{userGeneric.bio}</p>
         <p className="time">{moment(p.createdAt).fromNow()}</p>
       </div>

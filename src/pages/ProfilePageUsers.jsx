@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -9,11 +10,14 @@ import "../style/ProfilePage.css";
 const ProfilePageUsers = () => {
   const state = useSelector((s) => s.genericUserInfo.user);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPostsByUserID(state._id));
-  }, []);
+  const [postUser, setPostUser] = useState([])
   const posts = useSelector((s) => s.genericUserInfo.posts);
-  console.log("generic user post",posts )
+  useEffect(() => {
+    
+    setPostUser(posts[0])
+    console.log("post in use state",postUser)
+  }, []);
+  
   return (
     <div>
       <NavBar />
@@ -30,7 +34,7 @@ const ProfilePageUsers = () => {
             </div>
           </div>
         </div>
-        <div className="postsUserContainer">{posts !== undefined ? posts.map((p) => <SinglePostGenericUser post={p} />).reverse() : (<></>)}</div>
+        <div className="postsUserContainer">{ postUser.map((p) => <SinglePostGenericUser post={p} />).reverse() }</div>
       </div>
     </div>
   );

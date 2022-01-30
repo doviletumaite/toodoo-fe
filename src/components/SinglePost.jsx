@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { Link } from "react-router-dom"
-import { deletePost, edidPost, getComments, getUser, postNewComment } from "../redux/actions"
+import { deletePost, edidPost, getComments, getPostsByUserID, getUser, postNewComment } from "../redux/actions"
 import dots from "../style/images/dots.png"
 import CommentList from "./CommentList"
 
@@ -35,6 +35,7 @@ export default function SinglePost ({post: p}) {
   
     const handleUser = (id) => { 
       dispatch(getUser(id)) 
+      dispatch(getPostsByUserID(id));
       history.push( "/profilePageUsers/" + id )
     }
   
