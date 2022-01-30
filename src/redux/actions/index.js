@@ -5,6 +5,7 @@ import API from "../../tools/api.js"
 export const SET_USER_INFO = 'SET_USER_INFO'
 export const SET_POST_INFO = 'SET_POST_INFO'
 export const GET_POSTS = 'GET_POSTS'
+export const GET_POSTS_BY_USERID = 'GET_POSTS_BY_USERID'
 export const GET_POST_ERROR = 'GET_POST_ERROR'
 export const GET_COMMENTS = 'GET_COMMENTS'
 export const ADD_POST = 'ADD_POST'
@@ -70,6 +71,23 @@ export const setUsernameAction = (userInfo) => ({
           type: GET_POST_ERROR,
           payload: true,
         })
+      }
+    }
+  }
+  export const getPostsByUserID = (id) => {
+    return async (dispatch, getState) => {
+      try {
+        let response = await fetch(URL+"/posts/"+id)
+        if(response.ok){
+           let posts = await response.json()
+           dispatch({
+             type: GET_POSTS_BY_USERID,
+             payload: posts
+           })
+        }
+        
+      } catch (error) {
+        console.log(error)
       }
     }
   }
