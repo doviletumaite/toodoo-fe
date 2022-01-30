@@ -1,4 +1,4 @@
-import { GET_USER } from "../actions";
+import { GET_POSTS_BY_USERID, GET_USER } from "../actions";
 import { initialState } from "../store";
 
 const genericUserReducer = (state = initialState.genericUserInfo, action) => {
@@ -8,6 +8,12 @@ const genericUserReducer = (state = initialState.genericUserInfo, action) => {
                 user: action.payload
                
             } 
+        }
+        case GET_POSTS_BY_USERID: {
+            return {
+                ...state,
+                posts: [action.payload]
+            }
         }
         default:
             return state

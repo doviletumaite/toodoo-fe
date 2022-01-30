@@ -470,3 +470,9 @@
    background-color: rgb(245, 173, 57);
    border-radius: 2px;
  }
+
+ /* generic users */
+ .postsUserContainer{
+   width: 60%;
+   margin: auto;
+ }
